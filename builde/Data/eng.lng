@@ -1,0 +1,165 @@
+; Source Writer3 1.3.2.10
+; Аксенов С.С. aka Lord
+
+
+[global]
+gl1=Compare file
+gl2=Paste Options
+gl3=Use separator
+gl4=Full Box
+gl5=Easy insertion
+gl6=Help
+gl7=Log
+gl8=Load
+
+[menu]
+btnmenu1=File
+btnmenu2=Edit
+btnmenu3=View
+btnmenu4=Paste
+btnmenu5=Service
+btnmenu6=Create
+btnmenu7=Open
+btnmenu8=Save as...
+btnmenu9=Print
+btnmenu10=Printer Settings
+btnmenu11=Exit
+btnmenu12=Project
+btnmenu13=Undo
+btnmenu14=Redo
+btnmenu15=Cut
+btnmenu16=Copy
+btnmenu17=Paste
+btnmenu18=Delete
+btnmenu19=Delete All
+btnmenu20=Select All
+btnmenu21=Find
+btnmenu22=Find and Replase
+btnmenu23=Go to...
+btnmenu24=Two windows 
+btnmenu25=Tools
+btnmenu26=Debugger
+btnmenu27=Game
+btnmenu28=Syntax
+btnmenu29=Settings
+btnmenu30=Without backlight 
+btnmenu31=Resources
+btnmenu32=Comments
+btnmenu33=Function
+btnmenu34=Autosub
+btnmenu35=Modules and objects
+btnmenu36=Macros
+btnmenu37=Special save
+btnmenu38=Open as...
+btnmenu39=Help
+btnmenu40=What is new?
+btnmenu41=Check update
+btnmenu42=About...
+btnmenu43=Debugger
+btnmenu44=Standart
+btnmenu45=Tool panel
+btnmenu46=Spread
+btnmenu47=Collapse
+btnmenu48=Toggle Bookmarks
+btnmenu49=Goto Bookmarks
+btnmenu50=Clear Bookmarks
+
+
+[tools]
+tl1=Code List
+tl2=Comments
+tl3=Macros
+tl4=Function
+tl5=Conditions
+tl6=Events
+tl7=Command
+tl8=Options
+
+[form]
+opt1=Settings
+opt2=Default
+opt3=Close after saving
+opt4=Save
+opt5=Cancel
+opt6=Available Macros
+opt7=Playback Speed
+opt8=The range of records
+opt9=Visualization
+opt10=Only in the annex
+opt11=Include system
+opt12=Normal
+opt13=Fast
+opt14=Moving the mouse
+opt15=Relatively
+opt16=Path to the directory
+opt17=Makros
+opt18=Game
+opt19=Languages
+opt20=General
+opt21=Debugger
+opt22=Automatic Updates
+opt23=Run as ...
+opt24=Standart
+opt25=Russian
+opt26=Ukrainian
+opt27=English
+opt28=User
+opt29=Add a language
+opt30=Save
+opt31=On
+opt32=Keep a log update
+opt33=Check for updates at the entrance to the program
+opt34=Autorun
+opt35=Autostart
+opt36=Port
+opt37=Automation
+opt38=Delete the original file
+
+[goto]
+btn1=Go to
+cap=Go to...
+
+[msg]
+ms1="Warning! There was an unexpected exception! Action canceled."
+ms2="No backlight"
+ms3="There was an error.You plugin is not installed!"
+ms4="To insert a resource, select the option: Simple insert insert name of the resource; Paste with the separator, insert after the resource name separator; Full insert, insert fully design registration of the resource at stake."
+ms5="Autosave is enabled!"
+ms6="I can not turn autosave!"
+ms7="The file is saved!"
+ms8="It may first select the type of game or mod?"
+ms9="Save tab "
+ms10="Error initializing" 
+ms11="not found library correction" 
+ms12="Initializing ..." 
+ms13="Initializing correction ..." 
+ms14="Not Found Library Event"
+ms15="Initialization of events ..." 
+ms16="not found library function "
+ms17="Initialization function ..." 
+ms18="Not Found library" 
+ms19="Library not found errors" 
+ms20="Can not run macros" 
+ms21="Initialize macros ..." 
+ms22="Error running modules"
+ms23="Initializing modules ..." 
+ms24="Error launching sites" 
+ms25="Initialization of objects ..." 
+ms26="Can not find language file" 
+ms27="Loading Languages"
+
+
+[hint]
+ht1=Refresh
+
+[module]
+obj1=Modules and object
+obj2=Object
+obj3=Module
+
+[manager]
+mnr1=Create
+mnr2=Cancel
+mnr3=What do you want to create?
+mnr4=Project name
+mnr5=File name

@@ -1,0 +1,68 @@
+; Source Writer3 1.3.0.5
+; Аксенов С.С. aka Lord
+; Apache
+
+
+[global]
+gl1=Сравнить файл
+gl2=Параметры вставки
+gl3=Использовать разделитель
+gl4=Полная вставка
+gl5=Простая вставка
+gl6=Справка
+gl7=Отчет
+
+[menu]
+btnmenu1=Файл
+btnmenu2=Редагування
+btnmenu3=Вид
+btnmenu4=Вставка
+btnmenu5=Сервіс
+btnmenu6=Створити 
+btnmenu7=Відкрити
+btnmenu8=Зберегти як...
+btnmenu9=Роздрукувати
+btnmenu10=Налаштування принтера
+btnmenu11=Вихід
+btnmenu12=Проект
+btnmenu13=Скасувати
+btnmenu14=Повторити
+btnmenu15=Вирізати
+btnmenu16=Копіювати
+btnmenu17=Вставити
+btnmenu18=Видалити
+btnmenu19=Видалити все
+btnmenu20=Виділити все
+btnmenu21=Знайти
+btnmenu22=Знайти та замінити
+btnmenu23=Перейти
+btnmenu24=2 вікна 
+btnmenu25=Інструменти
+btnmenu26=Пошук та виправлення помилок
+btnmenu27=Гра
+btnmenu28=Синтаксис
+btnmenu29=Налаштування
+btnmenu30=Without backlight 
+btnmenu31=Ресурси
+btnmenu32=Коментарі
+btnmenu33=Функція
+btnmenu34=Автопідстановка
+btnmenu35=Модулі та об'єкти
+btnmenu36=Макроси
+btnmenu37=Специальное сохранение
+btnmenu38=Відкрити як...
+btnmenu39=Довідка
+btnmenu40=Що нового?
+btnmenu41=Перевірити оновлення
+btnmenu42=Про програму
+
+
+[tools]
+tl1=Хранитель кода
+tl2=Коментарі
+tl3=Макроси
+tl4=Функція
+tl5=Условия
+tl6=События
+tl7=Комманды
+tl8=Опции

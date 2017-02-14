@@ -1,0 +1,3822 @@
+; Removed all "papacy" rules, but the missions
+; Reworked all the rules to give more weight to religion 
+; Removed duplicated rules
+; Increase effects of all rules.
+; faction standing parameters
+; ===========================
+
+; initialisation parameters
+
+min_faction_standing	-1.0
+max_faction_standing	1.0
+
+relations_improved_thresholds
+{
+    0.25
+    0.4
+    0.8
+}
+
+relations_worsened_thresholds
+{
+    -0.8
+    -0.4
+    -0.25
+}
+
+; trigger information
+; faction_standing updated with the command:
+;   FactionStanding [AFFECTED_HANDLE] [affected_handle_parameters] opt:[MODIFER_HANDLE] opt:[modifier_handle_parameter_1] opt:[modifier_handle_parameter_1]
+;
+; Available AFFECTED_HANDLE's and their parameters are as follows:
+;
+;    factions { [faction_label_1] [faction_label_2] [etc] }		--> A list of factions to be affected, (own faction automatically excluded)
+;    target_faction							--> the target_faction attached to the event, (own faction automatically excluded)
+;    religion [religion_label]						--> all factions of the specified religion, (own faction automatically excluded)
+;    own_religion							--> all factions of the same religion as the faction of the event, (own faction automatically excluded)
+;    target_religion							--> all factions of the same religion as the target faction of the event, (own faction automatically excluded)
+;    global								--> the faction of the event (i.e. own faction)
+;    exclude_factions { [faction_label_1] [faction_label_2] [etc] }	--> A list of factions not to be affected, (own faction automatically excluded)
+;    allies								--> all factions allied with the faction attached to the trigger
+;    enemies								--> all factions at war with the faction attached to the trigger
+;    target_allies							--> all factions allied with the target faction attached to the trigger
+;    target_enemies							--> all factions at war with the target_faction attached to the trigger
+;
+; Available MODIFIER_HANDLE's and their corresponding parameters
+;
+;    [value]					--> add this 'value' to the affected faction standings
+;    amount [divisor] [value]			--> for every 'divisor' unit of the event amount, add 'value' to the affected faction standings
+;    income [divisor] [value]			--> for every 'divisor' unit of the event factions income, add 'value' to the affected faction standings
+;    normalise [target_faction_standing] [divisor]	--> for each affected faction standing, add (target_faction_standing - faction_standing)/divisor
+;    per_unit [value]				--> for each unit in the events army, add 'value' to the affected faction standings
+
+
+;RULES with religious buildings
+;Same religion factions will like you a little more, but all other will like you less as you are a threat to their "gods"
+;Huge catholic/muslim buildings will make your own religion mates to like you less.., yes.. they are jealows.. / Orthodox will act the opposite.
+;There should be more rules when you reach X buildings.. (under work)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BUILD RELIGIOUS STRUCTURE CATHOLICS;;
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_C_Build_Small_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = small_church
+
+    FactionStanding factions { papal_states } 0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway }  0.001     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.003
+
+;------------------------------------------
+Trigger 0002_C_Build_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = church
+
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway }  0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.006
+
+;------------------------------------------
+Trigger 0003_C_Build_Abbey
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = abbey
+
+    FactionStanding factions { papal_states } 0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway }  0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.012
+
+;------------------------------------------
+Trigger 0004_C_Build_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = cathedral
+
+    FactionStanding factions { papal_states } 0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.008
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.024
+
+;------------------------------------------
+Trigger 0005_C_Build_Huge_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = huge_cathedral
+
+    FactionStanding factions { papal_states } 0.16
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.016     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.016
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.048
+
+
+;------------------------------------------
+Trigger 0006_C_Build_Small_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = small_chapel
+    
+    FactionStanding factions { papal_states } 0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.001    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.003
+
+
+;------------------------------------------
+Trigger 0007_C_Build_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = chapel
+
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.006
+
+;------------------------------------------
+Trigger 0008_C_Built_First_Small_Church_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction small_church = 1
+
+    FactionStanding factions { papal_states } 0.02
+
+;------------------------------------------
+Trigger 0009_C_Built_First_Church_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction church = 1
+
+    FactionStanding factions { papal_states } 0.04
+
+;------------------------------------------
+Trigger 0010_C_Built_First_Abbey_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction abbey = 1
+
+    FactionStanding factions { papal_states } 0.06
+
+;------------------------------------------
+Trigger 0011_C_Built_First_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction cathedral = 1
+
+    FactionStanding factions { papal_states } 0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.04     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.05
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.075
+
+
+;------------------------------------------
+Trigger 0012_C_Built_First_Huge_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction huge_cathedral = 1
+
+    FactionStanding factions { papal_states } 0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.045   
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.06
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.095
+
+
+;------------------------------------------
+Trigger 0013_C_Built_First_Small_Chapel_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction small_chapel = 1
+
+    FactionStanding factions { papal_states } 0.02
+
+;------------------------------------------
+Trigger 0014_C_Built_First_Chapel_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction chapel = 1
+
+    FactionStanding factions { papal_states } 0.04
+
+;------------------------------------------
+Trigger 0015_C_Built_First_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted cathedral = 1
+
+    FactionStanding factions { papal_states } 0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.075
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.1
+
+;------------------------------------------
+Trigger 0016_C_Built_First_Huge_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted huge_cathedral = 1
+
+    FactionStanding factions { papal_states } 0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.08     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.15
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BUILD RELIGIOUS STRUCTURE ORTHODOX	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_O_Build_Small_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = small_church_o
+
+    FactionStanding factions { papal_states } -0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.003
+
+;------------------------------------------
+Trigger 0002_O_Build_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = church_o
+
+    FactionStanding factions { papal_states } -0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.005     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.006
+
+;------------------------------------------
+Trigger 0003_O_Build_Abbey
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = abbey_o
+
+    FactionStanding factions { papal_states } -0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.0075     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.006
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.012
+
+;------------------------------------------
+Trigger 0004_O_Build_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = cathedral_o
+
+    FactionStanding factions { papal_states } -0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.0125     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.012
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.030
+
+;------------------------------------------
+Trigger 0005_O_Build_Huge_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = huge_cathedral_o
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.02     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.02
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.05
+
+
+;------------------------------------------
+Trigger 0006_O_Build_Small_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = small_chapel_o
+    
+    FactionStanding factions { papal_states } -0.002
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.005
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.004
+
+
+;------------------------------------------
+Trigger 0007_O_Build_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = chapel_o
+
+    FactionStanding factions { papal_states } -0.006
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.0075
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.0085
+
+;------------------------------------------
+Trigger 0010_O_Built_First_Abbey_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction abbey_o = 1
+
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.075
+
+;------------------------------------------
+Trigger 0011_O_Built_First_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction cathedral_o = 1
+
+    FactionStanding factions { papal_states } -0.06
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.01    
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.005
+
+;------------------------------------------
+Trigger 0012_O_Built_First_Huge_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction huge_cathedral_o = 1
+
+    FactionStanding factions { papal_states } -0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.006     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.05    
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.012
+
+;------------------------------------------
+Trigger 0015_O_Built_First_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted cathedral = 1
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.1
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.075
+
+;------------------------------------------
+Trigger 0016_O_Built_First_Huge_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted huge_cathedral = 1
+
+    FactionStanding factions { papal_states } -0.07
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.08     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.15
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.125
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BUILD RELIGIOUS STRUCTURE MUSLIM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*******************************************************************************
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_M_Build_Small_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = small_masjid
+
+    FactionStanding factions { papal_states } -0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.001     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.005
+
+;------------------------------------------
+Trigger 0002_M_Build_Church
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = masjid
+
+    FactionStanding factions { papal_states } -0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.0075
+
+;------------------------------------------
+Trigger 0003_M_Build_Abbey
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = minareted_masjid
+
+    FactionStanding factions { papal_states } -0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.01
+
+;------------------------------------------
+Trigger 0004_M_Build_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = jama
+
+    FactionStanding factions { papal_states } -0.16
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.008
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.025
+
+;------------------------------------------
+Trigger 0005_M_Build_Huge_Cathedral
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = great_jama
+
+    FactionStanding factions { papal_states } -0.32
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.016     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.016
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.05
+
+
+;------------------------------------------
+Trigger 0006_M_Build_Small_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = c_small_masjid
+    
+    FactionStanding factions { papal_states } -0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.001    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.005
+
+
+;------------------------------------------
+Trigger 0007_M_Build_Chapel
+    WhenToTest BuildingCompleted
+
+    Condition SettlementBuildingFinished = c_masjid
+
+    FactionStanding factions { papal_states } -0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.0075
+
+;------------------------------------------
+Trigger 0008_M_Built_First_Small_Church_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction small_masjid = 1
+
+    FactionStanding factions { papal_states } -0.04
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.002
+
+;------------------------------------------
+Trigger 0009_M_Built_First_Church_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction masjid = 1
+
+    FactionStanding factions { papal_states } -0.08
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.006
+
+;------------------------------------------
+Trigger 0010_M_Built_First_Abbey_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction minareted_masjid = 1
+
+    FactionStanding factions { papal_states } -0.12
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.01
+
+;------------------------------------------
+Trigger 0011_M_Built_First_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction jama = 1
+
+    FactionStanding factions { papal_states } -0.16
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.04     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.05
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.075
+
+
+;------------------------------------------
+Trigger 0012_M_Built_First_Huge_Cathedral_Faction
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompletedFaction great_jama = 1
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.045   
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.06
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.125
+
+
+;------------------------------------------
+Trigger 0015_M_Built_First_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted jama = 1
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.075
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.1
+
+;------------------------------------------
+Trigger 0016_M_Built_First_Huge_Cathedral_World
+    WhenToTest BuildingCompleted
+
+    Condition NumBuildingsCompleted great_jama = 1
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.08     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.15
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DESTROY RELIGIOUS STRUCTURE ;;CATHOLICS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_C_Destroy_Small_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = small_church
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.005     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.001
+
+;------------------------------------------
+Trigger 0002_C_Destroy_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = church
+
+    FactionStanding factions { papal_states } -0.075
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.002
+
+;------------------------------------------
+Trigger 0003_C_Destroy_Abbey
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = abbey
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.016     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.004
+
+;------------------------------------------
+Trigger 0004_C_Destroy_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = cathedral
+
+    FactionStanding factions { papal_states } -0.125
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.032    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.008
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.008
+
+;------------------------------------------
+Trigger 0005_C_Destroy_Huge_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = huge_cathedral
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.064   
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.016
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.016
+
+
+;------------------------------------------
+Trigger 0006_C_Destroy_Small_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = small_chapel
+    
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.005     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.001
+
+
+;------------------------------------------
+Trigger 0007_C_Destroy_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = chapel
+
+    FactionStanding factions { papal_states } -0.075
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.002
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;DESTROY RELIGIOUS STRUCTURE ORTHODOX	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;************************************************************************
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_O_Destroy_Small_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = small_church_o
+
+    FactionStanding factions { papal_states } 0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.002
+
+;------------------------------------------
+Trigger 0002_O_Destroy_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = church_o
+
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.004
+
+;------------------------------------------
+Trigger 0003_O_Destroy_Abbey
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = abbey_o
+
+    FactionStanding factions { papal_states } 0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.008
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.008
+
+;------------------------------------------
+Trigger 0004_O_Destroy_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = cathedral_o
+
+    FactionStanding factions { papal_states } 0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.016     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.016
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.016
+
+;------------------------------------------
+Trigger 0005_O_Destroy_Huge_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = huge_cathedral_o
+
+    FactionStanding factions { papal_states } 0.16
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.032     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.032
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.032
+
+;------------------------------------------
+Trigger 0006_O_Destroy_Small_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = small_chapel_o
+    
+    FactionStanding factions { papal_states } 0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.002
+
+;------------------------------------------
+Trigger 0007_O_Destroy_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = chapel_o
+
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.004
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DESTROY RELIGIOUS STRUCTURE MUSLIM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;************************************************************************************
+;;;;;;;;;;;;;;;;;;;;;------------------------------------------
+Trigger 0001_M_Destroy_Small_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = small_masjid
+
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.001     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.003
+
+;------------------------------------------
+Trigger 0002_M_Destroy_Church
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = masjid
+
+    FactionStanding factions { papal_states } 0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.006
+
+;------------------------------------------
+Trigger 0003_M_Destroy_Abbey
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = minareted_masjid
+
+    FactionStanding factions { papal_states } 0.08
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.004     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.004
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.015
+
+;------------------------------------------
+Trigger 0004_M_Destroy_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = jama
+
+    FactionStanding factions { papal_states } 0.16
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.008     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.008
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.032
+
+;------------------------------------------
+Trigger 0005_M_Destroy_Huge_Cathedral
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = great_jama
+
+    FactionStanding factions { papal_states } 0.32
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.016     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.016
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.075
+
+
+;------------------------------------------
+Trigger 0006_M_Destroy_Small_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = c_small_masjid
+    
+    FactionStanding factions { papal_states } 0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.001    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.001
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.005
+
+
+;------------------------------------------
+Trigger 0007_M_Destroy_Chapel
+ WhenToTest BuildingDestroyed
+
+    Condition BuildingName = c_masjid
+
+    FactionStanding factions { papal_states } 0.04
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.002     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.002
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.015
+
+
+;;;;;;;;;;;;;;
+;; CRUSADES ;;**************************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0050A_P_General_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+
+    FactionStanding factions { papal_states } 0.04
+    FactionStanding factions { papal_states } per_unit 0.002
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.01     
+    FactionStanding target_faction per_unit -0.0025
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0050B_P_General_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+	and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit -0.005  
+
+;------------------------------------------
+Trigger 0051A_P_Heir_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+              and IsFactionHeir
+
+    FactionStanding factions { papal_states } 0.085
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.02     
+    FactionStanding target_faction per_unit -0.0025
+    FactionStanding target_faction -0.1
+    FactionStanding target_allies normalise -1.0 70
+    FactionStanding target_enemies normalise 1.0 85
+
+;------------------------------------------
+Trigger 0051B_P_Heir_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+              and IsFactionHeir
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit -0.015
+
+;------------------------------------------
+Trigger 0052A_P_King_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+              and IsFactionLeader
+
+    FactionStanding factions { papal_states } 0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.04  
+    FactionStanding target_faction per_unit -0.003
+    FactionStanding target_faction -0.15
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 75
+
+;------------------------------------------
+Trigger 0052B_P_King_Arrives_Crusade_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsCrusade
+              and IsFactionLeader
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit -0.02
+
+;------------------------------------------
+Trigger 0053A_P_General_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+
+    FactionStanding factions { papal_states } 0.3
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05  
+    FactionStanding target_faction -0.2
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 60
+
+;------------------------------------------
+Trigger 0053B_P_General_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.1
+
+;------------------------------------------
+Trigger 0054A_P_Heir_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+              and IsFactionHeir
+
+    FactionStanding factions { papal_states } 0.5
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.15  
+    FactionStanding target_faction -0.25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 55
+
+;------------------------------------------
+Trigger 0054B_P_Heir_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+              and IsFactionHeir
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.2
+
+;------------------------------------------
+Trigger 0055A_P_King_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+              and IsFactionLeader
+
+    FactionStanding factions { papal_states } 0.7
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.2  
+    FactionStanding target_faction -0.25
+    FactionStanding target_allies normalise -1.0 20
+    FactionStanding target_enemies normalise 1.0 50
+
+;------------------------------------------
+Trigger 0055B_P_King_Takes_Crusade_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsCrusade
+              and IsFactionLeader
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.3
+
+;------------------------------------------
+Trigger 0056A_P_Army_Takes_Crusade_Target
+    WhenToTest ArmyTakesCrusadeTarget
+
+    Condition IsCrusade
+
+    FactionStanding factions { papal_states } per_unit 0.004
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002  
+    FactionStanding target_faction -0.1
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0056B_P_Army_Takes_Crusade_Target
+    WhenToTest ArmyTakesCrusadeTarget
+
+    Condition IsCrusade
+		and TargetFactionReligion islam
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } -0.1
+
+;------------------------------------------
+Trigger 0057_P_Character_Attacks_Crusading_General
+    WhenToTest CharacterAttacksCrusadingGeneral
+
+    Condition IsTargetOnCrusade
+
+    FactionStanding factions { papal_states } -0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.1
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0058_P_Crusade_Attacks_Orthodox_General
+	WhenToTest GeneralAssaultsGeneral
+	
+	Condition IsOnCrusade
+			  and TargetFactionReligion orthodox
+	
+    FactionStanding factions { papal_states } -0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0059_P_Crusade_Attacks_Orthodox_Residence
+	WhenToTest GeneralAssaultsResidence
+	
+	Condition IsOnCrusade
+			  and TargetFactionReligion orthodox
+	
+    FactionStanding factions { papal_states } -0.4
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.1
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.15
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.05
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;;;;;;;;;;;;;;
+;; JIHADS ;;**************************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0050A_P_General_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+	  and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.04
+    FactionStanding factions { papal_states } per_unit 0.002
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.02  
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.01   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.025
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0051A_P_Heir_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+              and IsFactionHeir
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.085
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.02   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.028
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 70
+    FactionStanding target_enemies normalise 1.0 85
+
+;------------------------------------------
+Trigger 0052A_P_King_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+              and IsFactionLeader
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.075  
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.04   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.05
+    FactionStanding target_faction normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 75
+
+;------------------------------------------
+Trigger 0053A_P_General_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.3
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05  
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.02   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.025
+    FactionStanding target_faction normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0054A_P_Heir_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+              and IsFactionHeir
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.5
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.15  
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.06   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.05
+    FactionStanding target_faction normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 50
+    FactionStanding target_enemies normalise 1.0 75
+
+;------------------------------------------
+Trigger 0055A_P_King_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+              and IsFactionLeader
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.7
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.2 
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.085   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.1 
+    FactionStanding target_faction normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 50
+
+;------------------------------------------
+Trigger 0056A_P_Army_Takes_Jihad_Target
+    WhenToTest ArmyTakesCrusadeTarget
+
+    Condition IsJihad
+		and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } per_unit -0.004
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.002
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.001   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.025  
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0057A_P_Character_Attacks_Crusading_General
+    WhenToTest CharacterAttacksCrusadingGeneral
+
+    Condition IsTargetOnJihad
+
+    FactionStanding factions { papal_states } 0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } 0.05
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } 0.02   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit -0.025
+    FactionStanding target_faction normalise -1.0 50
+    FactionStanding target_allies normalise -1.0 85
+    FactionStanding target_enemies normalise 1.0 105
+
+;------------------------------------------
+Trigger 0058A_P_Jihad_Attacks_Catholic_General
+	WhenToTest GeneralAssaultsGeneral
+	
+	Condition IsOnJihad
+		and TargetFactionReligion catholic	
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.02   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.025
+    FactionStanding target_faction normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 85
+
+;------------------------------------------
+Trigger 0059A_P_Jihad_Attacks_Catholic_Residence
+	WhenToTest GeneralAssaultsResidence
+	
+	Condition IsOnJihad
+		and TargetFactionReligion catholic	
+
+    FactionStanding factions { papal_states } -0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.1
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.05   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.05
+    FactionStanding target_faction normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 50
+    FactionStanding target_enemies normalise 1.0 75
+
+
+;;;;;;;;;;;;
+;Against Orthodox		***********************************************************************************************************************************************************************************************
+;
+;------------------------------------------;
+;------------------------------------------
+Trigger 0050B_P_General_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+	  and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.01     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.02   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.005
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0051B_P_Heir_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+              and IsFactionHeir
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.02     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.04   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.0075
+    FactionStanding target_faction normalise -1.0 35
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 85
+
+;------------------------------------------
+Trigger 0052B_P_King_Arrives_Jihad_Target
+    WhenToTest GeneralArrivesCrusadeTargetRegion
+
+    Condition IsJihad
+              and IsFactionLeader
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.03
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.03     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.06   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } per_unit 0.01
+    FactionStanding target_faction normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 50
+    FactionStanding target_enemies normalise 1.0 75
+
+;------------------------------------------
+Trigger 0053B_P_General_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.05     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.05
+    FactionStanding target_faction normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 50
+    FactionStanding target_enemies normalise 1.0 75
+
+;------------------------------------------
+Trigger 0054B_P_Heir_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+              and IsFactionHeir
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.1     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.2  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.1
+    FactionStanding target_faction normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 40
+    FactionStanding target_enemies normalise 1.0 65
+
+;------------------------------------------
+Trigger 0055B_P_King_Takes_Jihad_Target
+    WhenToTest GeneralTakesCrusadeTarget
+
+    Condition IsJihad
+              and IsFactionLeader
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.4
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.2   
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.4   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks }  0.25
+    FactionStanding target_faction normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 50
+
+;------------------------------------------
+Trigger 0056B_P_Army_Takes_Jihad_Target
+    WhenToTest ArmyTakesCrusadeTarget
+
+    Condition IsJihad
+		and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.1    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.025
+    FactionStanding target_faction normalise -1.0 50
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0058B_P_Jihad_Attacks_Orthodox_General
+	WhenToTest GeneralAssaultsGeneral
+	
+	Condition IsOnJihad
+		and TargetFactionReligion orthodox	
+
+    FactionStanding factions { papal_states } -0.01
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.01     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.05   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.025
+    FactionStanding target_faction normalise -1.0 35
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0059B_P_Jihad_Attacks_Orthodox_Residence
+	WhenToTest GeneralAssaultsResidence
+	
+	Condition IsOnJihad
+		and TargetFactionReligion orthodox	
+
+    FactionStanding factions { papal_states } -0.02
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.02     
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.1   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } 0.1
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise 1.0 95
+
+
+;;;;;;;;;;;;;;;;
+;; CHARACTERS ;;		***********************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0030_P_Recruit_Priest_Papal
+    WhenToTest AgentCreated
+
+    Condition TrainedAgentType = priest
+        and FactionReligion catholic
+        
+    FactionStanding factions { papal_states } normalise 1.0 10
+
+;;;;;;;;;;;;;;;;
+;; EXCOMMUNICATED ;;		***********************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;
+;------------------------------------------
+Trigger 0031_P_Faction_Excommunicated
+    WhenToTest FactionExcommunicated
+
+    FactionStanding factions { papal_states } -1.0
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } -0.75
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } -0.25
+
+;;;;;;;;;;;;;;
+;; MISSIONS ;;			***********************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0100_Success_Pope_Min_Reward_Only
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_min_reward_only
+	
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0101_Success_Pope_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_min_penalty_min_reward
+	
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0102_Success_Pope_Mod_Penalty_Min_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_mod_penalty_min_reward
+	
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0103_Success_Pope_Rome_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_rome_min_penalty_min_reward
+
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0104_Success_Pope_Cardinal_Mod_Penalty_Min_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_mod_penalty_min_reward
+
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0104_Success_Pope_Cardinal_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_min_penalty_min_reward
+
+    FactionStanding factions { papal_states } 0.1
+
+;------------------------------------------
+Trigger 0105_Success_Pope_Mod_Reward_Only
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_mod_reward_only
+
+    FactionStanding factions { papal_states } 0.2
+
+;------------------------------------------
+Trigger 0106_Success_Pope_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } 0.2
+
+;------------------------------------------
+Trigger 0107_Success_Pope_Rome_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_rome_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } 0.2
+
+;------------------------------------------
+Trigger 0108_Success_Pope_Cardinal_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } 0.2
+
+;------------------------------------------
+Trigger 0109_Success_Pope_Cardinal_Mod_Reward_Only
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_mod_reward_only
+
+    FactionStanding factions { papal_states } 0.2
+
+;------------------------------------------
+Trigger 0110_Success_Pope_Major_Reward_Only
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_major_reward_only
+
+    FactionStanding factions { papal_states } 0.4
+
+;------------------------------------------
+Trigger 0111_Success_Pope_Rome_Min_Penalty_Major_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_rome_min_penalty_major_reward
+
+    FactionStanding factions { papal_states } 0.4
+
+;------------------------------------------
+Trigger 0112_Success_Pope_Cardinal_Major_Reward_Only
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_major_reward_only
+
+    FactionStanding factions { papal_states } 0.4
+
+;------------------------------------------
+Trigger 0113_Success_Pope_Cardinal_Min_Penalty_Major_Reward
+    WhenToTest LeaderMissionSuccess
+
+    Condition PaybackID pope_cardinal_min_penalty_major_reward
+
+    FactionStanding factions { papal_states } 0.4
+
+;------------------------------------------
+Trigger 0120_Fail_Pope_Min_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_min_penalty_only
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0121_Fail_Pope_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_min_penalty_min_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0122_Fail_Pope_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0123_Fail_Pope_Rome_Min_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_min_penalty_only
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0124_Fail_Pope_Rome_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_min_penalty_min_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0125_Fail_Pope_Rome_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0126_Fail_Pope_Rome_Min_Penalty_Major_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_min_penalty_major_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0127_Fail_Pope_Cardinal_Min_Penalty_Min_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_min_penalty_min_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0128_Fail_Pope_Cardinal_Min_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_min_penalty_only
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0129_Fail_Pope_Cardinal_Min_Penalty_Mod_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_min_penalty_mod_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0130_Fail_Pope_Cardinal_Min_Penalty_Major_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_min_penalty_major_reward
+
+    FactionStanding factions { papal_states } -0.05
+
+;------------------------------------------
+Trigger 0131_Fail_Pope_Mod_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_mod_penalty_only
+
+    FactionStanding factions { papal_states } -0.1
+
+;------------------------------------------
+Trigger 0132_Fail_Pope_Mod_Penalty_Min_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_mod_penalty_min_reward
+
+    FactionStanding factions { papal_states } -0.1
+
+;------------------------------------------
+Trigger 0133_Fail_Pope_Rome_Mod_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_mod_penalty_only
+
+    FactionStanding factions { papal_states } -0.1
+
+;------------------------------------------
+Trigger 0134_Fail_Pope_Cardinal_Mod_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_mod_penalty_only
+
+    FactionStanding factions { papal_states } -0.1
+
+;------------------------------------------
+Trigger 0135_Fail_Pope_Cardinal_Mod_Penalty_Min_Reward
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_cardinal_mod_penalty_min_reward
+
+    FactionStanding factions { papal_states } -0.1
+
+;------------------------------------------
+Trigger 0136_Fail_Pope_Major_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_major_penalty_only
+
+    FactionStanding factions { papal_states } -0.2
+
+;------------------------------------------
+Trigger 0137_Fail_Pope_Rome_Major_Penalty_Only
+    WhenToTest LeaderMissionFailed
+
+    Condition PaybackID pope_rome_major_penalty_only
+
+    FactionStanding factions { papal_states } -0.2 
+
+
+;;;;;;;;;;;;;;;
+;; DIPLOMACY ;;			***********************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;
+
+
+;------------------------------------------
+Trigger 0033_P_Give_Money
+    WhenToTest GiveMoney
+
+    Condition  DiplomaticStanceFromFaction target_faction < AtWar
+
+    FactionStanding target_faction amount 50 0.001
+
+
+;------------------------------------------
+Trigger 0034_P_Give_Settlement
+    WhenToTest GiveSettlement
+
+    Condition DiplomaticStanceFromFaction target_faction < AtWar
+
+    FactionStanding target_faction income 1000 0.1
+
+
+;------------------------------------------
+Trigger 0035_P_Give_Rome
+    WhenToTest GiveSettlement
+
+    Condition  TargetFactionType papal_states
+          and  SettlementName Rome
+	  and  DiplomaticStanceFromFaction papal_states < AtWar
+
+    FactionStanding factions { papal_states } 1.0
+
+;------------------------------------------
+Trigger 0036_CC_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion catholic
+	      and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise 1.0 30
+    FactionStanding target_faction normalise 1.0 8
+    FactionStanding target_allies normalise 1.0 24
+    FactionStanding target_enemies normalise -1.0 52
+    FactionStanding own_religion normalise 1.0 60
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 40   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 40
+
+;------------------------------------------
+Trigger 0036_CO_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion catholic
+	      and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } normalise 1.0 60
+    FactionStanding target_faction normalise 1.0 12
+    FactionStanding target_allies normalise 1.0 22
+    FactionStanding target_enemies normalise -1.0 54
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 15   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 25
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 15
+
+;------------------------------------------
+Trigger 0036_CI_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion catholic
+	      and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } normalise -1.0 8
+    FactionStanding target_faction normalise 1.0 15
+    FactionStanding target_allies normalise 1.0 25
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 15   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 10
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 5
+
+;------------------------------------------
+Trigger 0036_OC_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion orthodox
+	      and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise 1.0 60
+    FactionStanding target_faction normalise 1.0 10
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 20   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 10
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 15
+
+;------------------------------------------
+Trigger 0036_OO_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion orthodox
+	      and TargetFactionReligion orthodox
+
+    FactionStanding target_faction normalise 1.0 4
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding own_religion normalise 1.0 50
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 40
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 40
+ 
+;------------------------------------------
+Trigger 0036_OI_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion orthodox
+	      and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } normalise -1.0 5
+    FactionStanding target_faction normalise 1.0 15
+    FactionStanding target_allies normalise 1.0 25
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 5
+
+;------------------------------------------
+Trigger 0036_IC_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion islam
+	      and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 2.5
+    FactionStanding target_faction normalise 1.0 2
+    FactionStanding target_allies normalise 1.0 25
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 5
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 2.5
+   
+;------------------------------------------
+Trigger 0036_IO_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion islam
+	      and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } normalise -1.0 7.5
+    FactionStanding target_faction normalise 1.0 5
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 10   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 10
+   
+;------------------------------------------
+Trigger 0036_II_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion islam
+	      and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } normalise -1.0 30
+    FactionStanding target_faction normalise 1.0 2
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 40
+    FactionStanding own_religion normalise 1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 40   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 40
+   
+;------------------------------------------
+Trigger 0036_CP_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion catholic
+	      and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } normalise 1.0 5
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 40
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 20
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 30
+
+;------------------------------------------
+Trigger 0036_OP_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion orthodox
+	      and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } normalise 1.0 7.5
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 40
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10   
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 40
+    
+
+;------------------------------------------
+Trigger 0036_IP_Alliance_Declared
+    WhenToTest FactionAllianceDeclared
+
+    Condition  FactionReligion islam
+	      and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } normalise 1.0 20
+    FactionStanding target_allies normalise 1.0 20
+    FactionStanding target_enemies normalise -1.0 40
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 10
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 20 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 5
+
+;------------------------------------------
+Trigger 0037_CP_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion catholic
+	and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } -0.75
+    FactionStanding allies normalise -1.0 10
+    FactionStanding target_allies normalise -1.0 20
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 10
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 25  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 40
+
+;------------------------------------------
+Trigger 0037_OP_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion orthodox
+	and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } -1.0
+    FactionStanding allies normalise -1.0 10
+    FactionStanding target_allies normalise -1.0 20
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 20  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 50
+
+;------------------------------------------
+Trigger 0037_IP_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion islam
+	and TargetFactionType papal_states
+
+    FactionStanding factions { papal_states } -1.5
+    FactionStanding allies normalise -1.0 10
+    FactionStanding target_allies normalise -1.0 20
+    FactionStanding target_enemies normalise 1.0 25
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 10
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 15  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 25
+
+;------------------------------------------
+Trigger 0037_CC_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion catholic
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding allies normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 35
+    FactionStanding own_religion normalise -1.0 15
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 50  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 50
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0037_CO_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion catholic
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding allies normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 35
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 35
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 20  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 50
+    FactionStanding target_faction normalise -1.0 15
+
+;------------------------------------------
+Trigger 0037_CI_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+ Condition FactionReligion catholic
+	and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } 0.2
+    FactionStanding allies normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 40
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 20
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 35  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 20
+    FactionStanding target_faction normalise -1.0 8
+
+;------------------------------------------
+Trigger 0037_OC_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion orthodox
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.25
+    FactionStanding allies normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 35
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 35
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 20  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 50
+     FactionStanding target_faction normalise -1.0 15
+
+;------------------------------------------
+Trigger 0037_OO_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion orthodox
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding allies normalise -1.0 15
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 35
+    FactionStanding own_religion normalise -1.0 15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 50
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 50
+    FactionStanding target_faction normalise -1.0 25
+
+;------------------------------------------
+Trigger 0037_OI_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+ Condition FactionReligion orthodox
+	and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } 0.1
+    FactionStanding allies normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 45
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 35
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 20  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 20
+    FactionStanding target_faction normalise -1.0 8
+
+;------------------------------------------
+Trigger 0037_IC_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion islam
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.15
+    FactionStanding allies normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 40
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 20
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 25  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 5
+    FactionStanding target_faction normalise -1.0 5
+
+;------------------------------------------
+Trigger 0037_IO_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+    Condition FactionReligion islam
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.05
+    FactionStanding allies normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 35
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 35
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 15  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 5
+    FactionStanding target_faction normalise -1.0 5
+
+;------------------------------------------
+Trigger 0037_II_Break_Alliance
+    WhenToTest FactionBreakAlliance
+
+ Condition FactionReligion islam
+	and TargetFactionReligion islam
+
+    FactionStanding allies normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 40
+    FactionStanding own_religion normalise -1.0 10
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 50
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 50  
+    FactionStanding target_faction normalise -1.0 40
+
+;------------------------------------------
+Trigger 0038_P_Successful_Diplomacy
+    WhenToTest DiplomacyMission
+
+    Condition MissionSucceeded
+
+    FactionStanding target_faction normalise 1.0 75
+    FactionStanding own_religion normalise 1.0 150
+
+;------------------------------------------
+Trigger 0039_CP_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  TargetFactionType papal_states
+	and FactionReligion catholic
+
+    FactionStanding factions { papal_states } -1.0
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 10
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 15  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 10
+
+;------------------------------------------
+Trigger 0039_OP_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  TargetFactionType papal_states
+	and FactionReligion orthodox
+
+    FactionStanding factions { papal_states } -1.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 8
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 18  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 10
+
+;------------------------------------------
+Trigger 0039_IP_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  TargetFactionType papal_states
+	and FactionReligion islam
+
+    FactionStanding factions { papal_states } -1.5
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 5
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 5
+
+;------------------------------------------
+Trigger 0039_CC_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  TargetFactionReligion catholic
+	and FactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 30  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 10
+
+
+;------------------------------------------
+Trigger 0039_CO_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion catholic
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.075
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 30
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 15
+
+;------------------------------------------
+Trigger 0039_CI_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion catholic
+	and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } 0.15
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 8
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 10  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 8
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0039_OC_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion orthodox
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.25
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 12
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 8  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0039_OO_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion orthodox
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.075
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 30
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 25
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 10
+
+;------------------------------------------
+Trigger 0039_OI_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion catholic
+	and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } 0.2
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 10
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 10  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 8
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 25
+
+;------------------------------------------
+Trigger 0039_IC_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion islam
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } -0.75
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 12
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 15  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 10
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0039_IO_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion islam
+	and TargetFactionReligion orthodox
+
+    FactionStanding factions { papal_states } -0.4
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 16
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 10 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 10
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0039_II_War_Declared
+    WhenToTest FactionWarDeclared
+
+    Condition  FactionReligion catholic
+	and TargetFactionReligion islam
+
+    FactionStanding factions { papal_states } 0.05
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 25
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 25  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 10
+    FactionStanding target_allies normalise -1.0 25
+    FactionStanding target_enemies normalise 1.0 30
+    FactionStanding target_faction normalise -1.0 25
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; CARDINALS AND ELECTIONS ;;*************************************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;------------------------------------------
+Trigger 0040_P_Cardinal_Promoted
+    WhenToTest CardinalPromoted
+
+    FactionStanding factions { papal_states } 0.1
+    FactionStanding own_religion -0.05
+
+;------------------------------------------
+Trigger 0041_P_Cardinal_Removed
+    WhenToTest CardinalRemoved
+
+    FactionStanding factions { papal_states } -0.1
+    FactionStanding own_religion 0.05
+
+;------------------------------------------
+Trigger 0042_P_Own_Pope_Elected
+    WhenToTest PopeElected
+
+    Condition FactionEqualsTarget
+
+    FactionStanding factions { papal_states } 1.0
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 15
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 25  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 10
+
+;------------------------------------------
+Trigger 0043_P_Allied_Pope_Elected
+    WhenToTest PopeElected
+
+    Condition DiplomaticStanceWithNewPope = Allied
+          and not FactionEqualsTarget
+
+    FactionStanding factions { papal_states } 0.4
+
+;------------------------------------------
+Trigger 0044_P_At_War_Pope_Elected
+    WhenToTest PopeElected
+
+    Condition DiplomaticStanceWithNewPope = AtWar
+          and not FactionEqualsTarget
+
+    FactionStanding factions { papal_states } -0.6
+
+;------------------------------------------
+Trigger 0045_P_Voted_For_Pope
+    WhenToTest VotedForPope
+
+    FactionStanding factions { papal_states } 0.2
+
+  
+;;;;;;;;;;;;;;;;;;;;
+;; TRANSGRESSIONS ;;*************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+;Trigger 0049_T_Attacking_Crusading_General
+;    WhenToTest Transgression
+;
+;    Condition TransgressionName = TC_ATTACKING_CRUSADING_GENERAL
+;
+;
+;    FactionStanding target_religion normalise -1.0 10
+
+;------------------------------------------
+Trigger 0050_T_Invaded_Fort
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_FORT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 16
+    FactionStanding target_allies normalise -1.0 48
+    FactionStanding target_enemies normalise 1.0 70
+    FactionStanding target_religion normalise -1.0 92
+
+;------------------------------------------
+Trigger 0051_T_Stole_Back_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_STOLE_BACK_SETTLEMENT
+	 and not TargetFactionType slave
+
+    FactionStanding global -1.0
+    FactionStanding target_faction normalise -1.0 16
+    FactionStanding target_allies normalise -1.0 30
+    FactionStanding target_enemies normalise 1.0 72
+    FactionStanding target_religion normalise -1.0 45
+
+;------------------------------------------
+Trigger 0052_T_Invaded_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_SETTLEMENT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 14
+    FactionStanding target_allies normalise -1.0 26
+    FactionStanding target_enemies normalise 1.0 50
+    FactionStanding target_religion normalise -1.0 65
+
+;------------------------------------------
+Trigger 0053_T_Invaded_Watchtower
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_WATCHTOWER
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 50
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 78
+    FactionStanding target_religion normalise -1.0 88
+
+;------------------------------------------
+Trigger 0055_T_Invasion_Neutral
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVASION
+        and not DiplomaticStanceFactions = Neutral
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction per_unit -0.0008
+    FactionStanding target_faction normalise -1.0 85
+
+;------------------------------------------
+Trigger 0055a_T_Invasion
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVASION
+        and DiplomaticStanceFactions = Allied
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction per_unit -0.00025
+    FactionStanding target_faction normalise -1.0 150
+
+;------------------------------------------
+Trigger 0055b_T_Invasion_Flee
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_FLEE_INVASION
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction per_unit -0.0001
+    FactionStanding target_faction normalise -1.0 250
+
+;------------------------------------------
+Trigger 0055c_T_Invasion_Crusade
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_CRUSADE_INVASION
+		and FactionReligion catholic
+		and not TargetFactionReligion catholic
+		and not TargetFactionReligion orthodox
+
+    FactionStanding target_faction normalise -1.0 35
+    FactionStanding target_religion normalise -1.0 125
+
+;------------------------------------------
+Trigger 0055d_T_Invasion_Jihad
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_CRUSADE_INVASION
+		and FactionReligion islam
+		and not TargetFactionReligion islam
+
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_religion normalise -1.0 150
+
+;------------------------------------------
+Trigger 0056_T_Nullified_Alliance
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_NULLIFIED_ALLIANCE
+
+    FactionStanding global -0.15
+    FactionStanding target_faction normalise -1.0 34
+    FactionStanding target_allies normalise -1.0 56
+    FactionStanding target_enemies normalise 1.0 56
+    FactionStanding target_religion normalise -1.0 110		
+
+;------------------------------------------
+Trigger 0057_T_Broke_Treaty_terms
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_TREATY_TERMS
+
+    FactionStanding global -0.1
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 70
+    FactionStanding target_enemies normalise 1.0 80
+    FactionStanding target_religion normalise -1.0 120
+
+;------------------------------------------
+;Trigger 0058_T_Diplomatic_Insult	; fired for every 1000 gold diplomacy proposal under balanced - 1
+;    WhenToTest Transgression
+;
+;    Condition TransgressionName = TC_DIPLOMATIC_INSULT
+;
+;    FactionStanding target_faction -0.025
+
+;------------------------------------------
+Trigger 0059_T_Dishonour
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_DISHONOUR
+
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 95
+    FactionStanding target_enemies normalise 1.0 132
+
+;------------------------------------------
+;Trigger 0060_T_Declared_War
+;    WhenToTest Transgression
+;
+;    Condition TransgressionName = TC_DECLARED_WAR
+;
+;    FactionStanding target_faction normalise -1.0 8
+;    FactionStanding target_allies normalise -1.0 40
+;    FactionStanding target_enemies normalise 1.0 40
+
+;------------------------------------------
+Trigger 0061_T_Major_Assassination_Attempt
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_MAJOR_ASSASSINATION_ATTEMPT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 80
+    FactionStanding target_religion normalise -1.0 120
+
+;------------------------------------------
+Trigger 0062_T_Minor_Assassination_Attempt
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_MINOR_ASSASSINATION_ATTEMPT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 50
+    FactionStanding target_allies normalise -1.0 108
+    FactionStanding target_enemies normalise 1.0 145
+    FactionStanding target_religion normalise -1.0 162
+
+;------------------------------------------
+Trigger 0063_T_Sabotage
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_SABOTAGE
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 100
+    FactionStanding target_enemies normalise 1.0 140
+    FactionStanding target_religion normalise -1.0 165
+
+;------------------------------------------
+Trigger 0064_T_Bribed_Away_Army
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_ARMY
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 50
+
+;------------------------------------------
+Trigger 0065_T_Bribed_Away_Character
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_CHARACTER
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 30
+
+;------------------------------------------
+Trigger 0066_T_Bribed_Away_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_SETTLEMENT
+	 and not TargetFactionType slave
+
+    FactionStanding global -0.15
+    FactionStanding target_faction normalise -1.0 20
+
+;------------------------------------------
+Trigger 0067_T_Bribed_Away_Fort
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_FORT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 40
+
+;------------------------------------------
+Trigger 0068_ALL_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+
+    FactionStanding target_faction normalise -1.0 85
+    FactionStanding target_allies normalise -1.0 150
+    FactionStanding target_enemies normalise 1.0 150
+
+;------------------------------------------
+Trigger 0068_CS_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion catholic
+        and TargetFactionType slave	
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1 250    
+
+;------------------------------------------
+Trigger 0068_CC_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion catholic
+        and TargetFactionReligion catholic
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1 175    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 200   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 150
+
+;------------------------------------------
+Trigger 0068_CO_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion catholic
+        and TargetFactionReligion orthodox
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1 200    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 160   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 250
+
+;------------------------------------------
+Trigger 0068_CI_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion catholic
+        and TargetFactionReligion islam
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, papal_states } normalise 1 160    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 180   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 160
+
+;------------------------------------------
+Trigger 0068_OS_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion orthodox
+        and TargetFactionType slave	
+
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 195   
+
+;------------------------------------------
+Trigger 0068_OC_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion orthodox
+        and TargetFactionReligion catholic
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1 160    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 175   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 180
+
+;------------------------------------------
+Trigger 0068_OO_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion orthodox
+        and TargetFactionReligion orthodox
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1 250    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 160   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 250
+
+;------------------------------------------
+Trigger 0068_OI_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion orthodox
+        and TargetFactionReligion islam
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, papal_states } normalise 1 160    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 150   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 170
+
+;------------------------------------------
+Trigger 0068_IS_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion islam
+        and TargetFactionType slave	
+
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 190
+
+;------------------------------------------
+Trigger 0068_IC_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion islam
+        and TargetFactionReligion catholic
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1 150    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 175   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 150
+
+;------------------------------------------
+Trigger 0068_IO_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion islam
+        and TargetFactionReligion orthodox
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1 200    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 160   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 175
+
+;------------------------------------------
+Trigger 0068_II_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+       and FactionReligion islam
+        and TargetFactionReligion islam
+
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, papal_states } normalise 1 190    
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 180   
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 180
+
+;------------------------------------------
+Trigger 0069_T_Instigate_Siege
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INSTIGATE_SIEGE
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 50
+    FactionStanding target_allies normalise -1.0 70
+    FactionStanding target_enemies normalise 1.0 95
+
+;------------------------------------------
+Trigger 0070_T_Spying
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_SPYING
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 120
+    FactionStanding target_allies normalise -1.0 150
+
+;------------------------------------------
+Trigger 0071_T_Threaten_War
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_THREATEN_WAR
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 60
+    FactionStanding target_allies normalise -1.0 80
+    FactionStanding target_enemies normalise 1.0 85
+    FactionStanding target_religion normalise -1.0 150
+
+;------------------------------------------
+Trigger 0072_T_Undeclared_Attack
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_UNDECLARED_ATTACK
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 35
+    FactionStanding target_allies normalise -1.0 55
+    FactionStanding target_enemies normalise 1.0 70
+
+;------------------------------------------
+Trigger 0072_T_Undeclared_Attack_Withdraw
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_UNDECLARED_ATTACK_WITHDRAW
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 75
+    FactionStanding target_enemies normalise -1.0 75
+
+;------------------------------------------
+Trigger 0073_T_INSTIGATE_ASSAULT
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INSTIGATE_ASSAULT
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_enemies normalise 1.0 70
+
+;------------------------------------------
+Trigger 0074_T_BLOCKADE
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BLOCKADE
+	 and not TargetFactionType slave
+
+    FactionStanding target_faction normalise -1.0 90
+    FactionStanding target_allies normalise -1.0 145
+    FactionStanding target_enemies normalise 1.0 165
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DISHONEST TRANSGRESSIONS ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0078b_DT_Break_Alliance_War
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_ALLIANCE
+        and DiplomaticStanceFactions = AtWar
+	 and not TargetFactionType slave
+
+    FactionStanding global -0.5
+    FactionStanding target_faction normalise -1.0 5
+    FactionStanding target_allies normalise -1.0 20
+    FactionStanding target_religion normalise -1.0 50
+
+;------------------------------------------
+Trigger 0078c_DT_Break_Alliance_Neutral
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_ALLIANCE
+        and DiplomaticStanceFactions = Neutral
+	 and not TargetFactionType slave
+
+    FactionStanding global -0.1
+    FactionStanding target_faction normalise -1.0 20
+    FactionStanding target_allies normalise -1.0 60
+    FactionStanding target_religion normalise -1.0 115
+
+;;;;;;;;;;;;;;;;;;;;
+;; TRANSGRESSIONS vs CATHOLICS;;*************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+;Trigger 0049_T_Attacking_Crusading_General
+;    WhenToTest Transgression
+;
+;    Condition TransgressionName = TC_ATTACKING_CRUSADING_GENERAL
+;
+;
+;    FactionStanding target_religion normalise -1.0 10
+
+;------------------------------------------
+Trigger 0050_T_Invaded_Fort
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_FORT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 100
+
+;------------------------------------------
+Trigger 0051_T_Stole_Back_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_STOLE_BACK_SETTLEMENT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 95
+
+;------------------------------------------
+Trigger 0052_T_Invaded_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_SETTLEMENT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 70
+
+;------------------------------------------
+Trigger 0053_T_Invaded_Watchtower
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INVADED_WATCHTOWER
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 150
+
+;------------------------------------------
+Trigger 0056_T_Nullified_Alliance
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_NULLIFIED_ALLIANCE
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 86
+
+;------------------------------------------
+Trigger 0057_T_Broke_Treaty_terms
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_TREATY_TERMS
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 125
+
+;------------------------------------------
+Trigger 0059_T_Dishonour
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_DISHONOUR
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 150
+
+;------------------------------------------
+Trigger 0061_T_Major_Assassination_Attempt
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_MAJOR_ASSASSINATION_ATTEMPT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 95
+
+;------------------------------------------
+Trigger 0062_T_Minor_Assassination_Attempt
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_MINOR_ASSASSINATION_ATTEMPT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 150
+
+;------------------------------------------
+Trigger 0063_T_Sabotage
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_SABOTAGE
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 115
+
+;------------------------------------------
+Trigger 0064_T_Bribed_Away_Army
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_ARMY
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 155
+
+;------------------------------------------
+Trigger 0065_T_Bribed_Away_Character
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_CHARACTER
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 120
+
+;------------------------------------------
+Trigger 0066_T_Bribed_Away_Settlement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_SETTLEMENT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 100
+
+;------------------------------------------
+Trigger 0067_T_Bribed_Away_Fort
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BRIBED_AWAY_FORT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 135
+
+;------------------------------------------
+Trigger 0068_T_Battle_Engagement
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BATTLE_ENGAGEMENT
+        and not TargetFactionType slave
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 160
+
+;------------------------------------------
+Trigger 0069_T_Instigate_Siege
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INSTIGATE_SIEGE
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 105
+
+;------------------------------------------
+Trigger 0070_T_Spying
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_SPYING
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 180
+
+;------------------------------------------
+Trigger 0071_T_Threaten_War
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_THREATEN_WAR
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 90
+
+;------------------------------------------
+Trigger 0072_T_Undeclared_Attack
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_UNDECLARED_ATTACK
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 86
+
+;------------------------------------------
+Trigger 0072_T_Undeclared_Attack_Withdraw
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_UNDECLARED_ATTACK_WITHDRAW
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 86
+
+;------------------------------------------
+Trigger 0073_T_INSTIGATE_ASSAULT
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_INSTIGATE_ASSAULT
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 92
+
+;------------------------------------------
+Trigger 0074_T_BLOCKADE
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BLOCKADE
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 125
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DISHONEST TRANSGRESSIONS ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0078b_DT_Break_Alliance_War
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_ALLIANCE
+        and DiplomaticStanceFactions = AtWar
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 75
+
+;------------------------------------------
+Trigger 0078c_DT_Break_Alliance_Neutral
+    WhenToTest Transgression
+
+    Condition TransgressionName = TC_BROKE_ALLIANCE
+        and DiplomaticStanceFactions = Neutral
+	and TargetFactionReligion catholic
+
+    FactionStanding factions { papal_states } normalise -1.0 126
+
+;;;;;;;;;;;;;;;;;
+;; FORGIVENESS ;;*******************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0079_F_Trade_Agreement
+    WhenToTest FactionTradeAgreementMade
+
+    FactionStanding target_faction normalise 1.0 50
+    FactionStanding target_allies normalise 1.0 75
+    FactionStanding target_enemies normalise -1.0 125
+    FactionStanding target_religion normalise 1.0 150
+
+;------------------------------------------
+Trigger 0080_F_Military_Assistance
+    WhenToTest Forgiveness
+
+    Condition ForgivenessName = FC_MILITARY_ASSISTANCE
+	 and not TargetFactionType slave
+
+    FactionStanding global 0.1
+    FactionStanding target_faction normalise 1.0 10
+    FactionStanding target_allies normalise 1.0 50
+    FactionStanding target_enemies normalise -1.0 30
+    FactionStanding target_religion normalise 1.0 75
+
+;------------------------------------------
+Trigger 0081_F_Obvious_Bribe	; fired for every 1000 gold given as gift
+    WhenToTest Forgiveness
+
+    Condition ForgivenessName = FC_OBVIOUS_BRIBE
+
+    FactionStanding target_faction normalise 1.0 50
+
+
+; Inter faction marriage increases relationships
+;------------------------------------------
+Trigger 0082c_CC_Faction_Marriage
+    WhenToTest InterFactionMarriage
+    
+    Condition FactionReligion catholic
+    and TargetFactionReligion catholic
+
+    FactionStanding target_faction 0.2
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise 1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 150
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 175  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 125
+
+
+Trigger 0082c_CI_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion catholic
+    and TargetFactionReligion islam
+
+    FactionStanding target_faction 0.12
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise -1.0 50
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 90
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 75  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 180
+
+
+Trigger 0082c_CO_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion catholic
+    and TargetFactionReligion orthodox
+
+    FactionStanding target_faction 0.16
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise 1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 250
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 150  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 185
+
+
+Trigger 0082c_OC_Faction_Marriage
+    WhenToTest InterFactionMarriage
+    
+    Condition FactionReligion orthodox
+    and TargetFactionReligion catholic
+
+    FactionStanding target_faction 0.16
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise 1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 160
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 225  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 185
+
+
+Trigger 0082c_OI_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion orthodox
+    and TargetFactionReligion islam
+
+    FactionStanding target_faction 0.18
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise -1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 125
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 450 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 150
+
+
+Trigger 0082c_OO_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion orthodox
+    and TargetFactionReligion orthodox
+
+    FactionStanding target_faction 0.2
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 100
+    FactionStanding factions { papal_states } normalise 1.0 400
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 350
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise 1.0 75  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 200
+
+
+Trigger 0082c_IC_Faction_Marriage
+    WhenToTest InterFactionMarriage
+    
+    Condition FactionReligion islam
+    and TargetFactionReligion catholic
+
+    FactionStanding target_faction 0.12
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise 1.0 200
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise 1.0 250
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 175  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 200
+
+
+Trigger 0082c_II_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion islam
+    and TargetFactionReligion islam
+
+    FactionStanding target_faction 0.22
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 75
+    FactionStanding factions { papal_states } normalise -1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 200
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 150 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise 1.0 100
+
+
+Trigger 0082c_IO_Faction_Marriage
+    WhenToTest InterFactionMarriage
+
+    Condition FactionReligion islam
+    and TargetFactionReligion orthodox
+
+    FactionStanding target_faction 0.15
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 100
+    FactionStanding factions { papal_states } normalise -1.0 150
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 150
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 125  
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 200
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; AI Relationships ;;*******************************************************************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;;;
+
+
+; Make allied factions like us a bit more
+;------------------------------------------
+Trigger 0083b_Update_Allies
+    WhenToTest FactionTurnStart
+
+    Condition not FactionType slave
+
+    FactionStanding allies normalise 1.0 100
+    FactionStanding enemies normalise -1.0 100
+
+
+; Make allies of our allies like us a bit more
+;------------------------------------------
+Trigger 0083c_Update_Allies_Allies
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = Allied
+	 and not TargetFactionType slave
+
+    FactionStanding target_allies normalise 1.0 150
+    FactionStanding target_enemies normalise -1.0 150
+
+
+; Make allies of our enemies like us a bit less
+;------------------------------------------
+Trigger 0083d_Update_Enemies_Allies
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = AtWar
+          and not TargetFactionType slave
+
+    FactionStanding target_allies normalise -1.0 100
+    FactionStanding target_enemies normalise 1.0 100
+
+
+; Make other Catholic factions like the pope a bit more
+;------------------------------------------
+Trigger 0084_Update_Papal
+    WhenToTest FactionTurnStart
+
+    Condition FactionType Papal_States
+
+    FactionStanding own_religion normalise 1.0 200
+
+
+; Make other factions like factions of the same religion a bit more
+;------------------------------------------
+Trigger 0085_C_Update_Religion
+    WhenToTest FactionTurnStart
+
+    Condition FactionReligion catholic
+
+    FactionStanding own_religion normalise 1.0 150   
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 200 
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 100
+
+; Make other factions like factions of the same religion a bit more
+;------------------------------------------
+Trigger 0085_O_Update_Religion
+    WhenToTest FactionTurnStart
+
+    Condition FactionReligion orthodox
+
+    FactionStanding own_religion normalise 1.0 125
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 200
+    FactionStanding factions { moors, egypt, turks, mongols, timurids, seljuks } normalise -1.0 100
+
+; Make other factions like factions of the same religion a bit more
+;------------------------------------------
+Trigger 0085_Update_Religion
+    WhenToTest FactionTurnStart
+
+    Condition FactionReligion islam
+
+    FactionStanding own_religion normalise 1.0 100
+    FactionStanding factions { england, france, spain, portugal, milan, venice, sicily, hre, hungary, poland, denmark, scotland, aragon, norway } normalise -1.0 125
+    FactionStanding factions { byzantium, russia, armenia, georgia, novgorod } normalise -1.0 125 
+
+; Make factions get a case of the 'tall poppy' syndrome.  get narky about the larger factions
+;------------------------------------------
+Trigger 0086_Update_Tall_Poppy1
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall > 90
+        and FactionScoreRank overall <= 1
+
+    FactionStanding exclude_factions { } normalise -1.0 75
+
+;------------------------------------------
+Trigger 0087_Update_Tall_Poppy2
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall > 80
+        and FactionScoreRank overall <= 3
+
+    FactionStanding exclude_factions { } normalise -1.0 125
+
+;------------------------------------------
+Trigger 0088_Update_Tall_Poppy3
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall > 70
+        and FactionScoreRank overall <= 5
+
+    FactionStanding exclude_factions { } normalise -1.0 150
+
+
+; Make factions try and band up with smaller factions
+;------------------------------------------
+Trigger 0089_Update_Band_Together1
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall < 30
+        and FactionScoreRank overall > 3
+
+    FactionStanding exclude_factions { } normalise 1.0 80
+
+;------------------------------------------
+Trigger 0090_Update_Band_Together2
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall < 20
+        and FactionScoreRank overall > 4
+
+    FactionStanding exclude_factions { } normalise 1.0 50
+
+;------------------------------------------
+Trigger 0091_Update_BandTogether3
+    WhenToTest FactionTurnStart
+
+    Condition FactionHasRank
+        and FactionScorePercent overall < 10
+        and FactionScoreRank overall > 5
+
+    FactionStanding exclude_factions { } normalise 1.0 30
+
+
+;------------------------------------------
+Trigger 0096_Increase_Global_Standing_New_Turn
+    WhenToTest FactionTurnStart
+
+    FactionStanding global normalise 0.1 100
+
+------------------------------------------
+Trigger 0097_Increase_Global_Standing_When_Allied
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = Allied
+
+    FactionStanding global normalise 1.0 500
+
+------------------------------------------
+Trigger 0098_Decrease_Global_Standing_When_War
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = AtWar
+        and not TargetFactionType slave
+
+    FactionStanding global normalise -1.0 500
+
+
+;------------------------------------------
+Trigger 0099_prisoners_released_increase_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType release
+          and NumCapturedSoldiers > 0
+
+    FactionStanding global 0.025
+    FactionStanding target_faction normalise 1.0 40
+    FactionStanding target_allies normalise 1.0 80
+
+;------------------------------------------
+Trigger 0100_prisoners_executed_decrease_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType execute
+          and NumCapturedSoldiers > 0
+
+    FactionStanding global -0.025
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 80
+
+;------------------------------------------
+Trigger 0099b_prisoners_released_increase_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType release
+
+    FactionStanding global 0.01
+    FactionStanding target_faction normalise 1.0 120
+    FactionStanding target_allies normalise 1.0 200
+
+;------------------------------------------
+Trigger 0100b_prisoners_executed_decrease_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType execute
+
+    FactionStanding global -0.01
+    FactionStanding target_faction normalise -1.0 120
+    FactionStanding target_allies normalise -1.0 200
+
+;------------------------------------------
+Trigger 0099c_characters_released_increase_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType release
+          and NumCapturedCharacters > 0
+
+    FactionStanding global 0.025
+    FactionStanding target_faction normalise 1.0 40
+    FactionStanding target_allies normalise 1.0 80
+
+;------------------------------------------
+Trigger 0100c_characters_executed_decrease_global
+    WhenToTest FactionLeaderPrisonersRansomedCaptor
+
+    Condition RansomType execute
+          and NumCapturedCharacters > 0
+
+    FactionStanding global -0.025
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 80
+
+;------------------------------------------
+Trigger 0101_sack_settlement_decrease_global
+    WhenToTest SackSettlement
+
+    FactionStanding global -0.02
+    FactionStanding target_faction normalise -1.0 40
+    FactionStanding target_allies normalise -1.0 80
+    FactionStanding target_religion normalise -1.0 120
+
+;------------------------------------------
+Trigger 0101b_sack_settlement_decrease_global
+    WhenToTest SackSettlement
+
+ Condition FactionReligion catholic
+	and not TargetFactionReligion catholic
+
+    FactionStanding global 0.025
+
+;------------------------------------------
+Trigger 0101c_sack_settlement_decrease_global
+    WhenToTest SackSettlement
+
+ Condition FactionReligion orthodox
+	and not TargetFactionReligion orthodox
+
+    FactionStanding global 0.025
+
+;------------------------------------------
+Trigger 0101d_sack_settlement_decrease_global
+    WhenToTest SackSettlement
+
+ Condition FactionReligion islam
+	and not TargetFactionReligion islam
+
+    FactionStanding global 0.025
+
+;------------------------------------------
+Trigger 0102_extermination_decrease_global
+    WhenToTest ExterminatePopulation
+
+    FactionStanding global -0.05
+    FactionStanding target_faction normalise -1.0 25
+    FactionStanding target_allies normalise -1.0 45
+    FactionStanding target_religion normalise -1.0 70
+
+;------------------------------------------
+Trigger 0102a_extermination_decrease_global
+    WhenToTest ExterminatePopulation
+
+    Condition FactionReligion catholic
+	and not TargetFactionReligion catholic
+
+    FactionStanding global 0.025
+
+;------------------------------------------
+Trigger 0102b_extermination_decrease_global
+    WhenToTest ExterminatePopulation
+
+    Condition FactionReligion orthodox
+	and not TargetFactionReligion orthodox
+
+    FactionStanding global 0.025
+
+;------------------------------------------
+Trigger 0102c_extermination_decrease_global
+    WhenToTest ExterminatePopulation
+
+    Condition FactionReligion islam
+	and not TargetFactionReligion islam
+
+    FactionStanding global 0.025
+  
+;------------------------------------------
+Trigger 0103_occupy_settlement_increase_global
+    WhenToTest OccupySettlement
+
+    FactionStanding global 0.05
+    FactionStanding target_faction normalise -1.0 30
+    FactionStanding target_allies normalise -1.0 50
+    FactionStanding target_religion normalise -1.0 90
+
+;------------------------------------------
+;Trigger 0102_city_razed_decrease_global
+;    WhenToTest CitySacked
+
+;    FactionStanding global -0.05
+;    FactionStanding target_faction normalise -1.0 15
+;    FactionStanding target_allies normalise -1.0 25
+;    FactionStanding target_religion normalise -1.0 50
+
+; make all other factions hate the rebels
+;------------------------------------------
+Trigger 0103_Update_Slaves
+    WhenToTest FactionTurnStart
+
+    Condition FactionType slave
+
+    FactionStanding exclude_factions { } -2.0 
+
+; make slaves hate all other factions
+;------------------------------------------
+;Trigger 0104_Update_Slaves_Reverse
+;    WhenToTest UpdateAttitude
+;
+;    Condition Not FactionType slave
+;	and TargetFactionType slave
+;
+;    FactionStanding target_faction normalise -1.0 1
+
+; make factions like trustworthy factions more
+;---------------------------------------------
+Trigger 0105_Update_Trustworthy_Factions_Major
+    WhenToTest FactionTurnStart
+
+    Condition GlobalStanding > 0.4
+
+    FactionStanding exclude_factions { } normalise 1.0 100
+
+;---------------------------------------------
+Trigger 0106_Update_Trustworthy_Factions_Minor
+    WhenToTest FactionTurnStart
+
+    Condition GlobalStanding > 0.1
+
+    FactionStanding exclude_factions { } normalise 1.0 150
+
+; make factions like untrustworthy factions less
+;---------------------------------------------
+Trigger 0107_Update_Untrustworthy_Factions_Major
+    WhenToTest FactionTurnStart
+
+    Condition GlobalStanding < -0.4
+
+    FactionStanding exclude_factions { } normalise -1.0 100
+
+Trigger 0108_Update_Untrustworthy_Factions_Minor
+    WhenToTest FactionTurnStart
+
+    Condition GlobalStanding < 0.0
+
+    FactionStanding exclude_factions { } normalise -1.0 150
+
+; make existing inter faction marriages improve relationships
+;---------------------------------------------
+Trigger 0109_Update_Marriages
+    WhenToTest UpdateAttitude
+
+    Condition NumFactionMarriages > 0
+
+    FactionStanding target_faction normalise 1.0 50
+
+;---------------------------------------------
+Trigger 0109_Update_Marriages
+    WhenToTest UpdateAttitude
+
+    Condition NumFactionMarriages > 1
+
+    FactionStanding target_faction normalise 1.0 40
+
+;---------------------------------------------
+Trigger 0109_Update_Marriages
+    WhenToTest UpdateAttitude
+
+    Condition NumFactionMarriages > 2
+
+    FactionStanding target_faction normalise 1.0 25
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom AI Relationships ;;****************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;------------------------------------------
+Trigger 0104_Increase_Faction_Standing_When_Allied
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = Allied
+
+    FactionStanding target_faction normalise 0.5 100
+
+;------------------------------------------
+Trigger 0105_Faction_Standing_When_Neutral
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = Neutral
+
+    FactionStanding target_faction normalise 0.15 100
+    
+;------------------------------------------
+Trigger 0106_Faction_Standing_When_War
+    WhenToTest UpdateAttitude
+
+    Condition DiplomaticStanceFactions = AtWar
+
+    FactionStanding target_faction normalise -0.25 100
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Faction specifc rules ;;****************************************************************************************************************************************
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;------------------------------------------
+Trigger 0200A_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType scotland
+
+    FactionStanding factions { england } normalise -0.7 100
+    FactionStanding factions { france } normalise 0.3 100
+    FactionStanding factions { denmark } normalise -0.25 100
+
+;------------------------------------------
+Trigger 0200B_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType england
+
+    FactionStanding factions { scotland } normalise -0.85 100
+    FactionStanding factions { france } normalise -0.5 100
+    FactionStanding factions { denmark } normalise -0.5 100
+
+
+;------------------------------------------
+Trigger 0200C_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType spain
+
+    FactionStanding factions { portugal } normalise 0.50 100
+    FactionStanding factions { aragon } normalise 0.25 100
+    FactionStanding factions { france } normalise -0.25 125
+    FactionStanding factions { moors } normalise -1.0 100
+
+;------------------------------------------
+Trigger 0200D_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType portugal
+
+    FactionStanding factions { spain } normalise 0.12 100
+    FactionStanding factions { england } normalise 0.15 150
+    FactionStanding factions { moors } normalise -1.0 100
+    FactionStanding factions { aragon } normalise 0.35 150
+
+;------------------------------------------
+Trigger 0200E_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType hre
+
+    FactionStanding factions { england } normalise 0.25 150
+    FactionStanding factions { france } normalise -0.35 125
+    FactionStanding factions { denmark } normalise 0.25 125
+    FactionStanding factions { poland } normalise -0.50 100
+
+;------------------------------------------
+Trigger 0200F_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType france
+
+    FactionStanding factions { england } normalise -0.34 100
+    FactionStanding factions { hre } normalise -0.5 150
+    FactionStanding factions { moors } normalise -1.0 175
+    FactionStanding factions { aragon } normalise -0.15 100
+
+;------------------------------------------
+Trigger 0200G_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType moors
+
+    FactionStanding factions { sicily } normalise -0.5 175
+    FactionStanding factions { spain } normalise -1.0 100
+    FactionStanding factions { portugal } normalise -0.75 100
+    FactionStanding factions { france } normalise -0.3 175
+    FactionStanding factions { egypt } normalise -0.5 150
+
+;------------------------------------------
+Trigger 0200H_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType sicily
+
+    FactionStanding factions { milan, venice } normalise -0.25 150
+    FactionStanding factions { moors } normalise -0.75 125
+    FactionStanding factions { hre } normalise -0.25 150
+    FactionStanding factions { egypt } normalise -0.5 150
+    FactionStanding factions { byzantium } normalise -0.6 100
+
+;------------------------------------------
+Trigger 0200I_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType milan
+
+    FactionStanding factions { venice } normalise 0.25 150
+    FactionStanding factions { moors } normalise -0.45 150
+    FactionStanding factions { spain } normalise 0.45 125
+    FactionStanding factions { aragon } normalise 0.25 100
+    FactionStanding factions { france } normalise -0.25 175
+    FactionStanding factions { turks } normalise -0.5 150
+    FactionStanding factions { sicily } normalise -0.5 150
+
+;------------------------------------------
+Trigger 0200J_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType venice
+
+    FactionStanding factions { milan } normalise 0.25 150
+    FactionStanding factions { egypt } normalise -0.4 150
+    FactionStanding factions { spain, aragon } normalise 0.25 125
+    FactionStanding factions { france } normalise -0.25 175
+    FactionStanding factions { turks } normalise -0.5 125
+    FactionStanding factions { byzantium } normalise -0.5 125
+    FactionStanding factions { sicily } normalise -0.25 150
+
+;------------------------------------------
+Trigger 0200K_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType egypt
+
+    FactionStanding factions { spain, portugal } normalise -0.5 125
+    FactionStanding factions { venice, milan } normalise -0.45 150
+    FactionStanding factions { armenia, georgia } normalise -0.25 125 
+    FactionStanding factions { byzantium } normalise -0.2 125
+    FactionStanding factions { moors } normalise -0.4 150     
+    FactionStanding factions { turks } normalise -0.2 125
+
+;------------------------------------------
+Trigger 0200L_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType denmark
+
+    FactionStanding factions { hre } normalise 0.2 150
+    FactionStanding factions { norway } normalise -0.4 125
+    FactionStanding factions { russia } normalise -0.1 150
+
+;------------------------------------------
+Trigger 0200M_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType russia
+
+    FactionStanding factions { denmark } normalise -0.7 150
+    FactionStanding factions { novgorod } normalise -0.5 125
+    FactionStanding factions { armenia, georgia } normalise 0.2 125 
+    FactionStanding factions { poland } normalise -0.4 150    
+    FactionStanding factions { mongols } normalise -1.0 75
+
+;------------------------------------------
+Trigger 0200N_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType novgorod
+
+    FactionStanding factions { turks } normalise -0.2 150
+    FactionStanding factions { russia } normalise -0.4 125
+    FactionStanding factions { armenia, georgia } normalise -0.1 125 
+    FactionStanding factions { hungary } normalise -0.1 150
+    FactionStanding factions { byzantium } normalise 0.1 150
+    FactionStanding factions { mongols } normalise -1.0 75
+
+;------------------------------------------
+Trigger 0200O_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType byzantium
+
+    FactionStanding factions { turks } normalise -0.9 100
+    FactionStanding factions { seljuks } normalise -0.3 125
+    FactionStanding factions { egypt } normalise -0.3 100
+    FactionStanding factions { novgorod, russia } normalise 0.2 125  
+    FactionStanding factions { armenia } normalise 0.25 125 
+    FactionStanding factions { georgia } normalise 0.2 125 
+    FactionStanding factions { venice } normalise -0.4 125
+    FactionStanding factions { mongols } normalise -1.0 100
+
+;------------------------------------------
+Trigger 0200P_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType armenia
+
+    FactionStanding factions { turks } normalise -0.6 100
+    FactionStanding factions { seljuks } normalise -0.8 125
+    FactionStanding factions { egypt } normalise -0.2 100
+    FactionStanding factions { timurids } normalise -0.4 125
+    FactionStanding factions { byzantium, georgia, russia, novgorod } normalise 0.3 150
+
+;------------------------------------------
+Trigger 0200Q_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType georgia
+
+    FactionStanding factions { turks, seljuks } normalise -0.6 125
+    FactionStanding factions { egypt } normalise -0.3 100
+    FactionStanding factions { timurids } normalise -0.4 125
+    FactionStanding factions { novgorod, byzantium } normalise 0.2 125    
+    FactionStanding factions { armenia, russia } normalise 0.3 125
+
+;------------------------------------------
+Trigger 0200R_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType timurids
+
+    FactionStanding factions { turks, moors } normalise 0.2 150
+    FactionStanding factions { armenia, georgia } normalise -0.4 125
+    FactionStanding factions { egypt } normalise -0.5 100
+    FactionStanding factions { seljuks } normalise -0.2 125    
+    FactionStanding factions { byzantium } normalise -0.2 125
+
+;------------------------------------------
+Trigger 0200S_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType seljuks
+
+    FactionStanding factions { turks } normalise 0.2 150
+    FactionStanding factions { timurids } normalise -0.15 150 
+    FactionStanding factions { egypt } normalise -0.5 175
+    FactionStanding factions { armenia } normalise -0.4 125   
+    FactionStanding factions { moors } normalise 0.2 175
+    FactionStanding factions { sicily } normalise -0.15 180
+    FactionStanding factions { venice } normalise -0.18 150
+    FactionStanding factions { byzantium } normalise -0.2 150
+
+;------------------------------------------
+Trigger 0200T_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType turks
+
+    FactionStanding factions { seljuks } normalise -0.20 175
+    FactionStanding factions { egypt, timurids } normalise 0.25 175
+    FactionStanding factions { armenia } normalise -0.35 125
+    FactionStanding factions { georgia } normalise -0.25 125
+    FactionStanding factions { novgorod, sicily } normalise -0.15 150    
+    FactionStanding factions { hungary, venice } normalise -0.25 175
+    FactionStanding factions { byzantium } normalise -0.5 150
+
+;------------------------------------------
+Trigger 0200U_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType aragon
+
+    FactionStanding factions { spain } normalise 0.38 100
+    FactionStanding factions { france } normalise -0.25 125
+    FactionStanding factions { milan } normalise 0.2 125
+    FactionStanding factions { moors } normalise -1.0 125
+
+;------------------------------------------
+Trigger 0200V_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType norway
+
+    FactionStanding factions { hre } normalise -0.2 150
+    FactionStanding factions { england } normalise 0.5 100    
+    FactionStanding factions { russia } normalise -0.1 150
+    FactionStanding factions { denmark } normalise -0.4 125
+
+;------------------------------------------
+Trigger 0200W_Update_Attitude
+    WhenToTest UpdateAttitude
+
+    Condition FactionType hungary
+
+    FactionStanding factions { hre, poland } normalise 0.15 150
+    FactionStanding factions { venice, armenia, georgia } normalise -0.15 100
+    FactionStanding factions { denmark } normalise 0.15 125
+    FactionStanding factions { byzantium } normalise -0.25 150
+    FactionStanding factions { novgorod, timurids } normalise -0.15 150 
+    FactionStanding factions { seljuks } normalise -0.2 175
+    FactionStanding factions { egypt, turks } normalise -0.4 175
+    FactionStanding factions { russia } normalise -0.25 150
+
+;------------------------------------------
+;;;;;;;;;; Kings deads ;;;;;;;;;;;;;;;;;;;
+Trigger 0300K_new_faction_leader
+WhenToTest BecomesFactionLeader
+FactionStanding exclude_factions { } normalise 0.2 8
+FactionStanding global normalise 0 2
+FactionStanding allies normalise 0.35 10
+FactionStanding enemies normalise -0.2 8
