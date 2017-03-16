@@ -1,2 +1,2 @@
-# source_writer
+# Source Writer
 Total War Script Editor

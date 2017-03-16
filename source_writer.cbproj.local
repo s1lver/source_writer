@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008.12.26 21:17:45.782.cpp,C:\Users\S1LVER\Documents\RAD Studio\Projects\Unit1.cpp=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit1.cpp</Transaction>
+    <Transaction>2008.12.26 21:17:45.782.h,C:\Users\S1LVER\Documents\RAD Studio\Projects\Unit1.h=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit1.h</Transaction>
+    <Transaction>2008.12.26 21:17:45.782.dfm,C:\Users\S1LVER\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit1.dfm</Transaction>
+    <Transaction>2008.12.26 21:17:57.989.cbproj,C:\Users\S1LVER\Documents\RAD Studio\Projects\Project1.cbproj=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\source_writer.cbproj</Transaction>
+    <Transaction>2009.01.01 23:50:59.525.cpp,C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit2.cpp=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\object.cpp</Transaction>
+    <Transaction>2009.01.01 23:50:59.525.h,C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit2.h=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\object.h</Transaction>
+    <Transaction>2009.01.01 23:50:59.525.dfm,C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\Unit2.dfm=C:\Users\S1LVER\Documents\RAD Studio\Projects\Source_Writer\object.dfm</Transaction>
+    <Transaction>2009.01.15 23:17:10.046.cpp,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit2.cpp=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\splash.cpp</Transaction>
+    <Transaction>2009.01.15 23:17:10.046.h,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit2.h=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\splash.h</Transaction>
+    <Transaction>2009.01.15 23:17:10.046.dfm,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit2.dfm=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\splash.dfm</Transaction>
+    <Transaction>2009.07.06 00:33:24.421.cpp,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit3.cpp=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\goto.cpp</Transaction>
+    <Transaction>2009.07.06 00:33:24.453.h,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit3.h=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\goto.h</Transaction>
+    <Transaction>2009.07.06 00:33:24.453.dfm,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit3.dfm=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\goto.dfm</Transaction>
+    <Transaction>2009.07.07 00:27:30.250.cpp,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit4.cpp=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\manager.cpp</Transaction>
+    <Transaction>2009.07.07 00:27:30.250.h,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit4.h=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\manager.h</Transaction>
+    <Transaction>2009.07.07 00:27:30.250.dfm,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit4.dfm=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\manager.dfm</Transaction>
+    <Transaction>2009.07.08 12:38:59.546.cpp,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit5.cpp=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\option.cpp</Transaction>
+    <Transaction>2009.07.08 12:38:59.546.h,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit5.h=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\option.h</Transaction>
+    <Transaction>2009.07.08 12:38:59.546.dfm,C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\Unit5.dfm=C:\Documents and Settings\Домашний\Мои документы\RAD Studio\Projects\Source_Writer\option.dfm</Transaction>
+    <Transaction>2009.09.23 20:16:44.046.cpp,I:\Программы\SW2\Source_Writer\Source_Writer\Unit5.cpp=I:\Программы\SW2\Source_Writer\Source_Writer\compile.cpp</Transaction>
+    <Transaction>2009.09.23 20:16:44.046.h,I:\Программы\SW2\Source_Writer\Source_Writer\Unit5.h=I:\Программы\SW2\Source_Writer\Source_Writer\compile.h</Transaction>
+    <Transaction>2009.09.23 20:16:44.046.dfm,I:\Программы\SW2\Source_Writer\Source_Writer\Unit5.dfm=I:\Программы\SW2\Source_Writer\Source_Writer\compile.dfm</Transaction>
+    <Transaction>2010.01.04 19:52:26.185.cpp,D:\Евгении\Program  Special\Source_Writer\Source_Writer\compile.cpp=</Transaction>
+    <Transaction>2010.01.04 19:52:26.194.dfm,D:\Евгении\Program  Special\Source_Writer\Source_Writer\compile.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>
