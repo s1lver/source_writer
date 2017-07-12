@@ -17,7 +17,7 @@ __fastcall TAboutBox::TAboutBox(TComponent* AOwner)
 
 void __fastcall TAboutBox::FormClose(TObject *Sender, TCloseAction &Action)
 {
-	//плавно сворачиваем при закрытии
+	//РїР»Р°РІРЅРѕ СЃРІРѕСЂР°С‡РёРІР°РµРј РїСЂРё Р·Р°РєСЂС‹С‚РёРё
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
@@ -27,7 +27,7 @@ void __fastcall TAboutBox::FormClose(TObject *Sender, TCloseAction &Action)
 
 void __fastcall TAboutBox::FormCreate(TObject *Sender)
 {
-	//плавно разворачиваем при открытии
+	//РїР»Р°РІРЅРѕ СЂР°Р·РІРѕСЂР°С‡РёРІР°РµРј РїСЂРё РѕС‚РєСЂС‹С‚РёРё
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
@@ -37,7 +37,7 @@ void __fastcall TAboutBox::FormCreate(TObject *Sender)
 
 void __fastcall TAboutBox::FormShow(TObject *Sender)
 {
-	//показываем размер/доступную память ПК
+	//РїРѕРєР°Р·С‹РІР°РµРј СЂР°Р·РјРµСЂ/РґРѕСЃС‚СѓРїРЅСѓСЋ РїР°РјСЏС‚СЊ РџРљ
 	TMemoryStatus MS;
     MS.dwLength = sizeof(MS);
     GlobalMemoryStatus(&MS);
@@ -50,7 +50,7 @@ void __fastcall TAboutBox::FormShow(TObject *Sender)
 
 void __fastcall TAboutBox::Label5Click(TObject *Sender)
 {
-	//преходим на сайт
+	//РїСЂРµС…РѕРґРёРј РЅР° СЃР°Р№С‚
 	ShellExecute(Handle, "open", "http://www.goldencentury.org", NULL, NULL, SW_RESTORE);
 }
 //---------------------------------------------------------------------------

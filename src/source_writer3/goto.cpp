@@ -12,7 +12,7 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TForm3 *Form3;
-//ïåðåìåííàÿ çíà÷åíèé ÿçûêà
+//Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Â¤ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Â¤Ð·Ñ‹ÐºÐ°
 AnsiString lng3;
 //---------------------------------------------------------------------------
 __fastcall TForm3::TForm3(TComponent* Owner)
@@ -23,7 +23,7 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 
 void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 {
-	//ïëàâíî ñâîðà÷èâàåì ïðè çàêðûòèè
+	//Ð¿Ð»Ð°Ð²Ð½Ð¾ ÑÐ²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¸ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
@@ -33,15 +33,15 @@ void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 
 void __fastcall TForm3::FormCreate(TObject *Sender)
 {
-	//ïëàâíî ðàçâîðà÷èâàåì ïðè îòêðûòèè
+	//Ð¿Ð»Ð°Ð²Ð½Ð¾ Ñ€Ð°Ð·Ð²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¸ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
-	//çàïîìèíàåì çíà÷åíèå ÿçûêà
+	//Ð·Ð°Ð¿Ð¾Ð¼Ð¸Ð½Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Â¤Ð·Ñ‹ÐºÐ°
 	lng3 = Ini->ReadString("lngflag", "active", "");
-	//Ÿçûêîâàß ôóíêöèß ôîðìû
+	//Ð¯Ð·Ñ‹ÐºÐ¾Ð²Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹
 	if (lng3 == "gb") {
 		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
 	}
@@ -51,14 +51,14 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 	if (lng3 == "ru") {
 		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
 	}
-	Form3->Caption = Ini->ReadString("goto", "cap", "Ïåðåéòè...");
-	Form3->BitBtn1->Caption=Ini->ReadString("goto", "btn1", "Ïåðåéòè");
+	Form3->Caption = Ini->ReadString("goto", "cap", "Ñ•ÐµÑ€ÐµÐ¹Ñ‚Ð¸...");
+	Form3->BitBtn1->Caption=Ini->ReadString("goto", "btn1", "Ñ•ÐµÑ€ÐµÐ¹Ñ‚Ð¸");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm3::BitBtn1Click(TObject *Sender)
 {
-	//Ïåðåõîäèì â íóæíóþ ñòðîêó
+	//Ñ•ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð² Ð½ÑƒÐ¶Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð¾ÐºÑƒ
 	Form1->memo[Form1->AdvPageControl1->ActivePageIndex]->SelStart;
 	Form1->memo[Form1->AdvPageControl1->ActivePageIndex]->SetCursor(StrToInt(Edit1->Text)-1, StrToInt(Edit1->Text)-1);
 }

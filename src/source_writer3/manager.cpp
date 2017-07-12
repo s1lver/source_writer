@@ -14,7 +14,7 @@
 #pragma resource "*.dfm"
 TForm4 *Form4;
 
-//ïåðåìåííàÿ çíà÷åíèé ÿçûêà
+//Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ ÑÐ·Ñ‹ÐºÐ°
 AnsiString lngmng;
 //---------------------------------------------------------------------------
 __fastcall TForm4::TForm4(TComponent* Owner)
@@ -28,7 +28,7 @@ __fastcall TForm4::TForm4(TComponent* Owner)
 void __fastcall TForm4::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	Ini->WriteBool("Other", "mng", CheckBox1->Checked);
-	//ïëàâíî ñâîðà÷èâàåì ïðè çàêðûòèè
+	//Ð¿Ð»Ð°Ð²Ð½Ð¾ ÑÐ²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¸ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
@@ -38,7 +38,7 @@ void __fastcall TForm4::FormClose(TObject *Sender, TCloseAction &Action)
 
 void __fastcall TForm4::FormCreate(TObject *Sender)
 {
-	//ïëàâíî ðàçâîðà÷èâàåì ïðè îòêðûòèè
+	//Ð¿Ð»Ð°Ð²Ð½Ð¾ Ñ€Ð°Ð·Ð²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¸ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸
 	TRect r1,r2;
 	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
 	r2 = BoundsRect;
@@ -46,7 +46,7 @@ void __fastcall TForm4::FormCreate(TObject *Sender)
 
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
 	lngmng = Ini->ReadString("lngflag", "active", "");
-	//ÿçûêîâàÿ ôóíêöèÿ ôîðìû
+	//ÑÐ·Ñ‹ÐºÐ¾Ð²Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹
 	if (lngmng == "gb") {
 		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
 	}
@@ -70,7 +70,7 @@ void __fastcall TForm4::FormCreate(TObject *Sender)
 
 void __fastcall TForm4::Button4Click(TObject *Sender)
 {
-	//ñîçäàåì âûáðàííûé ôàéë
+	//ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»
 	if (Form4->CheckBox1->Checked) {
 		switch (Form4->PictureList1->ItemIndex) {
 			case 0:
@@ -111,7 +111,7 @@ void __fastcall TForm4::Button3Click(TObject *Sender)
 
 void __fastcall TForm4::Button1Click(TObject *Sender)
 {
-	//ñîçäàåì ôàéë äëÿ ëóà
+	//ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ð´Ð»Ñ Ð»ÑƒÐ°
 	if (Form4->CheckBox2->Checked) {
 		switch (Form4->PictureList2->ItemIndex) {
 			case 0:

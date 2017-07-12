@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 #include <inifiles.hpp>
 #include <process.h>
@@ -16,7 +15,7 @@
 #pragma resource "*.dfm"
 TObject_form *Object_form;
 
-//переменная значений языка
+//РїРµСЂРµРјРµРЅРЅР°СЏ Р·РЅР°С‡РµРЅРёР№ СЏР·С‹РєР°
 AnsiString lngopt;
 //
 AnsiString plug;
@@ -26,110 +25,104 @@ __fastcall TObject_form::TObject_form(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TObject_form::FormClose(TObject *Sender, TCloseAction &Action)
-{  	//при закрытии формы сохраняем значения листа макросов в файл
-Object_form->ListBox1->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
-Object_form->ListBox2->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
-//плавно сворачиваем при закрытии
-TRect r1,r2;
-r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
-r2 = BoundsRect;
-DrawAnimatedRects(Handle,IDANI_CAPTION,&r2,&r1);
+{
+	//РїСЂРё Р·Р°РєСЂС‹С‚РёРё С„РѕСЂРјС‹ СЃРѕС…СЂР°РЅСЏРµРј Р·РЅР°С‡РµРЅРёСЏ Р»РёСЃС‚Р° РјР°РєСЂРѕСЃРѕРІ РІ С„Р°Р№Р»
+	Object_form->ListBox1->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
+	Object_form->ListBox2->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
+	//РїР»Р°РІРЅРѕ СЃРІРѕСЂР°С‡РёРІР°РµРј РїСЂРё Р·Р°РєСЂС‹С‚РёРё
+	TRect r1,r2;
+	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r2 = BoundsRect;
+	DrawAnimatedRects(Handle,IDANI_CAPTION,&r2,&r1);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TObject_form::FormCreate(TObject *Sender)
 {
-Object_form->ListBox1->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
-Object_form->ListBox2->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
-//плавно разворачиваем при открытии
-TRect r1,r2;
-r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
-r2 = BoundsRect;
-DrawAnimatedRects(Handle,IDANI_CAPTION,&r1,&r2);
-Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
-lngopt=Ini->ReadString("lngflag","active","");
- //языковая функция формы
-if(lngopt=="gb")
-{
- Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
-}
-if(lngopt=="ua")
-{
- Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng");
- }
-if(lngopt=="ru")
-{
- Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
-}
-Object_form->Caption=Inilng->ReadString("module","obj1","");
-Object_form->AdvTabSet1->AdvTabs->Items[0]->Caption=Inilng->ReadString("module","obj2","");
-Object_form->AdvTabSet1->AdvTabs->Items[1]->Caption=Inilng->ReadString("module","obj3","");
-
+	Object_form->ListBox1->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
+	Object_form->ListBox2->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
+	//РїР»Р°РІРЅРѕ СЂР°Р·РІРѕСЂР°С‡РёРІР°РµРј РїСЂРё РѕС‚РєСЂС‹С‚РёРё
+	TRect r1,r2;
+	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r2 = BoundsRect;
+	DrawAnimatedRects(Handle,IDANI_CAPTION,&r1,&r2);
+	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
+	lngopt = Ini->ReadString("lngflag", "active", "");
+	//СЏР·С‹РєРѕРІР°СЏ С„СѓРЅРєС†РёСЏ С„РѕСЂРјС‹
+	if (lngopt == "gb") {
+		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
+	}
+	if (lngopt == "ua") {
+		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng");
+	}
+	if (lngopt == "ru") {
+		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
+	}
+	Object_form->Caption = Inilng->ReadString("module", "obj1", "");
+	Object_form->AdvTabSet1->AdvTabs->Items[0]->Caption=Inilng->ReadString("module", "obj2", "");
+	Object_form->AdvTabSet1->AdvTabs->Items[1]->Caption=Inilng->ReadString("module", "obj3", "");
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TObject_form::N2Click(TObject *Sender)
-{//удаляем выбранный модуль из списка
-ListBox1->Clear();
-ShowMessage("Модуль удален!");
+{
+	//СѓРґР°Р»СЏРµРј РІС‹Р±СЂР°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ РёР· СЃРїРёСЃРєР°
+	ListBox1->Clear();
+	ShowMessage("РњРѕРґСѓР»СЊ СѓРґР°Р»РµРЅ!");
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TObject_form::ListBox2DblClick(TObject *Sender)
-{ //вызываем нужную программу
-
-    for(int i = 0; i < ListBox2->Items->Count; i++)
-
-    if(ListBox2->Selected[i])
-	plug = ExtractFilePath(Application->ExeName)+"\\plugin\\"+ListBox2->Items->Strings[i];
-	//system(plug.c_str());
-	WinExec(plug.c_str(), SW_HIDE);
-
-//ShowMessage("Выбранный объект не найден!\nВозможно он не установлен, пожалуйста проверьте папку с объектами!");
-
+{
+	//РІС‹Р·С‹РІР°РµРј РЅСѓР¶РЅСѓСЋ РїСЂРѕРіСЂР°РјРјСѓ
+    for (int i = 0; i < ListBox2->Items->Count; i++)
+		if (ListBox2->Selected[i])
+			plug = ExtractFilePath(Application->ExeName)+"\\plugin\\"+ListBox2->Items->Strings[i];
+			//system(plug.c_str());
+			WinExec(plug.c_str(), SW_HIDE);
+			//ShowMessage("Р’С‹Р±СЂР°РЅРЅС‹Р№ РѕР±СЉРµРєС‚ РЅРµ РЅР°Р№РґРµРЅ!\nР’РѕР·РјРѕР¶РЅРѕ РѕРЅ РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ, РїРѕР¶Р°Р»СѓР№СЃС‚Р° РїСЂРѕРІРµСЂСЊС‚Рµ РїР°РїРєСѓ СЃ РѕР±СЉРµРєС‚Р°РјРё!");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TObject_form::N1Click(TObject *Sender)
 {
-  //добаляем новый модуль в список
-  if(!OpenDialog1->Execute())return;
-Object_form->ListBox1->Items->Add(ExtractFileName(OpenDialog1->FileName));
+	//РґРѕР±Р°Р»СЏРµРј РЅРѕРІС‹Р№ РјРѕРґСѓР»СЊ РІ СЃРїРёСЃРѕРє
+	if (!OpenDialog1->Execute()) return;
+	Object_form->ListBox1->Items->Add(ExtractFileName(OpenDialog1->FileName));
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TObject_form::AdvTabSet1Change(TObject *Sender, int NewTab, bool &AllowChange)
-
-{      //переключаемся между вкладками
-switch (AdvTabSet1->TabIndex)
 {
-case 1: ListBox2->Visible=true;
-{ListBox1->Visible=false;}
-		 break;
-case 0: ListBox1->Visible=true;
-{ListBox2->Visible=false;}
-		 break;
-		 }
+	//РїРµСЂРµРєР»СЋС‡Р°РµРјСЃСЏ РјРµР¶РґСѓ РІРєР»Р°РґРєР°РјРё
+	switch (AdvTabSet1->TabIndex) {
+		case 1: ListBox2->Visible = true;
+			{ListBox1->Visible = false;}
+		break;
+		case 0: ListBox1->Visible = true;
+			{ListBox2->Visible = false;}
+		break;
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TObject_form::N3Click(TObject *Sender)
-{   //добавляем объект
-  if(!OpenDialog2->Execute())return;
-Object_form->ListBox2->Items->Add(ExtractFileName(OpenDialog2->FileName));
+{
+	//РґРѕР±Р°РІР»СЏРµРј РѕР±СЉРµРєС‚
+	if (!OpenDialog2->Execute()) return;
+	Object_form->ListBox2->Items->Add(ExtractFileName(OpenDialog2->FileName));
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TObject_form::N4Click(TObject *Sender)
-{ //удаляем выбранный объект
-for(int i = 0; i < ListBox2->Items->Count; i++)
-if(ListBox2->Selected[i])
-{ Object_form->ListBox2->Items->Delete(StrToInt(ListBox2->Items->Strings[i]));
-}
+{
+	//СѓРґР°Р»СЏРµРј РІС‹Р±СЂР°РЅРЅС‹Р№ РѕР±СЉРµРєС‚
+	for (int i = 0; i < ListBox2->Items->Count; i++)
+		if (ListBox2->Selected[i]) {
+			Object_form->ListBox2->Items->Delete(StrToInt(ListBox2->Items->Strings[i]));
+		}
 
 }
 //---------------------------------------------------------------------------
-
-
