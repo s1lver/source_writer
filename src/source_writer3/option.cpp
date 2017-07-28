@@ -61,13 +61,13 @@ __fastcall TOptions::TOptions(TComponent* Owner)
 void __fastcall TOptions::FormCreate(TObject *Sender)
 {
 	//плавно разворачиваем при открытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
-	DrawAnimatedRects(Handle,IDANI_CAPTION,&r1,&r2);
+	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);
 	//загружаем в макрос лист значения из файлов
 	Options->ListBox1->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\macros\\maclist.macsw");
-	lng2=Ini->ReadString("lngflag","active","");
+	lng2 = Ini->ReadString("lngflag","active","");
 	if (lng2 == "gb") {
 		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
 	}
@@ -77,72 +77,72 @@ void __fastcall TOptions::FormCreate(TObject *Sender)
 	if (lng2 == "ru") {
 		Inilng = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
 	}
-	Options->Caption = Inilng->ReadString("form","opt1","");
-	Options->CheckBox1->Caption = Inilng->ReadString("form","opt2","");
-	Options->CheckBox4->Caption = Inilng->ReadString("form","opt3","");
-	Options->BitBtn1->Caption=Inilng->ReadString("form","opt4","");
-	Options->BitBtn2->Caption = Inilng->ReadString("form","opt5","");
+	Options->Caption = Inilng->ReadString("form", "opt1", "");
+	Options->CheckBox1->Caption = Inilng->ReadString("form", "opt2", "");
+	Options->CheckBox4->Caption = Inilng->ReadString("form", "opt3", "");
+	Options->BitBtn1->Caption=Inilng->ReadString("form", "opt4", "");
+	Options->BitBtn2->Caption = Inilng->ReadString("form", "opt5", "");
 	//макросы
-	Options->GroupBox1->Caption = Inilng->ReadString("form","opt6","");
-	Options->GroupBox2->Caption = Inilng->ReadString("form","opt7","");
-	Options->GroupBox3->Caption = Inilng->ReadString("form","opt8","");
-	Options->GroupBox4->Caption = Inilng->ReadString("form","opt9","");
-	Options->RadioButton3->Caption = Inilng->ReadString("form","opt10","");
-	Options->RadioButton4->Caption = Inilng->ReadString("form","opt11","");
-	Options->RadioButton1->Caption = Inilng->ReadString("form","opt12","");
-	Options->RadioButton2->Caption = Inilng->ReadString("form","opt13","");
-	Options->CheckBox2->Caption = Inilng->ReadString("form","opt14","");
-	Options->CheckBox3->Caption = Inilng->ReadString("form","opt15","");
-	Options->CheckBox13->Caption = Inilng->ReadString("form","opt38","");
+	Options->GroupBox1->Caption = Inilng->ReadString("form", "opt6", "");
+	Options->GroupBox2->Caption = Inilng->ReadString("form", "opt7", "");
+	Options->GroupBox3->Caption = Inilng->ReadString("form", "opt8", "");
+	Options->GroupBox4->Caption = Inilng->ReadString("form", "opt9", "");
+	Options->RadioButton3->Caption = Inilng->ReadString("form", "opt10", "");
+	Options->RadioButton4->Caption = Inilng->ReadString("form", "opt11", "");
+	Options->RadioButton1->Caption = Inilng->ReadString("form", "opt12", "");
+	Options->RadioButton2->Caption = Inilng->ReadString("form", "opt13", "");
+	Options->CheckBox2->Caption = Inilng->ReadString("form", "opt14", "");
+	Options->CheckBox3->Caption = Inilng->ReadString("form", "opt15", "");
+	Options->CheckBox13->Caption = Inilng->ReadString("form", "opt38", "");
 	//игра
-	Options->GroupBox5->Caption = Inilng->ReadString("form","opt16","");
-	Options->GroupBox12->Caption = Inilng->ReadString("form","opt23","");
+	Options->GroupBox5->Caption = Inilng->ReadString("form", "opt16", "");
+	Options->GroupBox12->Caption = Inilng->ReadString("form", "opt23", "");
 	//заголовки
-	Options->AdvTabSheet1->Caption = Inilng->ReadString("form","opt17","");
-	Options->AdvTabSheet2->Caption = Inilng->ReadString("form","opt18","");
-	Options->AdvTabSheet3->Caption = Inilng->ReadString("form","opt19","");
-	Options->AdvTabSheet4->Caption = Inilng->ReadString("form","opt20","");
-	Options->Отладчик->Caption = Inilng->ReadString("form","opt21","");
-	Options->AdvTabSheet5->Caption = Inilng->ReadString("form","opt22","");
+	Options->AdvTabSheet1->Caption = Inilng->ReadString("form", "opt17", "");
+	Options->AdvTabSheet2->Caption = Inilng->ReadString("form", "opt18", "");
+	Options->AdvTabSheet3->Caption = Inilng->ReadString("form", "opt19", "");
+	Options->AdvTabSheet4->Caption = Inilng->ReadString("form", "opt20", "");
+	Options->Отладчик->Caption = Inilng->ReadString("form", "opt21", "");
+	Options->AdvTabSheet5->Caption = Inilng->ReadString("form", "opt22", "");
 	//языки
-	Options->GroupBox6->Caption = Inilng->ReadString("form","opt24","");
-	Options->RadioButton5->Caption = Inilng->ReadString("form","opt25","");
-	Options->RadioButton6->Caption = Inilng->ReadString("form","opt26","");
-	Options->RadioButton7->Caption = Inilng->ReadString("form","opt27","");
-	Options->CheckBox18->Caption = Inilng->ReadString("form","opt28","");
-	Options->Label1->Caption = Inilng->ReadString("form","opt29","");
-	Options->GroupBox7->Caption = Inilng->ReadString("form","opt28","");
+	Options->GroupBox6->Caption = Inilng->ReadString("form", "opt24", "");
+	Options->RadioButton5->Caption = Inilng->ReadString("form", "opt25", "");
+	Options->RadioButton6->Caption = Inilng->ReadString("form", "opt26", "");
+	Options->RadioButton7->Caption = Inilng->ReadString("form", "opt27", "");
+	Options->CheckBox18->Caption = Inilng->ReadString("form", "opt28", "");
+	Options->Label1->Caption = Inilng->ReadString("form", "opt29", "");
+	Options->GroupBox7->Caption = Inilng->ReadString("form", "opt28", "");
 	//общие
-	Options->GroupBox8->Caption = Inilng->ReadString("form","opt30","");
-	Options->CheckBox5->Caption = Inilng->ReadString("form","opt31","");
+	Options->GroupBox8->Caption = Inilng->ReadString("form", "opt30", "");
+	Options->CheckBox5->Caption = Inilng->ReadString("form", "opt31", "");
 	//отладчик
-	Options->GroupBox11->Caption = Inilng->ReadString("form","opt20","");
-	Options->GroupBox10->Caption = Inilng->ReadString("form","opt19","");
-	Options->CheckBox10->Caption = Inilng->ReadString("form","opt39","");
-	Options->CheckBox11->Caption = Inilng->ReadString("form","opt40","");
-	Options->CheckBox12->Caption = Inilng->ReadString("form","opt41","");
-	Options->CheckBox6->Caption = Inilng->ReadString("form","opt42","");
-	Options->CheckBox7->Caption = Inilng->ReadString("form","opt43","");
-	Options->CheckBox8->Caption = Inilng->ReadString("form","opt44","");
-	Options->CheckBox9->Caption = Inilng->ReadString("form","opt45","");
-	Options->GroupBox9->Caption = Inilng->ReadString("form","opt46","");
+	Options->GroupBox11->Caption = Inilng->ReadString("form", "opt20", "");
+	Options->GroupBox10->Caption = Inilng->ReadString("form", "opt19", "");
+	Options->CheckBox10->Caption = Inilng->ReadString("form", "opt39", "");
+	Options->CheckBox11->Caption = Inilng->ReadString("form", "opt40", "");
+	Options->CheckBox12->Caption = Inilng->ReadString("form", "opt41", "");
+	Options->CheckBox6->Caption = Inilng->ReadString("form", "opt42", "");
+	Options->CheckBox7->Caption = Inilng->ReadString("form", "opt43", "");
+	Options->CheckBox8->Caption = Inilng->ReadString("form", "opt44", "");
+	Options->CheckBox9->Caption = Inilng->ReadString("form", "opt45", "");
+	Options->GroupBox9->Caption = Inilng->ReadString("form", "opt46", "");
 	//автоматическое обновление
-	Options->CheckBox14->Caption = Inilng->ReadString("form","opt32","");
-	Options->CheckBox17->Caption = Inilng->ReadString("form","opt33","");
-	Options->CheckBox16->Caption = Inilng->ReadString("form","opt34","");
-	Options->CheckBox15->Caption = Inilng->ReadString("form","opt35","");
-	Options->Label3->Caption = Inilng->ReadString("form","opt36","");
-	Options->GroupBox15->Caption = Inilng->ReadString("form","opt37","");
+	Options->CheckBox14->Caption = Inilng->ReadString("form", "opt32", "");
+	Options->CheckBox17->Caption = Inilng->ReadString("form", "opt33", "");
+	Options->CheckBox16->Caption = Inilng->ReadString("form", "opt34", "");
+	Options->CheckBox15->Caption = Inilng->ReadString("form", "opt35", "");
+	Options->Label3->Caption = Inilng->ReadString("form", "opt36", "");
+	Options->GroupBox15->Caption = Inilng->ReadString("form", "opt37", "");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TOptions::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	//плавно сворачиваем при закрытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
-	DrawAnimatedRects(Handle,IDANI_CAPTION,&r2,&r1);
+	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
 }
 //---------------------------------------------------------------------------
 
@@ -246,7 +246,7 @@ void __fastcall TOptions::RadioButton3Click(TObject *Sender)
 
 void __fastcall TOptions::RadioButton4Click(TObject *Sender)
 {
-	//задаем диапазон записи:     система
+	//задаем диапазон записи: система
 	Form1->MacroRecorder1->RecordingRange = rrSystem;
 }
 //---------------------------------------------------------------------------

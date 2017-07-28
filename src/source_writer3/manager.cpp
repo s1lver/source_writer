@@ -30,7 +30,7 @@ void __fastcall TForm4::FormClose(TObject *Sender, TCloseAction &Action)
 	Ini->WriteBool("Other", "mng", CheckBox1->Checked);
 	//плавно сворачиваем при закрытии
 	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
 }
@@ -40,7 +40,7 @@ void __fastcall TForm4::FormCreate(TObject *Sender)
 {
 	//плавно разворачиваем при открытии
 	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle,IDANI_CAPTION, &r1, &r2);
 
