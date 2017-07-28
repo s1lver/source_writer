@@ -1,5 +1,4 @@
-﻿//---------------------------------------------------------------------------
-
+//---------------------------------------------------------------------------
 #include <vcl.h>
 #include <stdio.h>
 #include <inifiles.hpp>
@@ -44,7 +43,7 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 AnsiString FName;
-int TabCount =0;
+int TabCount = 0;
 //переменная расширения файла
 AnsiString extens;
 //переменная значений языка
@@ -90,145 +89,144 @@ int mac4;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
-Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
-//запоминаем значение автоматического сохранения
-sav = Ini->ReadInteger("general", "save", 0);
-//запоминаем значение активности отладчика
-debugs = Ini->ReadInteger("debuger", "activedebug", 0);
+	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
+	//запоминаем значение автоматического сохранения
+	sav = Ini->ReadInteger("general", "save", 0);
+	//запоминаем значение активности отладчика
+	debugs = Ini->ReadInteger("debuger", "activedebug", 0);
 
-//запоминаем значения переменных макрорекордера
-mac1 = Ini->ReadInteger("Macros", "Norm", 0);
-mac2 = Ini->ReadInteger("Macros", "Fast", 0);
-mac3 = Ini->ReadInteger("Macros", "Sys", 0);
-mac4 = Ini->ReadInteger("Macros", "App", 0);
+	//запоминаем значения переменных макрорекордера
+	mac1 = Ini->ReadInteger("Macros", "Norm", 0);
+	mac2 = Ini->ReadInteger("Macros", "Fast", 0);
+	mac3 = Ini->ReadInteger("Macros", "Sys", 0);
+	mac4 = Ini->ReadInteger("Macros", "App", 0);
 
-//запоминаем значения игровых переменных
-game1 = Ini->ReadInteger("Game", "game1", 0);
-game2 = Ini->ReadInteger("Game", "game2", 0);
-mod1 = Ini->ReadInteger("Game", "mod1", 0);
-mod2 = Ini->ReadInteger("Game", "mod2", 0);
-//запоминаем значения обновления
-run = Ini->ReadInteger("update", "run", 0);
-start = Ini->ReadInteger("update", "start", 0);
-autors = Ini->ReadInteger("update", "auto", 0);
-//запоминаем значение языка
-lng = Ini->ReadString("lngflag", "active", "");
+	//запоминаем значения игровых переменных
+	game1 = Ini->ReadInteger("Game", "game1", 0);
+	game2 = Ini->ReadInteger("Game", "game2", 0);
+	mod1 = Ini->ReadInteger("Game", "mod1", 0);
+	mod2 = Ini->ReadInteger("Game", "mod2", 0);
+	//запоминаем значения обновления
+	run = Ini->ReadInteger("update", "run", 0);
+	start = Ini->ReadInteger("update", "start", 0);
+	autors = Ini->ReadInteger("update", "auto", 0);
+	//запоминаем значение языка
+	lng = Ini->ReadString("lngflag", "active", "");
 
-//языковая функция формы
-if (lng == "gb") {
-	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
+	//языковая функция формы
+	if (lng == "gb") {
+		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
+	}
+	if (lng == "ua") {
+		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng");
+	}
+	if (lng == "ru") {
+		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
+	}
+	//главное меню
+	Form1->N6->Caption = Ini->ReadString("menu","btnmenu1","");
+	Form1->N7->Caption = Ini->ReadString("menu","btnmenu2","");
+	Form1->N8->Caption = Ini->ReadString("menu","btnmenu3","");
+	Form1->N9->Caption = Ini->ReadString("menu","btnmenu4","");
+	Form1->N10->Caption = Ini->ReadString("menu","btnmenu5","");
+	Form1->N12->Caption = Ini->ReadString("menu","btnmenu6","");
+	Form1->N13->Caption = Ini->ReadString("menu","btnmenu7","");
+	Form1->N14->Caption = Ini->ReadString("menu","btnmenu8","");
+	Form1->N29->Caption = Ini->ReadString("menu","btnmenu9","");
+	Form1->N31->Caption = Ini->ReadString("menu","btnmenu10","");
+	Form1->N16->Caption = Ini->ReadString("menu","btnmenu11","");
+	Form1->N60->Caption = Ini->ReadString("menu","btnmenu12","");
+	Form1->N18->Caption = Ini->ReadString("menu","btnmenu13","");
+	Form1->N19->Caption = Ini->ReadString("menu","btnmenu14","");
+	Form1->N22->Caption = Ini->ReadString("menu","btnmenu15","");
+	Form1->N23->Caption = Ini->ReadString("menu","btnmenu16","");
+	Form1->N24->Caption = Ini->ReadString("menu","btnmenu17","");
+	Form1->N25->Caption = Ini->ReadString("menu","btnmenu18","");
+	Form1->N27->Caption = Ini->ReadString("menu","btnmenu19","");
+	Form1->N28->Caption = Ini->ReadString("menu","btnmenu20","");
+	Form1->N34->Caption = Ini->ReadString("menu","btnmenu21","");
+	Form1->N35->Caption = Ini->ReadString("menu","btnmenu22","");
+	Form1->N70->Caption = Ini->ReadString("menu","btnmenu23","");
+	Form1->N21->Caption = Ini->ReadString("menu","btnmenu24","");
+	Form1->N40->Caption = Ini->ReadString("menu","btnmenu25","");
+	Form1->N62->Caption = Ini->ReadString("menu","btnmenu26","");
+	Form1->N73->Caption = Ini->ReadString("menu","btnmenu27","");
+	Form1->N45->Caption = Ini->ReadString("menu","btnmenu28","");
+	Form1->N72->Caption = Ini->ReadString("menu","btnmenu29","");
+	Form1->N46->Caption = Ini->ReadString("menu","btnmenu30","");
+	Form1->N39->Caption = Ini->ReadString("menu","btnmenu31","");
+	Form1->N54->Caption = Ini->ReadString("menu","btnmenu32","");
+	Form1->N65->Caption = Ini->ReadString("menu","btnmenu33","");
+	Form1->N66->Caption = Ini->ReadString("menu","btnmenu34","");
+	Form1->N32->Caption = Ini->ReadString("menu","btnmenu35","");
+	Form1->N55->Caption = Ini->ReadString("menu","btnmenu36","");
+	Form1->N69->Caption = Ini->ReadString("menu","btnmenu37","");
+	Form1->N67->Caption = Ini->ReadString("menu","btnmenu38","");
+	Form1->N41->Caption = Ini->ReadString("menu","btnmenu39","");
+	Form1->N17->Caption = Ini->ReadString("menu","btnmenu40","");
+	Form1->N57->Caption = Ini->ReadString("menu","btnmenu41","");
+	Form1->N43->Caption = Ini->ReadString("menu","btnmenu42","");
+	Form1->N80->Caption = Ini->ReadString("menu","btnmenu43","");
+	Form1->N83->Caption = Ini->ReadString("menu","btnmenu44","");
+	Form1->N59->Caption = Ini->ReadString("menu","btnmenu45","");
+	//панели инструментов
+	Form1->CategoryPanel4->Caption = Ini->ReadString("tools","tl1","");
+	Form1->CategoryPanel6->Caption = Ini->ReadString("tools","tl2","");
+	Form1->CategoryPanel7->Caption = Ini->ReadString("tools","tl3","");
+	Form1->CategoryPanel8->Caption = Ini->ReadString("tools","tl4","");
+	Form1->AdvTabSheet2->Caption = Ini->ReadString("tools","tl5","");
+	Form1->AdvTabSheet3->Caption = Ini->ReadString("tools","tl6","");
+	Form1->AdvTabSheet4->Caption = Ini->ReadString("tools","tl7","");
+	Form1->CategoryPanel5->Caption = Ini->ReadString("tools","tl8","");
+	Form1->CategoryPanel9->Caption = Ini->ReadString("menu","btnmenu26","");
+	Form1->SpeedButton6->Caption = Ini->ReadString("menu","btnmenu51","");
+	//гобальные значения
+	Form1->AdvTabSheet1->Caption = Ini->ReadString("global","gl1","");
+	Form1->GroupBox1->Caption = Ini->ReadString("global","gl2","");
+	Form1->RadioButton1->Caption = Ini->ReadString("global","gl3","");
+	Form1->RadioButton2->Caption = Ini->ReadString("global","gl4","");
+	Form1->RadioButton3->Caption = Ini->ReadString("global","gl5","");
+	Form1->Label1->Caption = Ini->ReadString("global","gl6","");
+	Form1->N36->Caption = Ini->ReadString("global","gl8","");
+	Form1->N38->Caption = Ini->ReadString("menu","btnmenu21","");
+	Form1->AdvTabSet1->AdvTabs->Items[0]->Caption = Ini->ReadString("global","gl7","");
+	//систрей
+	Form1->N48->Caption = Ini->ReadString("menu","btnmenu11","");
+	Form1->N52->Caption = Ini->ReadString("menu","btnmenu42","");
+	Form1->N53->Caption = Ini->ReadString("menu","btnmenu41","");
+	Form1->N50->Caption = Ini->ReadString("menu","btnmenu46","");
+	Form1->N47->Caption = Ini->ReadString("menu","btnmenu47","");
+	//сообщения
+	ms1 = Ini->ReadString("msg","ms1","");
+	ms2 = Ini->ReadString("msg","ms2","");
+	ms3 = Ini->ReadString("msg","ms3","");
+	ms4 = Ini->ReadString("msg","ms4","");
+	ms5 = Ini->ReadString("msg","ms5","");
+	ms6 = Ini->ReadString("msg","ms6","");
+	ms7 = Ini->ReadString("msg","ms7","");
+	ms8 = Ini->ReadString("msg","ms8","");
+	ms9 = Ini->ReadString("msg","ms9","");
+	//контекстное меню
+	Form1->N3->Caption = Ini->ReadString("menu","btnmenu15","");
+	Form1->N2->Caption = Ini->ReadString("menu","btnmenu16","");
+	Form1->N4->Caption = Ini->ReadString("menu","btnmenu17","");
+	Form1->N5->Caption = Ini->ReadString("menu","btnmenu18","");
+	Form1->N74->Caption = Ini->ReadString("menu","btnmenu48","");
+	Form1->N75->Caption = Ini->ReadString("menu","btnmenu49","");
+	Form1->N63->Caption = Ini->ReadString("menu","btnmenu50","");
+	//хинты
+	Form1->ToolButton1->Hint = Ini->ReadString("menu","btnmenu6","");
+	Form1->ToolButton2->Hint = Ini->ReadString("menu","btnmenu7","");
+	Form1->ToolButton3->Hint = Ini->ReadString("menu","btnmenu8","");
+	Form1->ToolButton5->Hint = Ini->ReadString("menu","btnmenu15","");
+	Form1->ToolButton6->Hint = Ini->ReadString("menu","btnmenu16","");
+	Form1->ToolButton7->Hint = Ini->ReadString("menu","btnmenu17","");
+	Form1->ToolButton8->Hint = Ini->ReadString("menu","btnmenu18","");
+	Form1->ToolButton10->Hint = Ini->ReadString("menu","btnmenu14","");
+	Form1->ToolButton11->Hint = Ini->ReadString("menu","btnmenu13","");
+	Form1->ToolButton13->Hint = Ini->ReadString("menu","btnmenu21","");
+	Form1->ToolButton14->Hint = Ini->ReadString("hint","ht1","");
 }
-if (lng == "ua") {
-	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng");
-}
-if (lng == "ru") {
-	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
-}
- //главное меню
- Form1->N6->Caption=Ini->ReadString("menu","btnmenu1","");
- Form1->N7->Caption=Ini->ReadString("menu","btnmenu2","");
- Form1->N8->Caption=Ini->ReadString("menu","btnmenu3","");
- Form1->N9->Caption=Ini->ReadString("menu","btnmenu4","");
- Form1->N10->Caption=Ini->ReadString("menu","btnmenu5","");
- Form1->N12->Caption=Ini->ReadString("menu","btnmenu6","");
- Form1->N13->Caption=Ini->ReadString("menu","btnmenu7","");
- Form1->N14->Caption=Ini->ReadString("menu","btnmenu8","");
- Form1->N29->Caption=Ini->ReadString("menu","btnmenu9","");
- Form1->N31->Caption=Ini->ReadString("menu","btnmenu10","");
- Form1->N16->Caption=Ini->ReadString("menu","btnmenu11","");
- Form1->N60->Caption=Ini->ReadString("menu","btnmenu12","");
- Form1->N18->Caption=Ini->ReadString("menu","btnmenu13","");
- Form1->N19->Caption=Ini->ReadString("menu","btnmenu14","");
- Form1->N22->Caption=Ini->ReadString("menu","btnmenu15","");
- Form1->N23->Caption=Ini->ReadString("menu","btnmenu16","");
- Form1->N24->Caption=Ini->ReadString("menu","btnmenu17","");
- Form1->N25->Caption=Ini->ReadString("menu","btnmenu18","");
- Form1->N27->Caption=Ini->ReadString("menu","btnmenu19","");
- Form1->N28->Caption=Ini->ReadString("menu","btnmenu20","");
- Form1->N34->Caption=Ini->ReadString("menu","btnmenu21","");
- Form1->N35->Caption=Ini->ReadString("menu","btnmenu22","");
- Form1->N70->Caption=Ini->ReadString("menu","btnmenu23","");
- Form1->N21->Caption=Ini->ReadString("menu","btnmenu24","");
- Form1->N40->Caption=Ini->ReadString("menu","btnmenu25","");
- Form1->N62->Caption=Ini->ReadString("menu","btnmenu26","");
- Form1->N73->Caption=Ini->ReadString("menu","btnmenu27","");
- Form1->N45->Caption=Ini->ReadString("menu","btnmenu28","");
- Form1->N72->Caption=Ini->ReadString("menu","btnmenu29","");
- Form1->N46->Caption=Ini->ReadString("menu","btnmenu30","");
- Form1->N39->Caption=Ini->ReadString("menu","btnmenu31","");
- Form1->N54->Caption=Ini->ReadString("menu","btnmenu32","");
- Form1->N65->Caption=Ini->ReadString("menu","btnmenu33","");
- Form1->N66->Caption=Ini->ReadString("menu","btnmenu34","");
- Form1->N32->Caption=Ini->ReadString("menu","btnmenu35","");
- Form1->N55->Caption=Ini->ReadString("menu","btnmenu36","");
- Form1->N69->Caption=Ini->ReadString("menu","btnmenu37","");
- Form1->N67->Caption=Ini->ReadString("menu","btnmenu38","");
- Form1->N41->Caption=Ini->ReadString("menu","btnmenu39","");
- Form1->N17->Caption=Ini->ReadString("menu","btnmenu40","");
- Form1->N57->Caption=Ini->ReadString("menu","btnmenu41","");
- Form1->N43->Caption=Ini->ReadString("menu","btnmenu42","");
- Form1->N80->Caption=Ini->ReadString("menu","btnmenu43","");
- Form1->N83->Caption=Ini->ReadString("menu","btnmenu44","");
- Form1->N59->Caption=Ini->ReadString("menu","btnmenu45","");
- //панели инструментов
- Form1->CategoryPanel4->Caption=Ini->ReadString("tools","tl1","");
- Form1->CategoryPanel6->Caption=Ini->ReadString("tools","tl2","");
- Form1->CategoryPanel7->Caption=Ini->ReadString("tools","tl3","");
- Form1->CategoryPanel8->Caption=Ini->ReadString("tools","tl4","");
- Form1->AdvTabSheet2->Caption=Ini->ReadString("tools","tl5","");
- Form1->AdvTabSheet3->Caption=Ini->ReadString("tools","tl6","");
- Form1->AdvTabSheet4->Caption=Ini->ReadString("tools","tl7","");
- Form1->CategoryPanel5->Caption=Ini->ReadString("tools","tl8","");
- Form1->CategoryPanel9->Caption=Ini->ReadString("menu","btnmenu26","");
- Form1->SpeedButton6->Caption=Ini->ReadString("menu","btnmenu51","");
- //гобальные значения
- Form1->AdvTabSheet1->Caption=Ini->ReadString("global","gl1","");
- Form1->GroupBox1->Caption=Ini->ReadString("global","gl2","");
- Form1->RadioButton1->Caption=Ini->ReadString("global","gl3","");
- Form1->RadioButton2->Caption=Ini->ReadString("global","gl4","");
- Form1->RadioButton3->Caption=Ini->ReadString("global","gl5","");
- Form1->Label1->Caption=Ini->ReadString("global","gl6","");
- Form1->N36->Caption=Ini->ReadString("global","gl8","");
- Form1->N38->Caption=Ini->ReadString("menu","btnmenu21","");
- Form1->AdvTabSet1->AdvTabs->Items[0]->Caption=Ini->ReadString("global","gl7","");
- //систрей
- Form1->N48->Caption=Ini->ReadString("menu","btnmenu11","");
- Form1->N52->Caption=Ini->ReadString("menu","btnmenu42","");
- Form1->N53->Caption=Ini->ReadString("menu","btnmenu41","");
- Form1->N50->Caption=Ini->ReadString("menu","btnmenu46","");
- Form1->N47->Caption=Ini->ReadString("menu","btnmenu47","");
- //сообщения
- ms1=Ini->ReadString("msg","ms1","");
- ms2=Ini->ReadString("msg","ms2","");
- ms3=Ini->ReadString("msg","ms3","");
- ms4=Ini->ReadString("msg","ms4","");
- ms5=Ini->ReadString("msg","ms5","");
- ms6=Ini->ReadString("msg","ms6","");
- ms7=Ini->ReadString("msg","ms7","");
- ms8=Ini->ReadString("msg","ms8","");
- ms9=Ini->ReadString("msg","ms9","");
- //контекстное меню
- Form1->N3->Caption=Ini->ReadString("menu","btnmenu15","");
- Form1->N2->Caption=Ini->ReadString("menu","btnmenu16","");
- Form1->N4->Caption=Ini->ReadString("menu","btnmenu17","");
- Form1->N5->Caption=Ini->ReadString("menu","btnmenu18","");
- Form1->N74->Caption=Ini->ReadString("menu","btnmenu48","");
- Form1->N75->Caption=Ini->ReadString("menu","btnmenu49","");
- Form1->N63->Caption=Ini->ReadString("menu","btnmenu50","");
- //хинты
- Form1->ToolButton1->Hint=Ini->ReadString("menu","btnmenu6","");
- Form1->ToolButton2->Hint=Ini->ReadString("menu","btnmenu7","");
- Form1->ToolButton3->Hint=Ini->ReadString("menu","btnmenu8","");
- Form1->ToolButton5->Hint=Ini->ReadString("menu","btnmenu15","");
- Form1->ToolButton6->Hint=Ini->ReadString("menu","btnmenu16","");
- Form1->ToolButton7->Hint=Ini->ReadString("menu","btnmenu17","");
- Form1->ToolButton8->Hint=Ini->ReadString("menu","btnmenu18","");
- Form1->ToolButton10->Hint=Ini->ReadString("menu","btnmenu14","");
- Form1->ToolButton11->Hint=Ini->ReadString("menu","btnmenu13","");
- Form1->ToolButton13->Hint=Ini->ReadString("menu","btnmenu21","");
- Form1->ToolButton14->Hint=Ini->ReadString("hint","ht1","");
-
- }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N1Click(TObject *Sender)
