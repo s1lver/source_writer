@@ -8,9 +8,9 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TForm2 *Form2;
-//ïåðåìåííàÿ çíà÷åíèé ÿçûêà
+//Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ ÑÐ·Ñ‹ÐºÐ°
 AnsiString lang;
-//ïåðåìåííûå çíà÷åíèé ñîîáùåíèé
+//Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹
 AnsiString ms10;
 AnsiString ms11;
 AnsiString ms12;
@@ -35,7 +35,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 {
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
 	lang = Ini->ReadString("lngflag", "active", "");
-	//ÿçûêîâàÿ ôóíêöèÿ ôîðìû
+	//ÑÐ·Ñ‹ÐºÐ¾Ð²Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹
 	if (lang == "gb") {
 		Langs = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng");
 	}
@@ -69,92 +69,92 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 void __fastcall TForm2::Timer1Timer(TObject *Sender)
 {
 	if(FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini") == false) {  
-		ShowMessage("Îøèáêà èíèöèàëèçàöèè");
+		ShowMessage("ÐžÑˆÐ¸Ð±ÐºÐ° Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ...";
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw") == false) {  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà êîððåêöèè");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ° ÐºÐ¾Ñ€Ñ€ÐµÐºÑ†Ð¸Ð¸");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ êîððåêöèè...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ†Ð¸Ð¸...";
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw") == false) {  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà êîððåêöèè");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ° ÐºÐ¾Ñ€Ñ€ÐµÐºÑ†Ð¸Ð¸");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ êîððåêöèè...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ†Ð¸Ð¸...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\events.sw") == false) {  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà ñîáûòèé");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ° ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ ñîáûòèé...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\function.sw") == false) {  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà ôóíêöèè");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ° Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ ôóíêöèè...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\conditions.sw") == false) {  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ°");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ...";
 
 
 	/* if(FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\error.dll") == false)	{  
-		ShowMessage("Íå íàéäåíà áèáëèîòåêà îøèáîê");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð° Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ° Ð¾ÑˆÐ¸Ð±Ð¾Ðº");
 		Application->Terminate();
 		} else
-			Form2->Label1->Caption="Èíèöèàëèçàöèÿ ...";
+			Form2->Label1->Caption="Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ...";
 	*/
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\macros\\maclist.macsw") == false) {  
-		ShowMessage("Îøèáêà çàïóñêà ìàêðîñîâ");
+		ShowMessage("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿ÑƒÑÐºÐ° Ð¼Ð°ÐºÑ€Ð¾ÑÐ¾Ð²");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ ìàêðîñîâ...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¼Ð°ÐºÑ€Ð¾ÑÐ¾Ð²...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw") == false) {  
-		ShowMessage("Îøèáêà çàïóñêà ìîäóëåé");
+		ShowMessage("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿ÑƒÑÐºÐ° Ð¼Ð¾Ð´ÑƒÐ»ÐµÐ¹");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ ìîäóëåé...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¼Ð¾Ð´ÑƒÐ»ÐµÐ¹...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw") == false) {  
-		ShowMessage("Îøèáêà çàïóñêà îáúåêòîâ");
+		ShowMessage("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿ÑƒÑÐºÐ° Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð²");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Èíèöèàëèçàöèÿ îáúåêòîâ...";
+		Form2->Label1->Caption = "Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð²...";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng") == false) {  
-		ShowMessage("Íå íàéäåí ÿçûêîâîé ôàéë");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ ÑÐ·Ñ‹ÐºÐ¾Ð²Ð¾Ð¹ Ñ„Ð°Ð¹Ð»");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Çàãðóçêà ÿçûêîâ";
+		Form2->Label1->Caption = "Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° ÑÐ·Ñ‹ÐºÐ¾Ð²";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng") == false) {  
-		ShowMessage("Íå íàéäåí ÿçûêîâîé ôàéë");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ ÑÐ·Ñ‹ÐºÐ¾Ð²Ð¾Ð¹ Ñ„Ð°Ð¹Ð»");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Çàãðóçêà ÿçûêîâ";
+		Form2->Label1->Caption = "Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° ÑÐ·Ñ‹ÐºÐ¾Ð²";
 
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng") == false) {  
-		ShowMessage("Íå íàéäåí ÿçûêîâîé ôàéë");
+		ShowMessage("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ ÑÐ·Ñ‹ÐºÐ¾Ð²Ð¾Ð¹ Ñ„Ð°Ð¹Ð»");
 		Application->Terminate();
 	} else
-		Form2->Label1->Caption = "Çàãðóçêà ÿçûêîâ";
+		Form2->Label1->Caption = "Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° ÑÐ·Ñ‹ÐºÐ¾Ð²";
 	Form2->Close();
 }
 //---------------------------------------------------------------------------

@@ -21,10 +21,10 @@ __published:	// IDE-managed Components
 	TLabel *Label2;
 	TLabel *Label3;
 	void __fastcall Timer1Timer(TObject *Sender);
-private:	// User declarations
-TIniFile *Ini;
-TIniFile *Langs;
-public:		// User declarations
+	private:	// User declarations
+	TIniFile *Ini;
+	TIniFile *Langs;
+	public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

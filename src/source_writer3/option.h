@@ -58,7 +58,7 @@ __published:	// IDE-managed Components
 	TGroupBox *GroupBox8;
 	TCheckBox *CheckBox5;
 	TEdit *Edit2;
-	TAdvTabSheet *ŒÚÎ‡‰˜ËÍ;
+	TAdvTabSheet *–û—Ç–ª–∞–¥—á–∏–∫;
 	TGroupBox *GroupBox9;
 	TCheckBox *CheckBox6;
 	TCheckBox *CheckBox7;
@@ -120,10 +120,10 @@ __published:	// IDE-managed Components
 	void __fastcall Label1Click(TObject *Sender);
 	void __fastcall CheckBox18Click(TObject *Sender);
 	void __fastcall CheckBox1Click(TObject *Sender);
-private:	// User declarations
-TIniFile *Ini;
-TIniFile *Inilng;
-public:		// User declarations
+	private:	// User declarations
+	TIniFile *Ini;
+	TIniFile *Inilng;
+	public:		// User declarations
 	__fastcall TOptions(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

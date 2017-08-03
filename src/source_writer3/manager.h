@@ -41,11 +41,11 @@ __published:	// IDE-managed Components
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
-private:	// User declarations
-TIniFile *Ini;
-TIniFile *Inilng;
+	private:	// User declarations
+	TIniFile *Ini;
+	TIniFile *Inilng;
 
-public:		// User declarations
+	public:		// User declarations
 	__fastcall TForm4(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

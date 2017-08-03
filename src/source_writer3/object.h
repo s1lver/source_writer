@@ -39,11 +39,10 @@ __published:	// IDE-managed Components
 	void __fastcall N4Click(TObject *Sender);
 
 
-
-private:	// User declarations
-TIniFile *Ini;
-TIniFile *Inilng;
-public:		// User declarations
+	private:	// User declarations
+	TIniFile *Ini;
+	TIniFile *Inilng;
+	public:		// User declarations
 	__fastcall TObject_form(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

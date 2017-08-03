@@ -34,8 +34,8 @@ __published:
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall Label5Click(TObject *Sender);
 	void __fastcall Image1Click(TObject *Sender);
-private:
-public:
+	private:
+	public:
 	virtual __fastcall TAboutBox(TComponent* AOwner);
 };
 //----------------------------------------------------------------------------
