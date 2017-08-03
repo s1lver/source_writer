@@ -256,25 +256,25 @@ void __fastcall TForm1::ToolButton8Click(TObject *Sender)
 
 void __fastcall TForm1::ToolButton3Click(TObject *Sender)
 {
-//сохраняем с панели инструментов
-if ( AdvPageControl1->ActivePage != NULL) {
-	for (int i=0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
-		if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
-			if (SaveDialog1->Execute()) {
-				TAdvMemo *memo = (TAdvMemo *)AdvPageControl1->ActivePage->Components[i];
-				memo->Lines->SaveToFile(SaveDialog1->FileName);
-				break;
+	//сохраняем с панели инструментов
+	if ( AdvPageControl1->ActivePage != NULL) {
+		for (int i = 0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
+			if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
+				if (SaveDialog1->Execute()) {
+					TAdvMemo *memo = (TAdvMemo *)AdvPageControl1->ActivePage->Components[i];
+					memo->Lines->SaveToFile(SaveDialog1->FileName);
+					break;
+				}  
 			}  
-		}  
-	} 
-}   
+		} 
+	}   
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ToolButton2Click(TObject *Sender)
 {
-//открываем файл с панели инструментов
-Form1->N13->Click();
+	//открываем файл с панели инструментов
+	Form1->N13->Click();
 }
 //---------------------------------------------------------------------------
 
@@ -286,7 +286,7 @@ void __fastcall TForm1::txt1Click(TObject *Sender)
    pts[TabCount]->Caption = "TW Script"+IntToStr(TabCount);
    pts[TabCount]->ImageIndex=10;
    memo[TabCount] = new TAdvMemo(pts[TabCount]);
-   memo[TabCount]->Parent =pts[TabCount];
+   memo[TabCount]->Parent = pts[TabCount];
    memo[TabCount]->Align = alClient;
    memo[TabCount]->SyntaxStyles = AdvJSMemoStyler1;
    memo[TabCount]->Gutter->ShowLeadingZeros = true;
@@ -323,249 +323,248 @@ void __fastcall TForm1::txt1Click(TObject *Sender)
    //накапливаем кол-во вкладок txt
    tab++;
    actbtn();
-  }
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N16Click(TObject *Sender)
 {
-//закрываем форму из главного меню
-Form1->Close();
+	//закрываем форму из главного меню
+	Form1->Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::txt2Click(TObject *Sender)
 {
- //создаем новый файл формата *.txt
- Form1->txt1->Click();
+	//создаем новый файл формата *.txt
+	Form1->txt1->Click();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N17Click(TObject *Sender)
 {
-//открываем текстовый файл с последними изменениями
- ShellExecute(Handle, "open", "new.txt", NULL, NULL, SW_RESTORE);
+	//открываем текстовый файл с последними изменениями
+	ShellExecute(Handle, "open", "new.txt", NULL, NULL, SW_RESTORE);
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::N13Click(TObject *Sender)
 {
-//открываем файл из главного меню
-if (!Form1->OpenDialog1->Execute()) return;
-findex = Form1->OpenDialog1->FilterIndex;
-if (findex == 1) {
-	pts[TabCount] = new TAdvTabSheet(this);
-	pts[TabCount]->AdvPageControl = AdvPageControl1;
-	pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
-	pts[TabCount]->ImageIndex = 10;
-	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	memo[TabCount]->Parent = pts[TabCount];
-	memo[TabCount]->Align = alClient;
-	memo[TabCount]->Clear();
-	memo[TabCount]->SyntaxStyles = AdvJSMemoStyler1;
-	memo[TabCount]->Gutter->ShowLeadingZeros = true;
-	memo[TabCount]->Gutter->ShowLineNumbers = true;
-	memo[TabCount]->Gutter->GutterWidth = 60;
-	memo[TabCount]->Gutter->GutterMargin = 45;
-	memo[TabCount]->Gutter->ShowModified = true;
-	memo[TabCount]->Gutter->ModifiedColor = clYellow;
-	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
-	memo[TabCount]->AutoIndent = true;
-	memo[TabCount]->AcceptFiles = true;
-	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
-	memo[TabCount]->UndoLimit = 250;
-	memo[TabCount]->WordWrap = wwClientWidth;
-	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
-	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
-	memo[TabCount]->AutoCompletion->Active = true;
-	memo[TabCount]->AutoCompletion->AutoDisplay = true;
-	memo[TabCount]->AutoCodeFold();
-	memo[TabCount]->CodeFolding->Enabled = true;
-	memo[TabCount]->AutoCorrect->Active = true;
-	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");
-	memo[TabCount]->PopupMenu = PopupMenu2;
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
-	TabCount++;
-	actbtn();
-}
-if (findex == 2) {
-	pts[TabCount] = new TAdvTabSheet(this);
-	pts[TabCount]->AdvPageControl = AdvPageControl1;
-	pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
-	pts[TabCount]->ImageIndex = 13;
-	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	memo[TabCount]->Parent = pts[TabCount];
-	memo[TabCount]->Align = alClient;
-	memo[TabCount]->Clear();
-	memo[TabCount]->SyntaxStyles = AdvXMLMemoStyler1;
-	memo[TabCount]->Gutter->ShowLeadingZeros = true;
-	memo[TabCount]->Gutter->ShowLineNumbers = true;
-	memo[TabCount]->Gutter->GutterWidth = 60;
-	memo[TabCount]->Gutter->GutterMargin = 45;
-	memo[TabCount]->Gutter->ShowModified = true;
-	memo[TabCount]->Gutter->ModifiedColor = clYellow;
-	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
-	memo[TabCount]->AutoIndent = true;
-	memo[TabCount]->AcceptFiles = true;
-	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
-	memo[TabCount]->UndoLimit = 250;
-	memo[TabCount]->WordWrap = wwClientWidth;
-	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
-	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
-	memo[TabCount]->AutoCompletion->Active = true;
-	memo[TabCount]->AutoCompletion->AutoDisplay = true;
-	memo[TabCount]->AutoCodeFold();
-	memo[TabCount]->CodeFolding->Enabled = true;
-	memo[TabCount]->AutoCorrect->Active = true;
-	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-	memo[TabCount]->PopupMenu = PopupMenu2;
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
-	TabCount++;
-	actbtn();
-}
-if (findex == 3) {
-	pts[TabCount] = new TAdvTabSheet(this);
-	pts[TabCount]->AdvPageControl = AdvPageControl1;
-	pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
-	pts[TabCount]->ImageIndex = 12;
-	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	memo[TabCount]->Parent = pts[TabCount];
-	memo[TabCount]->Align = alClient;
-	memo[TabCount]->Clear();
-	memo[TabCount]->SyntaxStyles = AdvINIMemoStyler1;
-	memo[TabCount]->Gutter->ShowLeadingZeros = true;
-	memo[TabCount]->Gutter->ShowLineNumbers = true;
-	memo[TabCount]->Gutter->GutterWidth = 60;
-	memo[TabCount]->Gutter->GutterMargin = 45;
-	memo[TabCount]->Gutter->ShowModified = true;
-	memo[TabCount]->Gutter->ModifiedColor = clYellow;
-	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
-	memo[TabCount]->AutoIndent = true;
-	memo[TabCount]->AcceptFiles = true;
-	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
-	memo[TabCount]->UndoLimit = 250;
-	memo[TabCount]->WordWrap = wwClientWidth;
-	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
-	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
-	memo[TabCount]->AutoCompletion->Active = true;
-	memo[TabCount]->AutoCompletion->AutoDisplay = true;
-	memo[TabCount]->AutoCodeFold();
-	memo[TabCount]->CodeFolding->Enabled = true;
-	memo[TabCount]->AutoCorrect->Active = true;
-	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-	memo[TabCount]->PopupMenu = PopupMenu2;
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
-	TabCount++;
-	actbtn();
-}
-if (findex==4) {
-	pts[TabCount] = new TAdvTabSheet(this);
-	pts[TabCount]->AdvPageControl = AdvPageControl1;
-	pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
-	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	memo[TabCount]->Parent = pts[TabCount];
-	memo[TabCount]->Align = alClient;
-	memo[TabCount]->Clear();
-	memo[TabCount]->Gutter->ShowLeadingZeros = true;
-	memo[TabCount]->Gutter->ShowLineNumbers = true;
-	memo[TabCount]->Gutter->GutterWidth = 60;
-	memo[TabCount]->Gutter->GutterMargin = 45;
-	memo[TabCount]->Gutter->ShowModified = true;
-	memo[TabCount]->Gutter->ModifiedColor = clYellow;
-	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
-	memo[TabCount]->AutoIndent = true;
-	memo[TabCount]->AcceptFiles = true;
-	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
-	memo[TabCount]->UndoLimit = 250;
-	memo[TabCount]->WordWrap = wwClientWidth;
-	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
-	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
-	memo[TabCount]->AutoCompletion->Active = true;
-	memo[TabCount]->AutoCompletion->AutoDisplay = true;
-	memo[TabCount]->AutoCodeFold();
-	memo[TabCount]->CodeFolding->Enabled = true;
-	memo[TabCount]->AutoCorrect->Active = true;
-	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-	memo[TabCount]->PopupMenu = PopupMenu2;
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
-	TabCount++;
-	actbtn();
-}
-if (findex == 5) {
-	pts[TabCount] = new TAdvTabSheet(this);
-	pts[TabCount]->AdvPageControl = AdvPageControl1;
-	pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
-	pts[TabCount]->ImageIndex = 11;
-	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	memo[TabCount]->Parent = pts[TabCount];
-	memo[TabCount]->Align = alClient;
-	memo[TabCount]->Clear();
-	memo[TabCount]->SyntaxStyles = AdvPascalMemoStyler1;
-	memo[TabCount]->Gutter->ShowLeadingZeros = true;
-	memo[TabCount]->Gutter->ShowLineNumbers = true;
-	memo[TabCount]->Gutter->GutterWidth = 60;
-	memo[TabCount]->Gutter->GutterMargin = 45;
-	memo[TabCount]->Gutter->ShowModified = true;
-	memo[TabCount]->Gutter->ModifiedColor = clYellow;
-	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
-	memo[TabCount]->AutoIndent = true;
-	memo[TabCount]->AcceptFiles = true;
-	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
-	memo[TabCount]->UndoLimit = 250;
-	memo[TabCount]->WordWrap = wwClientWidth;
-	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
-	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
-	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
-	memo[TabCount]->AutoCompletion->Active = true;
-	memo[TabCount]->AutoCompletion->AutoDisplay = true;
-	memo[TabCount]->AutoCodeFold();
-	memo[TabCount]->CodeFolding->Enabled = true;
-	memo[TabCount]->AutoCorrect->Active = true;
-	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-	memo[TabCount]->PopupMenu = PopupMenu2;
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
-	memo[TabCount]->OnClick = MemoClick;
-	memo[TabCount]->OnKeyPress = MemoKeyPress;
-	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
-	TabCount++;
-	actbtn();
-}
+	//открываем файл из главного меню
+	if (!Form1->OpenDialog1->Execute()) return;
+	findex = Form1->OpenDialog1->FilterIndex;	
+	if (findex == 1) {
+		pts[TabCount] = new TAdvTabSheet(this);
+		pts[TabCount]->AdvPageControl = AdvPageControl1;
+		pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
+		pts[TabCount]->ImageIndex = 10;
+		memo[TabCount] = new TAdvMemo(pts[TabCount]);
+		memo[TabCount]->Parent = pts[TabCount];
+		memo[TabCount]->Align = alClient;
+		memo[TabCount]->Clear();
+		memo[TabCount]->SyntaxStyles = AdvJSMemoStyler1;
+		memo[TabCount]->Gutter->ShowLeadingZeros = true;
+		memo[TabCount]->Gutter->ShowLineNumbers = true;
+		memo[TabCount]->Gutter->GutterWidth = 60;
+		memo[TabCount]->Gutter->GutterMargin = 45;
+		memo[TabCount]->Gutter->ShowModified = true;
+		memo[TabCount]->Gutter->ModifiedColor = clYellow;
+		memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+		memo[TabCount]->AutoIndent = true;
+		memo[TabCount]->AcceptFiles = true;
+		memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+		memo[TabCount]->UndoLimit = 250;
+		memo[TabCount]->WordWrap = wwClientWidth;
+		memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+		memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+		memo[TabCount]->AutoCompletion->Active = true;
+		memo[TabCount]->AutoCompletion->AutoDisplay = true;
+		memo[TabCount]->AutoCodeFold();
+		memo[TabCount]->CodeFolding->Enabled = true;
+		memo[TabCount]->AutoCorrect->Active = true;
+		memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+		memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");
+		memo[TabCount]->PopupMenu = PopupMenu2;
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+		TabCount++;
+		actbtn();
+	}
+	if (findex == 2) {
+		pts[TabCount] = new TAdvTabSheet(this);
+		pts[TabCount]->AdvPageControl = AdvPageControl1;
+		pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
+		pts[TabCount]->ImageIndex = 13;
+		memo[TabCount] = new TAdvMemo(pts[TabCount]);
+		memo[TabCount]->Parent = pts[TabCount];
+		memo[TabCount]->Align = alClient;
+		memo[TabCount]->Clear();
+		memo[TabCount]->SyntaxStyles = AdvXMLMemoStyler1;
+		memo[TabCount]->Gutter->ShowLeadingZeros = true;
+		memo[TabCount]->Gutter->ShowLineNumbers = true;
+		memo[TabCount]->Gutter->GutterWidth = 60;
+		memo[TabCount]->Gutter->GutterMargin = 45;
+		memo[TabCount]->Gutter->ShowModified = true;
+		memo[TabCount]->Gutter->ModifiedColor = clYellow;
+		memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+		memo[TabCount]->AutoIndent = true;
+		memo[TabCount]->AcceptFiles = true;
+		memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+		memo[TabCount]->UndoLimit = 250;
+		memo[TabCount]->WordWrap = wwClientWidth;
+		memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+		memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+		memo[TabCount]->AutoCompletion->Active = true;
+		memo[TabCount]->AutoCompletion->AutoDisplay = true;
+		memo[TabCount]->AutoCodeFold();
+		memo[TabCount]->CodeFolding->Enabled = true;
+		memo[TabCount]->AutoCorrect->Active = true;
+		memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+		memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+		memo[TabCount]->PopupMenu = PopupMenu2;
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+		TabCount++;
+		actbtn();
+	}
+	if (findex == 3) {
+		pts[TabCount] = new TAdvTabSheet(this);
+		pts[TabCount]->AdvPageControl = AdvPageControl1;
+		pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
+		pts[TabCount]->ImageIndex = 12;
+		memo[TabCount] = new TAdvMemo(pts[TabCount]);
+		memo[TabCount]->Parent = pts[TabCount];
+		memo[TabCount]->Align = alClient;
+		memo[TabCount]->Clear();
+		memo[TabCount]->SyntaxStyles = AdvINIMemoStyler1;
+		memo[TabCount]->Gutter->ShowLeadingZeros = true;
+		memo[TabCount]->Gutter->ShowLineNumbers = true;
+		memo[TabCount]->Gutter->GutterWidth = 60;
+		memo[TabCount]->Gutter->GutterMargin = 45;
+		memo[TabCount]->Gutter->ShowModified = true;
+		memo[TabCount]->Gutter->ModifiedColor = clYellow;
+		memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+		memo[TabCount]->AutoIndent = true;
+		memo[TabCount]->AcceptFiles = true;
+		memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+		memo[TabCount]->UndoLimit = 250;
+		memo[TabCount]->WordWrap = wwClientWidth;
+		memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+		memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+		memo[TabCount]->AutoCompletion->Active = true;
+		memo[TabCount]->AutoCompletion->AutoDisplay = true;
+		memo[TabCount]->AutoCodeFold();
+		memo[TabCount]->CodeFolding->Enabled = true;
+		memo[TabCount]->AutoCorrect->Active = true;
+		memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+		memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+		memo[TabCount]->PopupMenu = PopupMenu2;
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+		TabCount++;
+		actbtn();
+	}
+	if (findex == 4) {
+		pts[TabCount] = new TAdvTabSheet(this);
+		pts[TabCount]->AdvPageControl = AdvPageControl1;
+		pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
+		memo[TabCount] = new TAdvMemo(pts[TabCount]);
+		memo[TabCount]->Parent = pts[TabCount];
+		memo[TabCount]->Align = alClient;
+		memo[TabCount]->Clear();
+		memo[TabCount]->Gutter->ShowLeadingZeros = true;
+		memo[TabCount]->Gutter->ShowLineNumbers = true;
+		memo[TabCount]->Gutter->GutterWidth = 60;
+		memo[TabCount]->Gutter->GutterMargin = 45;
+		memo[TabCount]->Gutter->ShowModified = true;
+		memo[TabCount]->Gutter->ModifiedColor = clYellow;
+		memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+		memo[TabCount]->AutoIndent = true;
+		memo[TabCount]->AcceptFiles = true;
+		memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+		memo[TabCount]->UndoLimit = 250;
+		memo[TabCount]->WordWrap = wwClientWidth;
+		memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+		memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+		memo[TabCount]->AutoCompletion->Active = true;
+		memo[TabCount]->AutoCompletion->AutoDisplay = true;
+		memo[TabCount]->AutoCodeFold();
+		memo[TabCount]->CodeFolding->Enabled = true;
+		memo[TabCount]->AutoCorrect->Active = true;
+		memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+		memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+		memo[TabCount]->PopupMenu = PopupMenu2;
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+		TabCount++;
+		actbtn();
+	}
+	if (findex == 5) {
+		pts[TabCount] = new TAdvTabSheet(this);
+		pts[TabCount]->AdvPageControl = AdvPageControl1;
+		pts[TabCount]->Caption = ExtractFileName(OpenDialog1->FileName);
+		pts[TabCount]->ImageIndex = 11;
+		memo[TabCount] = new TAdvMemo(pts[TabCount]);
+		memo[TabCount]->Parent = pts[TabCount];
+		memo[TabCount]->Align = alClient;
+		memo[TabCount]->Clear();
+		memo[TabCount]->SyntaxStyles = AdvPascalMemoStyler1;
+		memo[TabCount]->Gutter->ShowLeadingZeros = true;
+		memo[TabCount]->Gutter->ShowLineNumbers = true;
+		memo[TabCount]->Gutter->GutterWidth = 60;
+		memo[TabCount]->Gutter->GutterMargin = 45;
+		memo[TabCount]->Gutter->ShowModified = true;
+		memo[TabCount]->Gutter->ModifiedColor = clYellow;
+		memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+		memo[TabCount]->AutoIndent = true;
+		memo[TabCount]->AcceptFiles = true;
+		memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+		memo[TabCount]->UndoLimit = 250;
+		memo[TabCount]->WordWrap = wwClientWidth;
+		memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+		memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+		memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+		memo[TabCount]->AutoCompletion->Active = true;
+		memo[TabCount]->AutoCompletion->AutoDisplay = true;
+		memo[TabCount]->AutoCodeFold();
+		memo[TabCount]->CodeFolding->Enabled = true;
+		memo[TabCount]->AutoCorrect->Active = true;
+		memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+		memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+		memo[TabCount]->PopupMenu = PopupMenu2;
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		memo[TabCount]->Lines->LoadFromFile(OpenDialog1->FileName);
+		memo[TabCount]->OnClick = MemoClick;
+		memo[TabCount]->OnKeyPress = MemoKeyPress;
+		StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+		TabCount++;
+		actbtn();
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -747,7 +746,7 @@ void __fastcall TForm1::N31Click(TObject *Sender)
 void __fastcall TForm1::N36Click(TObject *Sender)
 {
 	//открываем файл для сравнения
-	if (!OpenDialog1->Execute())  return;
+	if (!OpenDialog1->Execute()) return;
 	Form1->AdvMemo1->Lines->Clear();
 	Form1->AdvMemo1->Lines->LoadFromFile(OpenDialog1->FileName);
 }
@@ -780,7 +779,7 @@ void __fastcall TForm1::N40Click(TObject *Sender)
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-	tab=0;
+	tab = 0;
 	//запускаем заставку
 	Application->CreateForm(__classid(TForm2), &Form2);
 	Form2->ShowModal();
@@ -796,7 +795,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	//загружаем время для таймера автосохранения
 	Timer1->Interval=Ini->ReadInteger("general","time",0);
 	//проверяем значение атосохранения и делаем видим/не видимым опцию
-	if (sav==0) {
+	if (sav == 0) {
 		N58->Visible = false;
 	} else
 		N58->Visible = true;
@@ -883,41 +882,41 @@ void __fastcall TForm1::xml1Click(TObject *Sender)
 	pts[TabCount] = new TAdvTabSheet(this);
 	pts[TabCount]->AdvPageControl = AdvPageControl1;
 	pts[TabCount]->Caption = "XML Script"+IntToStr(TabCount);
-	pts[TabCount]->ImageIndex=13;
+	pts[TabCount]->ImageIndex = 13;
 	memo[TabCount] = new TAdvMemo(pts[TabCount]);
-   memo[TabCount]->Parent =pts[TabCount];
-   memo[TabCount]->Align = alClient;
-   memo[TabCount]->SyntaxStyles=AdvXMLMemoStyler1;
-   memo[TabCount]->Gutter->ShowLeadingZeros=true;
-   memo[TabCount]->Gutter->ShowLineNumbers=true;
-   memo[TabCount]->Gutter->GutterWidth=60;
-   memo[TabCount]->Gutter->GutterMargin=45;
-   memo[TabCount]->Gutter->ShowModified=true;
-   memo[TabCount]->Gutter->ModifiedColor=clYellow;
-   memo[TabCount]->Gutter->ModifiedColorBkg=clLime;
-   memo[TabCount]->AutoIndent=true;
-   memo[TabCount]->AcceptFiles=true;
-   memo[TabCount]->MarkerList->MarkerImageList=ImageList3;
-   memo[TabCount]->UndoLimit=250;
-   memo[TabCount]->WordWrap=wwClientWidth;
-   memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLine=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator=true;
-   memo[TabCount]->ActiveLineSettings->ActiveLineColor=clSkyBlue;
-   memo[TabCount]->AutoCompletion->Active=true;
-   memo[TabCount]->AutoCompletion->AutoDisplay=true;
-   memo[TabCount]->AutoCodeFold();
-   memo[TabCount]->CodeFolding->Enabled=true;
-   memo[TabCount]->AutoCorrect->Active=true;
-   memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-   memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-   memo[TabCount]->PopupMenu=PopupMenu2;
-   memo[TabCount]->OnClick=MemoClick;
-   memo[TabCount]->OnKeyPress=MemoKeyPress;
-   Form1->StatusBar1->Panels->Items[2]->Text="XML Script Color";
-   memo[TabCount]->Clear();
-   TabCount++;
-   actbtn();
+	memo[TabCount]->Parent = pts[TabCount];
+	memo[TabCount]->Align = alClient;
+	memo[TabCount]->SyntaxStyles = AdvXMLMemoStyler1;
+	memo[TabCount]->Gutter->ShowLeadingZeros = true;
+	memo[TabCount]->Gutter->ShowLineNumbers = true;
+	memo[TabCount]->Gutter->GutterWidth = 60;
+	memo[TabCount]->Gutter->GutterMargin = 45;
+	memo[TabCount]->Gutter->ShowModified = true;
+	memo[TabCount]->Gutter->ModifiedColor = clYellow;
+	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+	memo[TabCount]->AutoIndent = true;
+	memo[TabCount]->AcceptFiles = true;
+	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+	memo[TabCount]->UndoLimit = 250;
+	memo[TabCount]->WordWrap = wwClientWidth;
+	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+	memo[TabCount]->AutoCompletion->Active = true;
+	memo[TabCount]->AutoCompletion->AutoDisplay = true;
+	memo[TabCount]->AutoCodeFold();
+	memo[TabCount]->CodeFolding->Enabled = true;
+	memo[TabCount]->AutoCorrect->Active = true;
+	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+	memo[TabCount]->PopupMenu = PopupMenu2;
+	memo[TabCount]->OnClick = MemoClick;
+	memo[TabCount]->OnKeyPress = MemoKeyPress;
+	Form1->StatusBar1->Panels->Items[2]->Text = "XML Script Color";
+	memo[TabCount]->Clear();
+	TabCount++;
+	actbtn();
 }
 //---------------------------------------------------------------------------
 
@@ -996,10 +995,10 @@ void __fastcall TForm1::N5Click(TObject *Sender)
 void __fastcall TForm1::Image40Click(TObject *Sender)
 {
 	//вставка Rome/BI
-	if(RadioButton1->Checked) {
+	if (RadioButton1->Checked) {
 		Form1->memo[Form1->AdvPageControl1->ActivePageIndex]->InsertText("amber,");
 	}
-	if(RadioButton2->Checked) {
+	if (RadioButton2->Checked) {
 		Form1->memo[Form1->AdvPageControl1->ActivePageIndex]->InsertText("resource       amber,");
 	}
 	if (RadioButton3->Checked) {
@@ -1010,34 +1009,43 @@ void __fastcall TForm1::Image40Click(TObject *Sender)
 
 void __fastcall TForm1::Image41Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       camels,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels,");
+	}
+	if (RadioButton2->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       camels,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image42Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       copper,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       copper,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image43Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       dogs,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       dogs,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -1344,97 +1352,105 @@ if(RadioButton1->Checked)     {
 
 void __fastcall TForm1::Image6Click(TObject *Sender)
 {
- if(RadioButton1->Checked)   {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,"); }
-	if(RadioButton2->Checked){
-	Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    grain,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,"); 
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    grain,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::xml3Click(TObject *Sender)
 {
-//меняем подсветку синтаксиса на XML Script Color
-Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles=AdvXMLMemoStyler1;
-Form1->StatusBar1->Panels->Items[2]->Text="XML Script Color";
+	//меняем подсветку синтаксиса на XML Script Color
+	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles = AdvXMLMemoStyler1;
+	Form1->StatusBar1->Panels->Items[2]->Text = "XML Script Color";
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::txt3Click(TObject *Sender)
 {
- //меняем подсветку синтаксиса на  TW Script Color
-Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles=AdvJSMemoStyler1;
-Form1->StatusBar1->Panels->Items[2]->Text="TW Script Color";
+	//меняем подсветку синтаксиса на  TW Script Color
+	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles = AdvJSMemoStyler1;
+	Form1->StatusBar1->Panels->Items[2]->Text = "TW Script Color";
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N46Click(TObject *Sender)
 {
-  //отключаем подсветку
-Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles->CleanupInstance();
-Form1->StatusBar1->Panels->Items[2]->Text=ms2;
+	//отключаем подсветку
+	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles->CleanupInstance();
+	Form1->StatusBar1->Panels->Items[2]->Text = ms2;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N52Click(TObject *Sender)
-{  //о программе из трея
-Application->CreateForm(__classid(TAboutBox), &AboutBox);
-AboutBox->ShowModal();
-AboutBox->Free();
+{  
+	//о программе из трея
+	Application->CreateForm(__classid(TAboutBox), &AboutBox);
+	AboutBox->ShowModal();
+	AboutBox->Free();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N48Click(TObject *Sender)
-{//выходим из программы с трея
-Form1->Close();
+{
+	//выходим из программы с трея
+	Form1->Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N50Click(TObject *Sender)
-{       //разворачиваем прогу из трея
-Form1->Visible = true;
+{       
+	//разворачиваем прогу из трея
+	Form1->Visible = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N47Click(TObject *Sender)
-{   //сворачиваем в трей
-Form1->Visible = false;
+{   
+	//сворачиваем в трей
+	Form1->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N53Click(TObject *Sender)
-{//качаем обновление из трея
-ShellExecute(Handle,"open","http://www.goldencentury.org/board/",NULL,NULL,SW_RESTORE);
+{
+	//качаем обновление из трея
+	ShellExecute(Handle, "open", "http://www.goldencentury.org/board/", NULL, NULL, SW_RESTORE);
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForm1::Image67Click(TObject *Sender)
 {
- //вставка Medieval2 Kingdoms
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hemp,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    hemp,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hemp");
-  }
+	//вставка Medieval2 Kingdoms
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hemp,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    hemp,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hemp");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image66Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("honey,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    honey,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("honey");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("honey,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    honey,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("honey");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -1566,427 +1582,423 @@ if(RadioButton1->Checked){
 
 void __fastcall TForm1::Image70Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tobacco,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tobacco,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N54Click(TObject *Sender)
 {
- //открываем окно вставки комментариев
-N54->Checked=!N54->Checked;
-CategoryPanelGroup2->Visible=N54->Checked;
-CategoryPanel6->Collapsed=false;
-
+	//открываем окно вставки комментариев
+	N54->Checked =!N54->Checked;
+	CategoryPanelGroup2->Visible = N54->Checked;
+	CategoryPanel6->Collapsed = false;
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::SpeedButton1Click(TObject *Sender)
-{//запускаем макрос
-for(int i = 0; i < ListBox1->Items->Count; i++)
-if(ListBox1->Selected[i])
-MacroRecorder1->FileName=ExtractFilePath(Application->ExeName)+"macros/"+Form1->ListBox1->Items->Strings[i];
-MacroRecorder1->PlayMacro();
+{
+	//запускаем макрос
+	for (int i = 0; i < ListBox1->Items->Count; i++)
+		if (ListBox1->Selected[i])
+			MacroRecorder1->FileName = ExtractFilePath(Application->ExeName)+"macros/"+Form1->ListBox1->Items->Strings[i];
+			MacroRecorder1->PlayMacro();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::SpeedButton2Click(TObject *Sender)
-{   //пишем макрос
-MacroRecorder1->FileName=ExtractFilePath(Application->ExeName)+"macros/"+Form1->Edit1->Text+".mac";
-MacroRecorder1->RecordMacro();
+{   
+	//пишем макрос
+	MacroRecorder1->FileName = ExtractFilePath(Application->ExeName)+"macros/"+Form1->Edit1->Text+".mac";
+	MacroRecorder1->RecordMacro();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::SpeedButton3Click(TObject *Sender)
-{  //останавливаем макрос
-MacroRecorder1->StopRecording();
-Form1->ListBox1->Items->Add(Form1->Edit1->Text+".mac");
+{  
+	//останавливаем макрос
+	MacroRecorder1->StopRecording();
+	Form1->ListBox1->Items->Add(Form1->Edit1->Text+".mac");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N55Click(TObject *Sender)
-{ //запускаем макросы
-N55->Checked=!N55->Checked;
-CategoryPanelGroup2->Visible=N55->Checked;
-CategoryPanel7->Collapsed=false;
+{ 
+	//запускаем макросы
+	N55->Checked=!N55->Checked;
+	CategoryPanelGroup2->Visible = N55->Checked;
+	CategoryPanel7->Collapsed = false;
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::Edit1Change(TObject *Sender)
 {
-Edit1->Enabled=true;
+	Edit1->Enabled = true;
 }
 //---------------------------------------------------------------------------
-
-
 
 void __fastcall TForm1::N57Click(TObject *Sender)
 {
-WebUpdateWizard1->Execute();
+	WebUpdateWizard1->Execute();
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::SDTXT1Click(TObject *Sender)
 {
- //запускаем форму конвертера из sd
-   if (HINSTANCE DLLInstance = LoadLibrary("sd.dll"))
-  {
-     typedef TForm* (__cdecl* TCreateMyForm)(TForm*);
-	 if( TCreateMyForm CreateMyForm = (TCreateMyForm)GetProcAddress(DLLInstance,"_CreateMyForm"))
-	 {
-	  TForm* form = CreateMyForm(this); form->Show();
-    }
-  }
-   else ShowMessage(ms3);
+	//запускаем форму конвертера из sd
+   if (HINSTANCE DLLInstance = LoadLibrary("sd.dll")) {
+	   typedef TForm* (__cdecl* TCreateMyForm)(TForm*);
+		if ( TCreateMyForm CreateMyForm = (TCreateMyForm)GetProcAddress(DLLInstance,"_CreateMyForm")) {
+			TForm* form = CreateMyForm(this); 
+			form->Show();
+		}
+	} else 
+		ShowMessage(ms3);
 }
 //---------------------------------------------------------------------------
 
-
-
 void __fastcall TForm1::AdvTabSet1Change(TObject *Sender, int NewTab, bool &AllowChange)
-
-{  //переключаемся между логом и ошибками
-switch (AdvTabSet1->TabIndex)
-{
-case 1:  RichEdit2->Lines->Clear();
-		 break;
-case 0:
-RichEdit2->Lines->Clear();
-RichEdit2->Lines->LoadFromFile(Options->Edit1->Text+"system.log.txt");
-
-		 break;
-		 }
+{  
+	//переключаемся между логом и ошибками
+	switch (AdvTabSet1->TabIndex) {
+		case 1:  
+			RichEdit2->Lines->Clear();
+		break;
+		case 0:
+			RichEdit2->Lines->Clear();
+			RichEdit2->Lines->LoadFromFile(Options->Edit1->Text+"system.log.txt");
+		break;
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N62Click(TObject *Sender)
 {
- //открываем панель отладки
- N62->Checked=!N62->Checked;
-Panel1->Visible=N62->Checked;
-//RichEdit2->Lines->LoadFromFile(Options->Edit1->Text+"system.log.txt");
+	//открываем панель отладки
+	N62->Checked=!N62->Checked;
+	Panel1->Visible = N62->Checked;
+	//RichEdit2->Lines->LoadFromFile(Options->Edit1->Text+"system.log.txt");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::SpeedButton4Click(TObject *Sender)
-{ //вставляем комментарий для текстовых скриптов
- Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(" ; ");
+{ 
+	//вставляем комментарий для текстовых скриптов
+	Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(" ; ");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::SpeedButton5Click(TObject *Sender)
 {
-//вставляем комментарий для xml скриптов
- Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("<!-- --> ");
+	//вставляем комментарий для xml скриптов
+	Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("<!-- --> ");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::AdvCodeList1DragOver(TObject *Sender, TObject *Source, int X,
           int Y, TDragState State, bool &Accept)
-{ //code list         Accept := (source is TAdvMemo);
-Accept=(memo[AdvPageControl1->ActivePageIndex]);
+{ 
+	//code list  Accept := (source is TAdvMemo);
+	Accept = (memo[AdvPageControl1->ActivePageIndex]);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::AdvCodeList1DragDrop(TObject *Sender, TObject *Source, int X,
-          int Y)
-{//code list
-AdvCodeList1->CodeBlocks->Add(memo[AdvPageControl1->ActivePageIndex]->Selection);
-/*AdvCodeList1->CodeBlocks[AdvCodeList1->CodeBlocks->Count - 1]->ImageIndex := 0;
-  AdvCodeList1.CodeBlocks[AdvCodeList1.CodeBlocks.Count - 1].ImageIndex := 0;
-*/
+void __fastcall TForm1::AdvCodeList1DragDrop(TObject *Sender, TObject *Source, int X, int Y)
+{
+	//code list
+	AdvCodeList1->CodeBlocks->Add(memo[AdvPageControl1->ActivePageIndex]->Selection);
+	/*AdvCodeList1->CodeBlocks[AdvCodeList1->CodeBlocks->Count - 1]->ImageIndex := 0;
+	  AdvCodeList1.CodeBlocks[AdvCodeList1.CodeBlocks.Count - 1].ImageIndex := 0;
+	*/
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::AdvCodeList1BlockRightClick(TObject *Sender, TCodeBlock *ACodeBlock)
-
-{ //просмотр содержимого блока
-  ShowMessage(ACodeBlock->Code->Text);
+{ 
+	//просмотр содержимого блока
+	ShowMessage(ACodeBlock->Code->Text);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::AdvCodeList1BlockInsertFromClipboard(TObject *Sender, TCodeBlock *ACodeBlock)
-
 {
-  // set image as clipboard icon
-  ACodeBlock->ImageIndex= 4;
+	// set image as clipboard icon
+	ACodeBlock->ImageIndex = 4;
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::ApplicationEvents1Exception(TObject *Sender, Exception *E)
-{//перехват сообщений об ошибках
-ShowMessage(ms1);
+{
+	//перехват сообщений об ошибках
+	ShowMessage(ms1);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N65Click(TObject *Sender)
 {
- //открываем окно вставки комментариев
-N65->Checked=!N65->Checked;
-CategoryPanelGroup2->Visible=N65->Checked;
-CategoryPanel8->Collapsed=false;
+	//открываем окно вставки комментариев
+	N65->Checked=!N65->Checked;
+	CategoryPanelGroup2->Visible = N65->Checked;
+	CategoryPanel8->Collapsed = false;
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::N66Click(TObject *Sender)
-{ //автоподстановка(проба)
-N66->Checked=!N66->Checked;
-ListBox5->Visible=N66->Checked;
-ListBox5->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\function.sw");
-
+{ 
+	//автоподстановка(проба)
+	N66->Checked=!N66->Checked;
+	ListBox5->Visible = N66->Checked;
+	ListBox5->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\function.sw");
 }
 //---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::N67Click(TObject *Sender)
 {
-//открываем файл из главного меню
-if(!OpenTextFileDialog1->Execute()) return;
-   pts[TabCount] = new TAdvTabSheet(this);
-   pts[TabCount]->AdvPageControl = AdvPageControl1;
-   pts[TabCount]->Caption = ExtractFileName(OpenTextFileDialog1->FileName);
-   pts[TabCount]->ImageIndex=10;
-   memo[TabCount] = new TAdvMemo(pts[TabCount]);
-   memo[TabCount]->Parent =pts[TabCount];
-   memo[TabCount]->Align = alClient;
-   memo[TabCount]->Clear();
-   memo[TabCount]->Gutter->ShowLeadingZeros=true;
-   memo[TabCount]->WordWrap=wwRightMargin;
-   memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLine=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator=true;
-   memo[TabCount]->ActiveLineSettings->ActiveLineColor=clSkyBlue;
-   memo[TabCount]->CodeFolding->Enabled=true;
-   memo[TabCount]->AutoCodeFold();
-   memo[TabCount]->Gutter->ShowModified=true;
-   memo[TabCount]->AutoCorrect->Active=true;
-   memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-   memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");
-   memo[TabCount]->AutoCompletion->Active=true;
-   memo[TabCount]->PopupMenu=PopupMenu2;
-   memo[TabCount]->Lines->LoadFromFile(OpenTextFileDialog1->FileName);
-   memo[TabCount]->OnClick=MemoClick;
-   memo[TabCount]->OnKeyPress=MemoKeyPress;
-   StatusBar1->Panels->Items[0]->Text=OpenDialog1->FileName;
-   TabCount++;
-   actbtn();
+	//открываем файл из главного меню
+	if (!OpenTextFileDialog1->Execute()) return;
+	   pts[TabCount] = new TAdvTabSheet(this);
+	   pts[TabCount]->AdvPageControl = AdvPageControl1;
+	   pts[TabCount]->Caption = ExtractFileName(OpenTextFileDialog1->FileName);
+	   pts[TabCount]->ImageIndex = 10;
+	   memo[TabCount] = new TAdvMemo(pts[TabCount]);
+	   memo[TabCount]->Parent =pts[TabCount];
+	   memo[TabCount]->Align = alClient;
+	   memo[TabCount]->Clear();
+	   memo[TabCount]->Gutter->ShowLeadingZeros = true;
+	   memo[TabCount]->WordWrap = wwRightMargin;
+	   memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+	   memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+	   memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+	   memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+	   memo[TabCount]->CodeFolding->Enabled = true;
+	   memo[TabCount]->AutoCodeFold();
+	   memo[TabCount]->Gutter->ShowModified = true;
+	   memo[TabCount]->AutoCorrect->Active = true;
+	   memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+	   memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");
+	   memo[TabCount]->AutoCompletion->Active = true;
+	   memo[TabCount]->PopupMenu = PopupMenu2;
+	   memo[TabCount]->Lines->LoadFromFile(OpenTextFileDialog1->FileName);
+	   memo[TabCount]->OnClick = MemoClick;
+	   memo[TabCount]->OnKeyPress = MemoKeyPress;
+	   StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
+	   TabCount++;
+	   actbtn();
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::N69Click(TObject *Sender)
 {
-//пытаемся сохранить неизвестный файл
-if ( AdvPageControl1->ActivePage != NULL)
-{
-for (int i=0; i < AdvPageControl1->ActivePage->ComponentCount; i++)
-{
-if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo")
-{
-if (SaveTextFileDialog1->Execute())
-{
-TAdvMemo *memo = (TAdvMemo *)AdvPageControl1->ActivePage->Components[i];
-memo->Lines->SaveToFile(SaveTextFileDialog1->FileName);
-break;
-}  }  } }
+	//пытаемся сохранить неизвестный файл
+	if ( AdvPageControl1->ActivePage != NULL) {
+		for (int i = 0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
+			if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
+				if (SaveTextFileDialog1->Execute()) {
+					TAdvMemo *memo = (TAdvMemo *)AdvPageControl1->ActivePage->Components[i];
+					memo->Lines->SaveToFile(SaveTextFileDialog1->FileName);
+					break;
+				}  
+			} 
+		} 
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N70Click(TObject *Sender)
 {
-//запускаем форму перехода к нужной строке
-Application->CreateForm(__classid(TForm3), &Form3);
-Form3->ShowModal();
-Form3->Free();
+	//запускаем форму перехода к нужной строке
+	Application->CreateForm(__classid(TForm3), &Form3);
+	Form3->ShowModal();
+	Form3->Free();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
-{	//при закрытии формы сохраняем значения листа макросов в файл
-Form1->ListBox1->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\macros\\maclist.macsw");
+{	
+	//при закрытии формы сохраняем значения листа макросов в файл
+	Form1->ListBox1->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\macros\\maclist.macsw");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ListBox1DblClick(TObject *Sender)
 {
-//запускаем выбранный макрос по двойному щелчку в списке
-for(int i = 0; i < ListBox1->Items->Count; i++)
-if(ListBox1->Selected[i])
-MacroRecorder1->FileName="macros/"+Form1->ListBox1->Items->Strings[i];
-MacroRecorder1->PlayMacro();
+	//запускаем выбранный макрос по двойному щелчку в списке
+	for (int i = 0; i < ListBox1->Items->Count; i++)
+		if (ListBox1->Selected[i])
+			MacroRecorder1->FileName = "macros/"+Form1->ListBox1->Items->Strings[i];
+			MacroRecorder1->PlayMacro();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N60Click(TObject *Sender)
 {
-//запускаем менеджер создания проекта
-Application->CreateForm(__classid(TForm4), &Form4);
-Form4->ShowModal();
-Form4->Free();
+	//запускаем менеджер создания проекта
+	Application->CreateForm(__classid(TForm4), &Form4);
+	Form4->ShowModal();
+	Form4->Free();
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::N72Click(TObject *Sender)
 {
-//запускаем настройки программы
-Options->Show();
+	//запускаем настройки программы
+	Options->Show();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::lua1Click(TObject *Sender)
 {
-  //создаем новый файл формата *.lua
-   pts[TabCount] = new TAdvTabSheet(this);
-   pts[TabCount]->AdvPageControl = AdvPageControl1;
-   pts[TabCount]->Caption = "Lua Script"+IntToStr(TabCount);
-   pts[TabCount]->ImageIndex=11;
-   memo[TabCount] = new TAdvMemo(pts[TabCount]);
-   memo[TabCount]->Parent =pts[TabCount];
-   memo[TabCount]->Align = alClient;
-   memo[TabCount]->SyntaxStyles=AdvPascalMemoStyler1;
-   memo[TabCount]->Gutter->ShowLeadingZeros=true;
-   memo[TabCount]->Gutter->ShowLineNumbers=true;
-   memo[TabCount]->Gutter->GutterWidth=60;
-   memo[TabCount]->Gutter->GutterMargin=45;
-   memo[TabCount]->Gutter->ShowModified=true;
-   memo[TabCount]->Gutter->ModifiedColor=clYellow;
-   memo[TabCount]->Gutter->ModifiedColorBkg=clLime;
-   memo[TabCount]->AutoIndent=true;
-   memo[TabCount]->AcceptFiles=true;
-   memo[TabCount]->MarkerList->MarkerImageList=ImageList3;
-   memo[TabCount]->UndoLimit=250;
-   memo[TabCount]->WordWrap=wwClientWidth;
-   memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLine=true;
-   memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator=true;
-   memo[TabCount]->ActiveLineSettings->ActiveLineColor=clSkyBlue;
-   memo[TabCount]->AutoCompletion->Active=true;
-   memo[TabCount]->AutoCompletion->AutoDisplay=true;
-   memo[TabCount]->AutoCodeFold();
-   memo[TabCount]->CodeFolding->Enabled=true;
-   memo[TabCount]->AutoCorrect->Active=true;
-   memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
-   memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
-   memo[TabCount]->PopupMenu=PopupMenu2;
-   memo[TabCount]->OnClick=MemoClick;
-   memo[TabCount]->OnKeyPress=MemoKeyPress;
-   Form1->StatusBar1->Panels->Items[2]->Text="Lua Script Color";
-   memo[TabCount]->Clear();
-   TabCount++;
-   actbtn();
+	//создаем новый файл формата *.lua
+	pts[TabCount] = new TAdvTabSheet(this);
+	pts[TabCount]->AdvPageControl = AdvPageControl1;
+	pts[TabCount]->Caption = "Lua Script"+IntToStr(TabCount);
+	pts[TabCount]->ImageIndex = 11;
+	memo[TabCount] = new TAdvMemo(pts[TabCount]);
+	memo[TabCount]->Parent = pts[TabCount];
+	memo[TabCount]->Align = alClient;
+	memo[TabCount]->SyntaxStyles = AdvPascalMemoStyler1;
+	memo[TabCount]->Gutter->ShowLeadingZeros = true;
+	memo[TabCount]->Gutter->ShowLineNumbers = true;
+	memo[TabCount]->Gutter->GutterWidth = 60;
+	memo[TabCount]->Gutter->GutterMargin = 45;
+	memo[TabCount]->Gutter->ShowModified = true;
+	memo[TabCount]->Gutter->ModifiedColor = clYellow;
+	memo[TabCount]->Gutter->ModifiedColorBkg = clLime;
+	memo[TabCount]->AutoIndent = true;
+	memo[TabCount]->AcceptFiles = true;
+	memo[TabCount]->MarkerList->MarkerImageList = ImageList3;
+	memo[TabCount]->UndoLimit = 250;
+	memo[TabCount]->WordWrap = wwClientWidth;
+	memo[TabCount]->ActiveLineSettings->ActiveLineAtCursor = true;
+	memo[TabCount]->ActiveLineSettings->ShowActiveLine = true;
+	memo[TabCount]->ActiveLineSettings->ShowActiveLineIndicator = true;
+	memo[TabCount]->ActiveLineSettings->ActiveLineColor = clSkyBlue;
+	memo[TabCount]->AutoCompletion->Active = true;
+	memo[TabCount]->AutoCompletion->AutoDisplay = true;
+	memo[TabCount]->AutoCodeFold();
+	memo[TabCount]->CodeFolding->Enabled = true;
+	memo[TabCount]->AutoCorrect->Active = true;
+	memo[TabCount]->AutoCorrect->OldValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\old_correct.sw");
+	memo[TabCount]->AutoCorrect->NewValue->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\new_correct.sw");;
+	memo[TabCount]->PopupMenu = PopupMenu2;
+	memo[TabCount]->OnClick = MemoClick;
+	memo[TabCount]->OnKeyPress = MemoKeyPress;
+	Form1->StatusBar1->Panels->Items[2]->Text = "Lua Script Color";
+	memo[TabCount]->Clear();
+	TabCount++;
+	actbtn();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::lua2Click(TObject *Sender)
 {
-//создаем новый файл формата *.lua
-Form1->lua1->Click();
+	//создаем новый файл формата *.lua
+	Form1->lua1->Click();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::lua3Click(TObject *Sender)
 {
- //меняем подсветку синтаксиса на  Lua Script Color
-Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles=AdvPascalMemoStyler1;
-Form1->StatusBar1->Panels->Items[2]->Text="Lua Script Color";
+	//меняем подсветку синтаксиса на  Lua Script Color
+	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles=AdvPascalMemoStyler1;
+	Form1->StatusBar1->Panels->Items[2]->Text = "Lua Script Color";
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::MemoClick(TObject *Sender)
-{ //отображаем номер строки и символа в строке состояния
-Form1->StatusBar1->Panels->Items[3]->Text=memo[AdvPageControl1->ActivePageIndex]->SelStart;
-Form1->StatusBar1->Panels->Items[3]->Text=memo[AdvPageControl1->ActivePageIndex]->CurX+1;
-Form1->StatusBar1->Panels->Items[4]->Text=memo[AdvPageControl1->ActivePageIndex]->SelStart;
-Form1->StatusBar1->Panels->Items[4]->Text=memo[AdvPageControl1->ActivePageIndex]->CurY+1;
+{ 
+	//отображаем номер строки и символа в строке состояния
+	Form1->StatusBar1->Panels->Items[3]->Text = memo[AdvPageControl1->ActivePageIndex]->SelStart;
+	Form1->StatusBar1->Panels->Items[3]->Text = memo[AdvPageControl1->ActivePageIndex]->CurX+1;
+	Form1->StatusBar1->Panels->Items[4]->Text = memo[AdvPageControl1->ActivePageIndex]->SelStart;
+	Form1->StatusBar1->Panels->Items[4]->Text = memo[AdvPageControl1->ActivePageIndex]->CurY+1;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::MemoKeyPress(TObject *Sender, wchar_t &Key)
-{ //отображаем номер строки и символа в строке состояния
-Form1->StatusBar1->Panels->Items[3]->Text=memo[AdvPageControl1->ActivePageIndex]->SelStart;
-Form1->StatusBar1->Panels->Items[3]->Text=memo[AdvPageControl1->ActivePageIndex]->CurX+1;
-Form1->StatusBar1->Panels->Items[4]->Text=memo[AdvPageControl1->ActivePageIndex]->SelStart;
-Form1->StatusBar1->Panels->Items[4]->Text=memo[AdvPageControl1->ActivePageIndex]->CurY+1;
+{ 
+	//отображаем номер строки и символа в строке состояния
+	Form1->StatusBar1->Panels->Items[3]->Text = memo[AdvPageControl1->ActivePageIndex]->SelStart;
+	Form1->StatusBar1->Panels->Items[3]->Text = memo[AdvPageControl1->ActivePageIndex]->CurX+1;
+	Form1->StatusBar1->Panels->Items[4]->Text = memo[AdvPageControl1->ActivePageIndex]->SelStart;
+	Form1->StatusBar1->Panels->Items[4]->Text = memo[AdvPageControl1->ActivePageIndex]->CurY+1;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ListBox4DblClick(TObject *Sender)
 {
-//выполняем вставку выбранного значения в текст
-for(int i = 0; i < ListBox4->Items->Count; i++)
-if(ListBox4->Selected[i])
-Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox4->Items->Strings[i]);
+	//выполняем вставку выбранного значения в текст
+	for (int i = 0; i < ListBox4->Items->Count; i++)
+		if (ListBox4->Selected[i])
+			Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox4->Items->Strings[i]);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ListBox5DblClick(TObject *Sender)
 {
-//Вставляем выбранное значение в текстовую область
-for(int i = 0; i < ListBox5->Items->Count; i++)
-if(ListBox5->Selected[i])
-Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox5->Items->Strings[i]);
+	//Вставляем выбранное значение в текстовую область
+	for (int i = 0; i < ListBox5->Items->Count; i++)
+		if (ListBox5->Selected[i])
+			Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox5->Items->Strings[i]);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ListBox3DblClick(TObject *Sender)
-{ //Вставляем выбранное значение в текстовую область
-for(int i = 0; i < ListBox3->Items->Count; i++)
-if(ListBox3->Selected[i])
-Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox3->Items->Strings[i]);
+{ 
+	//Вставляем выбранное значение в текстовую область
+	for (int i = 0; i < ListBox3->Items->Count; i++)
+		if (ListBox3->Selected[i])
+			Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox3->Items->Strings[i]);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ListBox2DblClick(TObject *Sender)
 {
- //Вставляем выбранное значение в текстовую область
-for(int i = 0; i < ListBox2->Items->Count; i++)
-if(ListBox2->Selected[i])
-Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox2->Items->Strings[i]);
+	//Вставляем выбранное значение в текстовую область
+	for (int i = 0; i < ListBox2->Items->Count; i++)
+		if (ListBox2->Selected[i])
+			Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText(Form1->ListBox2->Items->Strings[i]);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormCloseQuery(TObject *Sender, bool &CanClose)
-{ //проверяем перед сохранением вкладки
-
-      CanClose = true;
-     	for(int i = 0; i < AdvPageControl1->PageCount; ++i)
-     	{
-     		if(memo[i]->Modified)
-     		{
-	 int code =MessageBox(Handle,(AnsiString(ms9) + AdvPageControl1->Pages[i]->Caption+String(" ?")).c_str(),"", MB_ICONQUESTION | MB_YESNOCANCEL);
-				if(code == IDCANCEL)
-     			{
-     				CanClose = false;
-     				break;
-     			}
-     			if(code == IDYES)
-     			{
-     				N14Click(Sender);
-     			}
+{ 
+	//проверяем перед сохранением вкладки
+	CanClose = true;
+	for (int i = 0; i < AdvPageControl1->PageCount; ++i) {
+		if (memo[i]->Modified) {
+			int code = MessageBox(Handle,(AnsiString(ms9) + AdvPageControl1->Pages[i]->Caption+String(" ?")).c_str(),"", MB_ICONQUESTION | MB_YESNOCANCEL);
+			if (code == IDCANCEL) {
+				CanClose = false;
+				break;
 			}
-     	}
- }
+			if (code == IDYES) {
+				N14Click(Sender);
+			}
+		}
+	}
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image14Click(TObject *Sender)
-{   //вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sugar,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    sugar,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sugar");}
+{   
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sugar,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    sugar,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sugar");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -2328,37 +2340,46 @@ if(RadioButton1->Checked)     {
 
 void __fastcall TForm1::Image25Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    camels,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    camels,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("camels");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image36Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("goods,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    goods,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("goods");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("goods,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    goods,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("goods");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image9Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tobacco,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tobacco,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tobacco");
+	}
 }
 //---------------------------------------------------------------------------
 
