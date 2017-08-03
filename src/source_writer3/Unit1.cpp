@@ -231,26 +231,26 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::N1Click(TObject *Sender)
 {
-//Закрываем активную вкладку из попапменню
-if ( AdvPageControl1->ActivePage != NULL) {
-	for (int i=0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
-		if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
-		   AdvPageControl1->ActivePage->Components[i]->Free();
-		   TabCount--;
-		   tab--;
+	//Закрываем активную вкладку из попапменню
+	if ( AdvPageControl1->ActivePage != NULL) {
+		for (int i = 0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
+			if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
+				AdvPageControl1->ActivePage->Components[i]->Free();
+				TabCount--;
+				tab--;
+			}
+			if (tab == 0)
+				noactbtn();
 		}
-	if (tab==0)
-		noactbtn();
 	}
-}
-delete AdvPageControl1->ActivePage;
+	delete AdvPageControl1->ActivePage;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ToolButton8Click(TObject *Sender)
 {
-//удаляем с панели инструментов
-memo[AdvPageControl1->ActivePageIndex]->ClearSelection();
+	//удаляем с панели инструментов
+	memo[AdvPageControl1->ActivePageIndex]->ClearSelection();
 }
 //---------------------------------------------------------------------------
 
