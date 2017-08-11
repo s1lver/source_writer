@@ -25,35 +25,35 @@ __fastcall TOptions::TOptions(TComponent* Owner)
 {
 	//загружаем значения опции
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
-	Options->RadioButton1->Checked = Ini->ReadBool("Macros","Norm",0);
-	Options->RadioButton2->Checked = Ini->ReadBool("Macros","Fast",0);
-	Options->RadioButton3->Checked = Ini->ReadBool("Macros","Sys",0);
-	Options->RadioButton4->Checked = Ini->ReadBool("Macros","App",0);
-	Options->CheckBox4->Checked = Ini->ReadBool("Other","Close",0);
-	Options->CheckBox1->Checked = Ini->ReadBool("Other","Default",0);
-	Options->Edit1->Text = Ini->ReadString("Game","Lok1","");
-	Options->RadioButton8->Checked = Ini->ReadBool("Game","game1",0);
-	Options->RadioButton9->Checked = Ini->ReadBool("Game","game2",0);
-	Options->RadioButton10->Checked = Ini->ReadBool("Game","mod1",0);
-	Options->RadioButton11->Checked = Ini->ReadBool("Game","mod2",0);
+	Options->RadioButton1->Checked = Ini->ReadBool("Macros", "Norm", 0);
+	Options->RadioButton2->Checked = Ini->ReadBool("Macros", "Fast", 0);
+	Options->RadioButton3->Checked = Ini->ReadBool("Macros", "Sys", 0);
+	Options->RadioButton4->Checked = Ini->ReadBool("Macros", "App", 0);
+	Options->CheckBox4->Checked = Ini->ReadBool("Other", "Close", 0);
+	Options->CheckBox1->Checked = Ini->ReadBool("Other", "Default", 0);
+	Options->Edit1->Text = Ini->ReadString("Game", "Lok1", "");
+	Options->RadioButton8->Checked = Ini->ReadBool("Game", "game1", 0);
+	Options->RadioButton9->Checked = Ini->ReadBool("Game", "game2", 0);
+	Options->RadioButton10->Checked = Ini->ReadBool("Game", "mod1", 0);
+	Options->RadioButton11->Checked = Ini->ReadBool("Game", "mod2", 0);
 	//значения языков
-	Options->RadioButton5->Checked = Ini->ReadBool("Lang","ru",0);
-	Options->RadioButton6->Checked = Ini->ReadBool("Lang","ua",0);
-	Options->RadioButton7->Checked = Ini->ReadBool("Lang","gb",0);
-	Options->CheckBox18->Checked = Ini->ReadBool("Lang","user",0);
+	Options->RadioButton5->Checked = Ini->ReadBool("Lang", "ru", 0);
+	Options->RadioButton6->Checked = Ini->ReadBool("Lang", "ua", 0);
+	Options->RadioButton7->Checked = Ini->ReadBool("Lang", "gb", 0);
+	Options->CheckBox18->Checked = Ini->ReadBool("Lang", "user", 0);
 	//общие значения
-	Options->CheckBox5->Checked = Ini->ReadBool("general","save",0);
-	Options->Edit2->Text = Ini->ReadString("general","time","");
+	Options->CheckBox5->Checked = Ini->ReadBool("general", "save", 0);
+	Options->Edit2->Text = Ini->ReadString("general", "time", "");
 	//значения автообновления
-	Options->CheckBox14->Checked = Ini->ReadBool("update","log",0);
-	Options->Edit3->Text = Ini->ReadString("update","port",0);
-	Options->CheckBox15->Checked = Ini->ReadBool("update","start",0);
-	Options->CheckBox16->Checked = Ini->ReadBool("update","run",0);
-	Options->CheckBox17->Checked = Ini->ReadBool("update","auto",0);
-	Options->CheckBox19->Checked = Ini->ReadBool("update","use",0);
-	Options->Edit4->Text = Ini->ReadString("update","proxy","");
-	Options->Edit5->Text = Ini->ReadString("update","proxyuser","");
-	Options->Edit6->Text = Ini->ReadString("update","proxypass","");
+	Options->CheckBox14->Checked = Ini->ReadBool("update", "log", 0);
+	Options->Edit3->Text = Ini->ReadString("update", "port", 0);
+	Options->CheckBox15->Checked = Ini->ReadBool("update", "start", 0);
+	Options->CheckBox16->Checked = Ini->ReadBool("update", "run", 0);
+	Options->CheckBox17->Checked = Ini->ReadBool("update", "auto", 0);
+	Options->CheckBox19->Checked = Ini->ReadBool("update", "use", 0);
+	Options->Edit4->Text = Ini->ReadString("update", "proxy", "");
+	Options->Edit5->Text = Ini->ReadString("update", "proxyuser", "");
+	Options->Edit6->Text = Ini->ReadString("update", "proxypass", "");
 	//delete Ini;
 	//языковая функция формы
 }

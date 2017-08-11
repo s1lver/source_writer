@@ -23,7 +23,7 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	//плавно сворачиваем при закрытии
-	TRect r1,r2;
+	TRect r1, r2;
 	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
@@ -33,7 +33,7 @@ void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 void __fastcall TForm3::FormCreate(TObject *Sender)
 {
 	//плавно разворачиваем при открытии
-	TRect r1,r2;
+	TRect r1, r2;
 	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);

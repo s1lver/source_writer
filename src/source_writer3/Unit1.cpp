@@ -124,108 +124,108 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
 	}
 	//главное меню
-	Form1->N6->Caption = Ini->ReadString("menu","btnmenu1","");
-	Form1->N7->Caption = Ini->ReadString("menu","btnmenu2","");
-	Form1->N8->Caption = Ini->ReadString("menu","btnmenu3","");
-	Form1->N9->Caption = Ini->ReadString("menu","btnmenu4","");
-	Form1->N10->Caption = Ini->ReadString("menu","btnmenu5","");
-	Form1->N12->Caption = Ini->ReadString("menu","btnmenu6","");
-	Form1->N13->Caption = Ini->ReadString("menu","btnmenu7","");
-	Form1->N14->Caption = Ini->ReadString("menu","btnmenu8","");
-	Form1->N29->Caption = Ini->ReadString("menu","btnmenu9","");
-	Form1->N31->Caption = Ini->ReadString("menu","btnmenu10","");
-	Form1->N16->Caption = Ini->ReadString("menu","btnmenu11","");
-	Form1->N60->Caption = Ini->ReadString("menu","btnmenu12","");
-	Form1->N18->Caption = Ini->ReadString("menu","btnmenu13","");
-	Form1->N19->Caption = Ini->ReadString("menu","btnmenu14","");
-	Form1->N22->Caption = Ini->ReadString("menu","btnmenu15","");
-	Form1->N23->Caption = Ini->ReadString("menu","btnmenu16","");
-	Form1->N24->Caption = Ini->ReadString("menu","btnmenu17","");
-	Form1->N25->Caption = Ini->ReadString("menu","btnmenu18","");
-	Form1->N27->Caption = Ini->ReadString("menu","btnmenu19","");
-	Form1->N28->Caption = Ini->ReadString("menu","btnmenu20","");
-	Form1->N34->Caption = Ini->ReadString("menu","btnmenu21","");
-	Form1->N35->Caption = Ini->ReadString("menu","btnmenu22","");
-	Form1->N70->Caption = Ini->ReadString("menu","btnmenu23","");
-	Form1->N21->Caption = Ini->ReadString("menu","btnmenu24","");
-	Form1->N40->Caption = Ini->ReadString("menu","btnmenu25","");
-	Form1->N62->Caption = Ini->ReadString("menu","btnmenu26","");
-	Form1->N73->Caption = Ini->ReadString("menu","btnmenu27","");
-	Form1->N45->Caption = Ini->ReadString("menu","btnmenu28","");
-	Form1->N72->Caption = Ini->ReadString("menu","btnmenu29","");
-	Form1->N46->Caption = Ini->ReadString("menu","btnmenu30","");
-	Form1->N39->Caption = Ini->ReadString("menu","btnmenu31","");
-	Form1->N54->Caption = Ini->ReadString("menu","btnmenu32","");
-	Form1->N65->Caption = Ini->ReadString("menu","btnmenu33","");
-	Form1->N66->Caption = Ini->ReadString("menu","btnmenu34","");
-	Form1->N32->Caption = Ini->ReadString("menu","btnmenu35","");
-	Form1->N55->Caption = Ini->ReadString("menu","btnmenu36","");
-	Form1->N69->Caption = Ini->ReadString("menu","btnmenu37","");
-	Form1->N67->Caption = Ini->ReadString("menu","btnmenu38","");
-	Form1->N41->Caption = Ini->ReadString("menu","btnmenu39","");
-	Form1->N17->Caption = Ini->ReadString("menu","btnmenu40","");
-	Form1->N57->Caption = Ini->ReadString("menu","btnmenu41","");
-	Form1->N43->Caption = Ini->ReadString("menu","btnmenu42","");
-	Form1->N80->Caption = Ini->ReadString("menu","btnmenu43","");
-	Form1->N83->Caption = Ini->ReadString("menu","btnmenu44","");
-	Form1->N59->Caption = Ini->ReadString("menu","btnmenu45","");
+	Form1->N6->Caption = Ini->ReadString("menu", "btnmenu1", "");
+	Form1->N7->Caption = Ini->ReadString("menu", "btnmenu2", "");
+	Form1->N8->Caption = Ini->ReadString("menu", "btnmenu3", "");
+	Form1->N9->Caption = Ini->ReadString("menu", "btnmenu4", "");
+	Form1->N10->Caption = Ini->ReadString("menu", "btnmenu5", "");
+	Form1->N12->Caption = Ini->ReadString("menu", "btnmenu6", "");
+	Form1->N13->Caption = Ini->ReadString("menu", "btnmenu7", "");
+	Form1->N14->Caption = Ini->ReadString("menu", "btnmenu8", "");
+	Form1->N29->Caption = Ini->ReadString("menu", "btnmenu9", "");
+	Form1->N31->Caption = Ini->ReadString("menu", "btnmenu10", "");
+	Form1->N16->Caption = Ini->ReadString("menu", "btnmenu11", "");
+	Form1->N60->Caption = Ini->ReadString("menu", "btnmenu12", "");
+	Form1->N18->Caption = Ini->ReadString("menu", "btnmenu13", "");
+	Form1->N19->Caption = Ini->ReadString("menu", "btnmenu14", "");
+	Form1->N22->Caption = Ini->ReadString("menu", "btnmenu15", "");
+	Form1->N23->Caption = Ini->ReadString("menu", "btnmenu16", "");
+	Form1->N24->Caption = Ini->ReadString("menu", "btnmenu17", "");
+	Form1->N25->Caption = Ini->ReadString("menu", "btnmenu18", "");
+	Form1->N27->Caption = Ini->ReadString("menu", "btnmenu19", "");
+	Form1->N28->Caption = Ini->ReadString("menu", "btnmenu20", "");
+	Form1->N34->Caption = Ini->ReadString("menu", "btnmenu21", "");
+	Form1->N35->Caption = Ini->ReadString("menu", "btnmenu22", "");
+	Form1->N70->Caption = Ini->ReadString("menu", "btnmenu23", "");
+	Form1->N21->Caption = Ini->ReadString("menu", "btnmenu24", "");
+	Form1->N40->Caption = Ini->ReadString("menu", "btnmenu25", "");
+	Form1->N62->Caption = Ini->ReadString("menu", "btnmenu26", "");
+	Form1->N73->Caption = Ini->ReadString("menu", "btnmenu27", "");
+	Form1->N45->Caption = Ini->ReadString("menu", "btnmenu28", "");
+	Form1->N72->Caption = Ini->ReadString("menu", "btnmenu29", "");
+	Form1->N46->Caption = Ini->ReadString("menu", "btnmenu30", "");
+	Form1->N39->Caption = Ini->ReadString("menu", "btnmenu31", "");
+	Form1->N54->Caption = Ini->ReadString("menu", "btnmenu32", "");
+	Form1->N65->Caption = Ini->ReadString("menu", "btnmenu33", "");
+	Form1->N66->Caption = Ini->ReadString("menu", "btnmenu34", "");
+	Form1->N32->Caption = Ini->ReadString("menu", "btnmenu35", "");
+	Form1->N55->Caption = Ini->ReadString("menu", "btnmenu36", "");
+	Form1->N69->Caption = Ini->ReadString("menu", "btnmenu37", "");
+	Form1->N67->Caption = Ini->ReadString("menu", "btnmenu38", "");
+	Form1->N41->Caption = Ini->ReadString("menu", "btnmenu39", "");
+	Form1->N17->Caption = Ini->ReadString("menu", "btnmenu40", "");
+	Form1->N57->Caption = Ini->ReadString("menu", "btnmenu41", "");
+	Form1->N43->Caption = Ini->ReadString("menu", "btnmenu42", "");
+	Form1->N80->Caption = Ini->ReadString("menu", "btnmenu43", "");
+	Form1->N83->Caption = Ini->ReadString("menu", "btnmenu44", "");
+	Form1->N59->Caption = Ini->ReadString("menu", "btnmenu45", "");
 	//панели инструментов
-	Form1->CategoryPanel4->Caption = Ini->ReadString("tools","tl1","");
-	Form1->CategoryPanel6->Caption = Ini->ReadString("tools","tl2","");
-	Form1->CategoryPanel7->Caption = Ini->ReadString("tools","tl3","");
-	Form1->CategoryPanel8->Caption = Ini->ReadString("tools","tl4","");
-	Form1->AdvTabSheet2->Caption = Ini->ReadString("tools","tl5","");
-	Form1->AdvTabSheet3->Caption = Ini->ReadString("tools","tl6","");
-	Form1->AdvTabSheet4->Caption = Ini->ReadString("tools","tl7","");
-	Form1->CategoryPanel5->Caption = Ini->ReadString("tools","tl8","");
-	Form1->CategoryPanel9->Caption = Ini->ReadString("menu","btnmenu26","");
-	Form1->SpeedButton6->Caption = Ini->ReadString("menu","btnmenu51","");
+	Form1->CategoryPanel4->Caption = Ini->ReadString("tools", "tl1", "");
+	Form1->CategoryPanel6->Caption = Ini->ReadString("tools", "tl2", "");
+	Form1->CategoryPanel7->Caption = Ini->ReadString("tools", "tl3", "");
+	Form1->CategoryPanel8->Caption = Ini->ReadString("tools", "tl4", "");
+	Form1->AdvTabSheet2->Caption = Ini->ReadString("tools", "tl5", "");
+	Form1->AdvTabSheet3->Caption = Ini->ReadString("tools", "tl6", "");
+	Form1->AdvTabSheet4->Caption = Ini->ReadString("tools", "tl7", "");
+	Form1->CategoryPanel5->Caption = Ini->ReadString("tools", "tl8", "");
+	Form1->CategoryPanel9->Caption = Ini->ReadString("menu", "btnmenu26", "");
+	Form1->SpeedButton6->Caption = Ini->ReadString("menu", "btnmenu51", "");
 	//гобальные значения
-	Form1->AdvTabSheet1->Caption = Ini->ReadString("global","gl1","");
-	Form1->GroupBox1->Caption = Ini->ReadString("global","gl2","");
-	Form1->RadioButton1->Caption = Ini->ReadString("global","gl3","");
-	Form1->RadioButton2->Caption = Ini->ReadString("global","gl4","");
-	Form1->RadioButton3->Caption = Ini->ReadString("global","gl5","");
-	Form1->Label1->Caption = Ini->ReadString("global","gl6","");
-	Form1->N36->Caption = Ini->ReadString("global","gl8","");
-	Form1->N38->Caption = Ini->ReadString("menu","btnmenu21","");
-	Form1->AdvTabSet1->AdvTabs->Items[0]->Caption = Ini->ReadString("global","gl7","");
+	Form1->AdvTabSheet1->Caption = Ini->ReadString("global", "gl1", "");
+	Form1->GroupBox1->Caption = Ini->ReadString("global", "gl2", "");
+	Form1->RadioButton1->Caption = Ini->ReadString("global", "gl3", "");
+	Form1->RadioButton2->Caption = Ini->ReadString("global", "gl4", "");
+	Form1->RadioButton3->Caption = Ini->ReadString("global", "gl5", "");
+	Form1->Label1->Caption = Ini->ReadString("global", "gl6", "");
+	Form1->N36->Caption = Ini->ReadString("global", "gl8", "");
+	Form1->N38->Caption = Ini->ReadString("menu", "btnmenu21", "");
+	Form1->AdvTabSet1->AdvTabs->Items[0]->Caption = Ini->ReadString("global", "gl7", "");
 	//систрей
-	Form1->N48->Caption = Ini->ReadString("menu","btnmenu11","");
-	Form1->N52->Caption = Ini->ReadString("menu","btnmenu42","");
-	Form1->N53->Caption = Ini->ReadString("menu","btnmenu41","");
-	Form1->N50->Caption = Ini->ReadString("menu","btnmenu46","");
-	Form1->N47->Caption = Ini->ReadString("menu","btnmenu47","");
+	Form1->N48->Caption = Ini->ReadString("menu", "btnmenu11", "");
+	Form1->N52->Caption = Ini->ReadString("menu", "btnmenu42", "");
+	Form1->N53->Caption = Ini->ReadString("menu", "btnmenu41", "");
+	Form1->N50->Caption = Ini->ReadString("menu", "btnmenu46", "");
+	Form1->N47->Caption = Ini->ReadString("menu", "btnmenu47", "");
 	//сообщения
-	ms1 = Ini->ReadString("msg","ms1","");
-	ms2 = Ini->ReadString("msg","ms2","");
-	ms3 = Ini->ReadString("msg","ms3","");
-	ms4 = Ini->ReadString("msg","ms4","");
-	ms5 = Ini->ReadString("msg","ms5","");
-	ms6 = Ini->ReadString("msg","ms6","");
-	ms7 = Ini->ReadString("msg","ms7","");
-	ms8 = Ini->ReadString("msg","ms8","");
-	ms9 = Ini->ReadString("msg","ms9","");
+	ms1 = Ini->ReadString("msg", "ms1", "");
+	ms2 = Ini->ReadString("msg", "ms2", "");
+	ms3 = Ini->ReadString("msg", "ms3", "");
+	ms4 = Ini->ReadString("msg", "ms4", "");
+	ms5 = Ini->ReadString("msg", "ms5", "");
+	ms6 = Ini->ReadString("msg", "ms6", "");
+	ms7 = Ini->ReadString("msg", "ms7", "");
+	ms8 = Ini->ReadString("msg", "ms8", "");
+	ms9 = Ini->ReadString("msg", "ms9", "");
 	//контекстное меню
-	Form1->N3->Caption = Ini->ReadString("menu","btnmenu15","");
-	Form1->N2->Caption = Ini->ReadString("menu","btnmenu16","");
-	Form1->N4->Caption = Ini->ReadString("menu","btnmenu17","");
-	Form1->N5->Caption = Ini->ReadString("menu","btnmenu18","");
-	Form1->N74->Caption = Ini->ReadString("menu","btnmenu48","");
-	Form1->N75->Caption = Ini->ReadString("menu","btnmenu49","");
-	Form1->N63->Caption = Ini->ReadString("menu","btnmenu50","");
+	Form1->N3->Caption = Ini->ReadString("menu", "btnmenu15", "");
+	Form1->N2->Caption = Ini->ReadString("menu", "btnmenu16", "");
+	Form1->N4->Caption = Ini->ReadString("menu", "btnmenu17", "");
+	Form1->N5->Caption = Ini->ReadString("menu", "btnmenu18", "");
+	Form1->N74->Caption = Ini->ReadString("menu", "btnmenu48", "");
+	Form1->N75->Caption = Ini->ReadString("menu", "btnmenu49", "");
+	Form1->N63->Caption = Ini->ReadString("menu", "btnmenu50", "");
 	//хинты
-	Form1->ToolButton1->Hint = Ini->ReadString("menu","btnmenu6","");
-	Form1->ToolButton2->Hint = Ini->ReadString("menu","btnmenu7","");
-	Form1->ToolButton3->Hint = Ini->ReadString("menu","btnmenu8","");
-	Form1->ToolButton5->Hint = Ini->ReadString("menu","btnmenu15","");
-	Form1->ToolButton6->Hint = Ini->ReadString("menu","btnmenu16","");
-	Form1->ToolButton7->Hint = Ini->ReadString("menu","btnmenu17","");
-	Form1->ToolButton8->Hint = Ini->ReadString("menu","btnmenu18","");
-	Form1->ToolButton10->Hint = Ini->ReadString("menu","btnmenu14","");
-	Form1->ToolButton11->Hint = Ini->ReadString("menu","btnmenu13","");
-	Form1->ToolButton13->Hint = Ini->ReadString("menu","btnmenu21","");
-	Form1->ToolButton14->Hint = Ini->ReadString("hint","ht1","");
+	Form1->ToolButton1->Hint = Ini->ReadString("menu", "btnmenu6", "");
+	Form1->ToolButton2->Hint = Ini->ReadString("menu", "btnmenu7", "");
+	Form1->ToolButton3->Hint = Ini->ReadString("menu", "btnmenu8", "");
+	Form1->ToolButton5->Hint = Ini->ReadString("menu", "btnmenu15", "");
+	Form1->ToolButton6->Hint = Ini->ReadString("menu", "btnmenu16", "");
+	Form1->ToolButton7->Hint = Ini->ReadString("menu", "btnmenu17", "");
+	Form1->ToolButton8->Hint = Ini->ReadString("menu", "btnmenu18", "");
+	Form1->ToolButton10->Hint = Ini->ReadString("menu", "btnmenu14", "");
+	Form1->ToolButton11->Hint = Ini->ReadString("menu", "btnmenu13", "");
+	Form1->ToolButton13->Hint = Ini->ReadString("menu", "btnmenu21", "");
+	Form1->ToolButton14->Hint = Ini->ReadString("hint", "ht1", "");
 }
 //---------------------------------------------------------------------------
 
@@ -589,8 +589,8 @@ void __fastcall TForm1::N14Click(TObject *Sender)
 void __fastcall TForm1::N21Click(TObject *Sender)
 {
 	//открываем второе окно
-	N21->Checked=!N21->Checked;
-	AdvPageControl2->Visible=N21->Checked;
+	N21->Checked =!N21->Checked;
+	AdvPageControl2->Visible = N21->Checked;
 }
 //---------------------------------------------------------------------------
 
@@ -704,7 +704,7 @@ void __fastcall TForm1::N32Click(TObject *Sender)
 void __fastcall TForm1::ToolButton13Click(TObject *Sender)
 {
 	//производим поиск с панели инструментов
-	AdvMemoFindDialog1->AdvMemo=memo[AdvPageControl1->ActivePageIndex];
+	AdvMemoFindDialog1->AdvMemo = memo[AdvPageControl1->ActivePageIndex];
 	AdvMemoFindDialog1->Execute();
 }
 //---------------------------------------------------------------------------
@@ -712,7 +712,7 @@ void __fastcall TForm1::ToolButton13Click(TObject *Sender)
 void __fastcall TForm1::N34Click(TObject *Sender)
 {
 	//производим поиск из главного меню
-	AdvMemoFindDialog1->AdvMemo=memo[AdvPageControl1->ActivePageIndex];
+	AdvMemoFindDialog1->AdvMemo = memo[AdvPageControl1->ActivePageIndex];
 	AdvMemoFindDialog1->Execute();
 }
 //---------------------------------------------------------------------------
@@ -755,7 +755,7 @@ void __fastcall TForm1::N36Click(TObject *Sender)
 void __fastcall TForm1::N38Click(TObject *Sender)
 {
 	//поиск в сравнении скриптов
-	Form1->AdvMemoFindDialog1->AdvMemo=Form1->AdvMemo1;
+	Form1->AdvMemoFindDialog1->AdvMemo = Form1->AdvMemo1;
 	Form1->AdvMemoFindDialog1->Execute();
 }
 //---------------------------------------------------------------------------
@@ -763,15 +763,15 @@ void __fastcall TForm1::N38Click(TObject *Sender)
 void __fastcall TForm1::N39Click(TObject *Sender)
 {
 	//открываем окно вставки ресурсов
-	N39->Checked=!N39->Checked;
-	CategoryPanelGroup1->Visible=N39->Checked;
+	N39->Checked =!N39->Checked;
+	CategoryPanelGroup1->Visible = N39->Checked;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::N40Click(TObject *Sender)
 {
 	//открываем окно вставки ресурсов
-	N40->Checked=!N40->Checked;
+	N40->Checked =!N40->Checked;
 	CategoryPanelGroup2->Visible = N40->Checked;
 	CategoryPanel4->Collapsed = false;
 }
@@ -816,11 +816,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	//задаем параметры прокси
 	usee = Ini->ReadInteger("update", "use", 0);
 	if (usee == 1) {
-		proxy=Ini->ReadInteger("update", "proxy", 0);
+		proxy = Ini->ReadInteger("update", "proxy", 0);
 		Form1->WebUpdate1->Proxy = proxy;
-		proxypass=Ini->ReadInteger("update", "proxypass", 0);
+		proxypass = Ini->ReadInteger("update", "proxypass", 0);
 		Form1->WebUpdate1->ProxyPassword = proxypass;
-		proxyuser=Ini->ReadInteger("update", "proxyuser", 0);
+		proxyuser = Ini->ReadInteger("update", "proxyuser", 0);
 		Form1->WebUpdate1->ProxyUserID = proxyuser;
 	}
 	//загружаем значения макрорекордера
@@ -1051,23 +1051,29 @@ void __fastcall TForm1::Image43Click(TObject *Sender)
 
 void __fastcall TForm1::Image44Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       elephants,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       elephants,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image45Click(TObject *Sender)
 {
-  if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       fur,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       fur,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -2316,25 +2322,30 @@ if(RadioButton1->Checked)     {
 
 void __fastcall TForm1::Image11Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wool,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wool,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image38Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wild_animals,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wild_animals,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals");}
 }
 //---------------------------------------------------------------------------
 
@@ -2408,7 +2419,7 @@ void __fastcall TForm1::Label1Click(TObject *Sender)
 void __fastcall TForm1::AdvPageControl1Change(TObject *Sender)
 {
 	//отображаем в статус баре текущей путь к файлу
-	StatusBar1->Panels->Items[0]->Text=OpenDialog1->FileName;
+	StatusBar1->Panels->Items[0]->Text = OpenDialog1->FileName;
 }
 //---------------------------------------------------------------------------
 
@@ -2586,7 +2597,7 @@ void __fastcall TForm1::N58Click(TObject *Sender)
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
 	//автоматическое сохранение
-	if ( AdvPageControl1->ActivePage != NULL) {
+	if (AdvPageControl1->ActivePage != NULL) {
 		for (int i = 0; i < AdvPageControl1->ActivePage->ComponentCount; i++) {
 			if (String(AdvPageControl1->ActivePage->Components[i]->ClassName()) == "TAdvMemo") {
 				TAdvMemo *memo = (TAdvMemo *)AdvPageControl1->ActivePage->Components[i];

@@ -86,20 +86,17 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)
 	} else
 		Form2->Label1->Caption = "Инициализация коррекции...";
 
-
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\events.sw") == false) {  
 		ShowMessage("Не найдена библиотека событий");
 		Application->Terminate();
 	} else
 		Form2->Label1->Caption = "Инициализация событий...";
 
-
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\function.sw") == false) {  
 		ShowMessage("Не найдена библиотека функции");
 		Application->Terminate();
 	} else
 		Form2->Label1->Caption = "Инициализация функции...";
-
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\conditions.sw") == false) {  
 		ShowMessage("Не найдена библиотека");
@@ -121,13 +118,11 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)
 	} else
 		Form2->Label1->Caption = "Инициализация макросов...";
 
-
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw") == false) {  
 		ShowMessage("Ошибка запуска модулей");
 		Application->Terminate();
 	} else
 		Form2->Label1->Caption = "Инициализация модулей...";
-
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw") == false) {  
 		ShowMessage("Ошибка запуска объектов");
@@ -135,20 +130,17 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)
 	} else
 		Form2->Label1->Caption = "Инициализация объектов...";
 
-
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\eng.lng") == false) {  
 		ShowMessage("Не найден языковой файл");
 		Application->Terminate();
 	} else
 		Form2->Label1->Caption = "Загрузка языков";
 
-
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng") == false) {  
 		ShowMessage("Не найден языковой файл");
 		Application->Terminate();
 	} else
 		Form2->Label1->Caption = "Загрузка языков";
-
 
 	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\ua.lng") == false) {  
 		ShowMessage("Не найден языковой файл");
@@ -158,4 +150,3 @@ void __fastcall TForm2::Timer1Timer(TObject *Sender)
 	Form2->Close();
 }
 //---------------------------------------------------------------------------
-
