@@ -2286,37 +2286,46 @@ if(RadioButton1->Checked)     {
 
 void __fastcall TForm1::Image7Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    marble,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    marble,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image21Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    coal,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    coal,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image22Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("spices,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    spices,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("spices");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("spices,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    spices,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("spices");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -2740,7 +2749,7 @@ void __fastcall TForm1::Unpacker1Click(TObject *Sender)
 
 void __fastcall TForm1::SpeedButton6Click(TObject *Sender)
 {
-	if(CheckBox1->Checked) {
+	if (CheckBox1->Checked) {
 		error();
 	} else
 		//проверяем текст скрипта
@@ -2820,7 +2829,7 @@ void TForm1::win1251(void)
 //функция доступа к библиотеки error.dll
 void TForm1::error(void)
 {
-	if(FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\error.dll") == false) {
+	if (FileExists(ExtractFilePath(Application->ExeName)+"\\Data\\error.dll") == false) {
 		ShowMessage("Не найдена библиотека ошибок");
 	}
 }
