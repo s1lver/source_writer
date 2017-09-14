@@ -1079,280 +1079,352 @@ void __fastcall TForm1::Image45Click(TObject *Sender)
 
 void __fastcall TForm1::Image46Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       glass,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       glass,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image47Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       gold,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       gold,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image48Click(TObject *Sender)
 {
-  if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       grain,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       grain,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image49Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       hides,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       hides,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image50Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       incense,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       incense,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image51Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       iron,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       iron,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image52Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       lead,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       lead,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image53Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       marble,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       marble,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("marble");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image54Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       olive_oil,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       olive_oil,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image55Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       pigs,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       pigs,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image56Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       pottery,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery");}
+	if(RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       pottery,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image57Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       purple_dye,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       purple_dye,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image58Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       silk,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       silk,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image59Click(TObject *Sender)
 {
-  if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       silver,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       silver,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image60Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       slaves,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       slaves,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image61Click(TObject *Sender)
 {
-  if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       textiles,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles");}
+	if(RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       textiles,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image62Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       timber,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       timber,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image63Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       tin,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       tin,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image64Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       wild_animals,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       wild_animals,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wild_animals");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image65Click(TObject *Sender)
 {
- if(RadioButton1->Checked)
-{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine,");}
-   if(RadioButton2->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       wine,");}
-  if (RadioButton3->Checked)
-  { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource       wine,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image1Click(TObject *Sender)
-{ //вставка Medieval2
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    gold,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold");
-  }
+{ 
+	//вставка Medieval2
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    gold,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("gold");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image2Click(TObject *Sender)
 {
-if(RadioButton1->Checked)
-{    Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver,");
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver,");
 	}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    silver,");}
-	if (RadioButton3->Checked)
-	{Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver");}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    silver,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silver");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image3Click(TObject *Sender)
 {
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    amber,");}
-   if (RadioButton3->Checked)
-   { Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    amber,");
+	}
+	if (RadioButton3->Checked) { 
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image4Click(TObject *Sender)
 {
- if(RadioButton1->Checked)      {
-  Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("cotton,");}
-   if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    cotton,");}
- if (RadioButton3->Checked)
- {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("cotton");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("cotton,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    cotton,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("cotton");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image5Click(TObject *Sender)
 {
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("furs,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    furs,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("furs");}
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("furs,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    furs,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("furs");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -1462,127 +1534,127 @@ void __fastcall TForm1::Image66Click(TObject *Sender)
 
 void __fastcall TForm1::Image77Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    amber,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber");
-  }
+	if(RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber,");
+	}
+	if(RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    amber,");
+	}
+	if(RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("amber");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image76Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    chocolate,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    chocolate,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image75Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    coal,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    coal,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("coal");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image74Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    fur,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur,");
+	}
+	if (RadioButton2->Checked) {
+		orm1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    fur,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fur");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image73Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tar,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tar,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tar");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tar,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tar,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tar");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image71Click(TObject *Sender)
 {
- if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wool,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wool,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wool");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image72Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("salt,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    salt,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("salt");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("salt,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    salt,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("salt");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image68Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    grain,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    grain,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("grain");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image69Click(TObject *Sender)
 {
-if(RadioButton1->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");
-  }
-  if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    slaves,");
-  }
-  if(RadioButton3->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");
-  }
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    slaves,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -1603,7 +1675,7 @@ void __fastcall TForm1::Image70Click(TObject *Sender)
 void __fastcall TForm1::N54Click(TObject *Sender)
 {
 	//открываем окно вставки комментариев
-	N54->Checked =!N54->Checked;
+	N54->Checked =! N54->Checked;
 	CategoryPanelGroup2->Visible = N54->Checked;
 	CategoryPanel6->Collapsed = false;
 }
@@ -1638,7 +1710,7 @@ void __fastcall TForm1::SpeedButton3Click(TObject *Sender)
 void __fastcall TForm1::N55Click(TObject *Sender)
 { 
 	//запускаем макросы
-	N55->Checked=!N55->Checked;
+	N55->Checked =!N55->Checked;
 	CategoryPanelGroup2->Visible = N55->Checked;
 	CategoryPanel7->Collapsed = false;
 }
@@ -1688,7 +1760,7 @@ void __fastcall TForm1::AdvTabSet1Change(TObject *Sender, int NewTab, bool &Allo
 void __fastcall TForm1::N62Click(TObject *Sender)
 {
 	//открываем панель отладки
-	N62->Checked=!N62->Checked;
+	N62->Checked =!N62->Checked;
 	Panel1->Visible = N62->Checked;
 	//RichEdit2->Lines->LoadFromFile(Options->Edit1->Text+"system.log.txt");
 }
@@ -1750,7 +1822,7 @@ void __fastcall TForm1::ApplicationEvents1Exception(TObject *Sender, Exception *
 void __fastcall TForm1::N65Click(TObject *Sender)
 {
 	//открываем окно вставки комментариев
-	N65->Checked=!N65->Checked;
+	N65->Checked =!N65->Checked;
 	CategoryPanelGroup2->Visible = N65->Checked;
 	CategoryPanel8->Collapsed = false;
 }
@@ -1759,7 +1831,7 @@ void __fastcall TForm1::N65Click(TObject *Sender)
 void __fastcall TForm1::N66Click(TObject *Sender)
 { 
 	//автоподстановка(проба)
-	N66->Checked=!N66->Checked;
+	N66->Checked =!N66->Checked;
 	ListBox5->Visible = N66->Checked;
 	ListBox5->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\Data\\function.sw");
 }
@@ -1774,7 +1846,7 @@ void __fastcall TForm1::N67Click(TObject *Sender)
 	   pts[TabCount]->Caption = ExtractFileName(OpenTextFileDialog1->FileName);
 	   pts[TabCount]->ImageIndex = 10;
 	   memo[TabCount] = new TAdvMemo(pts[TabCount]);
-	   memo[TabCount]->Parent =pts[TabCount];
+	   memo[TabCount]->Parent = pts[TabCount];
 	   memo[TabCount]->Align = alClient;
 	   memo[TabCount]->Clear();
 	   memo[TabCount]->Gutter->ShowLeadingZeros = true;
@@ -1913,7 +1985,7 @@ void __fastcall TForm1::lua2Click(TObject *Sender)
 void __fastcall TForm1::lua3Click(TObject *Sender)
 {
 	//меняем подсветку синтаксиса на  Lua Script Color
-	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles=AdvPascalMemoStyler1;
+	Form1->memo[AdvPageControl1->ActivePageIndex]->SyntaxStyles = AdvPascalMemoStyler1;
 	Form1->StatusBar1->Panels->Items[2]->Text = "Lua Script Color";
 }
 //---------------------------------------------------------------------------
@@ -2010,277 +2082,346 @@ void __fastcall TForm1::Image14Click(TObject *Sender)
 
 void __fastcall TForm1::Image15Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    slaves,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    slaves,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("slaves");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image16Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    silk,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    silk,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("silk");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image17Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    iron,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    iron,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("iron");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image18Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dyes,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    dyes,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dyes");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dyes,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    dyes,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dyes");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image27Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    dogs,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    dogs,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("dogs");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image28Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    elephants,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    elephants,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("elephants");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image29Click(TObject *Sender)
-{
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    glass,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass");}
+{	
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    glass,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("glass");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image30Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    hides,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    hides,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("hides");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image31Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    lead,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    lead,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("lead");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image20Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    timber,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    timber,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("timber");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image34Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    pottery,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    pottery,");
+	}
+    if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pottery");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image10Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    chocolate,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    chocolate,");
+	}
+    if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("chocolate");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image12Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wine,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    wine,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("wine");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image13Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sulfur,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    sulfur,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sulfur");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sulfur,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    sulfur,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("sulfur");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image26Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    copper,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    copper,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("copper");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image37Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("water,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    water,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("water");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("water,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    water,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("water");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image23Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fish,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    fish,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fish");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fish,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    fish,");
+	}
+    if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("fish");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image33Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    pigs,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    pigs,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("pigs");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image19Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    textiles,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    textiles,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("textiles");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image39Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    incense,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    incense,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("incense");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image24Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tin,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    tin,");
+	}
+    if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("tin");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image35Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    purple_dye,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    purple_dye,");
+	}
+    if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("purple_dye");
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Image32Click(TObject *Sender)
 {
-//вставка ресурсов меди
-if(RadioButton1->Checked)     {
-   Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil,");}
-	if(RadioButton2->Checked){
-	 Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    olive_oil,");}
-   if (RadioButton3->Checked)
-   {Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil");}
+	//вставка ресурсов меди
+	if (RadioButton1->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil,");
+	}
+	if (RadioButton2->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("resource    olive_oil,");
+	}
+	if (RadioButton3->Checked) {
+		Form1->memo[AdvPageControl1->ActivePageIndex]->InsertText("olive_oil");
+	}
 }
 //---------------------------------------------------------------------------
 
