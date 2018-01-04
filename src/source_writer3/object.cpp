@@ -32,10 +32,10 @@ void __fastcall TObject_form::FormClose(TObject *Sender, TCloseAction &Action)
 	Object_form->ListBox1->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
 	Object_form->ListBox2->Items->SaveToFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
 	//плавно сворачиваем при закрытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
-	DrawAnimatedRects(Handle,IDANI_CAPTION,&r2,&r1);
+	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
 }
 //---------------------------------------------------------------------------
 
@@ -44,10 +44,10 @@ void __fastcall TObject_form::FormCreate(TObject *Sender)
 	Object_form->ListBox1->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\module.sw");
 	Object_form->ListBox2->Items->LoadFromFile(ExtractFilePath(Application->ExeName)+"\\plugin\\object.sw");
 	//плавно разворачиваем при открытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
-	DrawAnimatedRects(Handle,IDANI_CAPTION,&r1,&r2);
+	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
 	lngopt = Ini->ReadString("lngflag", "active", "");
 	//языковая функция формы

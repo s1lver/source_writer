@@ -17,9 +17,9 @@
 //---------------------------------------------------------------------------
 class TForm5 : public TForm
 {
-__published:	// IDE-managed Components
-private:	// User declarations
-public:		// User declarations
+	__published:	// IDE-managed Components
+	private:	// User declarations
+	public:		// User declarations
 	__fastcall TForm5(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

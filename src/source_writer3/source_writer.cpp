@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
 #include <tchar.h>
@@ -14,8 +13,7 @@ USEFORM("manager.cpp", Form4);
 //---------------------------------------------------------------------------
 WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
-	try
-	{
+	try {
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		Application->Title = "Source Writer 3";
@@ -24,18 +22,14 @@ WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TForm2), &Form2);
 		Application->Run();
 	}
-	catch (Exception &exception)
-	{
+	catch (Exception &exception) {
 		Application->ShowException(&exception);
 	}
-	catch (...)
-	{
-		try
-		{
+	catch (...) {
+		try {
 			throw Exception("");
 		}
-		catch (Exception &exception)
-		{
+		catch (Exception &exception) {
 			Application->ShowException(&exception);
 		}
 	}

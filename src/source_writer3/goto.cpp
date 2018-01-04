@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 #include <stdio.h>
 #include <inifiles.hpp>
@@ -24,8 +23,8 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	//плавно сворачиваем при закрытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
 }
@@ -34,8 +33,8 @@ void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
 void __fastcall TForm3::FormCreate(TObject *Sender)
 {
 	//плавно разворачиваем при открытии
-	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	TRect r1, r2;
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);
 	Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\config.ini");
@@ -52,7 +51,7 @@ void __fastcall TForm3::FormCreate(TObject *Sender)
 		Ini = new TIniFile(ExtractFilePath(Application->ExeName)+"\\Data\\rus.lng");
 	}
 	Form3->Caption = Ini->ReadString("goto", "cap", "ѕерейти...");
-	Form3->BitBtn1->Caption=Ini->ReadString("goto", "btn1", "ѕерейти");
+	Form3->BitBtn1->Caption = Ini->ReadString("goto", "btn1", "ѕерейти");
 }
 //---------------------------------------------------------------------------
 

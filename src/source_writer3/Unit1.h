@@ -538,12 +538,12 @@ __published:	// IDE-managed Components
 	void __fastcall Edit2KeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall Edit2Enter(TObject *Sender);
 
-private:	// User declarations
-TIniFile *Ini;
+	private:	// User declarations
+	TIniFile *Ini;
 
-public:		// User declarations
-TAdvMemo *memo[256];
-TAdvTabSheet  *pts[256];
+	public:		// User declarations
+	TAdvMemo *memo[256];
+	TAdvTabSheet  *pts[256];
 
 	__fastcall TForm1(TComponent* Owner);
 	void TForm1::actbtn(void);

@@ -19,7 +19,7 @@ void __fastcall TAboutBox::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	//плавно сворачиваем при закрытии
 	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r2, &r1);
 }
@@ -29,7 +29,7 @@ void __fastcall TAboutBox::FormCreate(TObject *Sender)
 {
 	//плавно разворачиваем при открытии
 	TRect r1,r2;
-	r1 = Rect(Left+Width/2,Top+Height/2,Left+Width/2,Top+Height/2);
+	r1 = Rect(Left+Width/2, Top+Height/2, Left+Width/2, Top+Height/2);
 	r2 = BoundsRect;
 	DrawAnimatedRects(Handle, IDANI_CAPTION, &r1, &r2);
 }

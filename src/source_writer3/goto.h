@@ -18,9 +18,9 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall BitBtn1Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
-private:	// User declarations
-TIniFile *Ini;
-public:		// User declarations
+	private:	// User declarations
+	TIniFile *Ini;
+	public:		// User declarations
 	__fastcall TForm3(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
