@@ -1,5 +1,5 @@
 # Source Writer
-Total War Script Editor
+Total War Script Editor. Multifunctional editor for the games of the Total War series.
 
 Games support
 =
